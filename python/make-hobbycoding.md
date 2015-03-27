@@ -106,6 +106,7 @@ https://www.caktusgroup.com/blog/2013/08/07/migrating-custom-user-model-django/
 - meetup 모델 짜기
 - migrations폴더랑 db는 gitignore에 추가해야하나?
 - 메인화면, 밋업 만들기, 밋업 리스트, 밋업 디테일 사이클 만들기
+- http://www.getmdl.io/index.html 적용하기
 
 ## DONE
 - grunt, bower로 구조잡기
@@ -180,6 +181,7 @@ https://www.caktusgroup.com/blog/2013/08/07/migrating-custom-user-model-django/
         * ID
         * PW 변경
         * 닉네임 변경
+        * 페이스북 연동
 - 기타
     + 검색
     + 채팅 달까?
