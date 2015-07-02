@@ -31,6 +31,9 @@ console.log( 'abcdef'.replace(pattern, 'A')); // Abcdef
 - \s: 공백
 - 인덱스반환: text.search(re);
 
+### 선택
+- 숫자: [0-9]
+
 ###예제
 ```javascript
 var targetText = "http: vs https: or httpss:";
