@@ -12,3 +12,6 @@ comic_title.map(function() {return $(this).html()})
 //0~4까지 랜덤넘버
 Math.floor(Math.random()*5);
 ```
+
+## javascript shorthand techniques
+http://www.sitepoint.com/shorthand-javascript-techniques/
