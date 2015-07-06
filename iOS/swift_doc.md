@@ -1,6 +1,7 @@
 # Swift 언어 개발문서
 
-## Swift 둘러보기
+## Swift 둘러보기져
+### 변수
 ```objective-c
 var myVariable = 42
 let Pi = 3.14
@@ -24,8 +25,10 @@ let emptyArray = String[]()
 let emptyArray2 = []
 let emptyDic = Dictionary<String, Float>()
 let emptyDic2 = [:]
+```
 
-//흐름 제어
+### 흐름 제어
+```objective-c
 let scoreList = [12, 23, 34]
 var teamScore = 0
 for score in scoreList {
@@ -73,6 +76,55 @@ for (kind, numbers) in interestingNumbers {
     }
   }
 }
+
+//while, do
+var n = 2
+while n < 100 {
+    n = n * 2
+}
+n
+
+var m = 2
+do {
+    m = m * 2
+} while m < 100
+
+```
+..을 사용해서 범위를 지정하면 제일 맨 마지막 값은 제외됩니다. 반면에 ...을 사용하면 양쪽 끝의 값을 모두 범위에 포함하게 됩니다.
+
+### 함수와 클로져
+```objective-c
+//함수 안의 함수
+func makeIncrementer() -> (Int -> Int) {
+  func addOne(number: Int) -> Int {
+    return 1 + number
+  }
+  return addOne
+}
+var increment = makeIncrementer()
+increment(7)
+
+//인자를 함수로 받기
+func hasAnyMatches(list: Int[], condition: Int -> Bool) -> Bool {
+      for item in list {
+          if condition(item) {
+              return true
+          }
+      }
+      return false
+  }
+  func lessThanTen(number: Int) -> Bool {
+      return number < 10
+  }
+  var numbers = [20, 19, 7, 12]
+  hasAnyMatches(numbers, lessThanTen)
+
+//실제로 함수는 클로저의 특별한 예.
+numbers.map({
+  (number: Int) -> Int in
+  let result = 3 * number
+  return result
+})
 ```
 
 ## Refer
