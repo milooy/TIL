@@ -24,7 +24,7 @@ divYellow.onclick = function(e){
 e.target: 이벤트가 일어난 곳
 e.currentTarget: 실제로 이벤트가 걸려있는 위치
 
-## jQuery curruntTarget
+## jQuery curruntTarget, target, delegateTarget
 ```javascript
 $( "p" ).click(function( event ) {
   alert( event.currentTarget === this ); // true
@@ -32,7 +32,20 @@ $( "p" ).click(function( event ) {
 ```
 > jquery의 curruntTarget은 this와 동일하다.
 
+```javascript
+$('#todo-list').on( "click", '.toggle', completedTODO);
+
+function completedTODO() {
+    console.log(this); //.toggle
+    console.log(e.currentTarget); //.toggle
+    console.log(e.target); //.toggle
+    console.log(e.delegateTarget); //#todo-list
+}
+```
+> `e.delegateTarget`은 이벤트 딜리게이션을 걸어준 타겟을 반환한다.
+
 ## Refer
 https://api.jquery.com/event.currentTarget/
 http://jsfiddle.net/misteroneill/kmn4A/3/
 http://lidaf.tistory.com/38
+https://api.jquery.com/event.delegateTarget/
