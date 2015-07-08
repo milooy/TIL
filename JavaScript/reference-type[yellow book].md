@@ -110,7 +110,7 @@ nums.forEach(function(item, index, array) {
     console.log(item);
 }); //해당 배열에서 for문을 실행한 것과 마찬가지 
 
-//감소 메서드(많이 쓴다) - 배열을 순회하며 콜백함수를 실행하고 값을 하나 만들어 반환
+//감소 메서드(많이 쓴다) - 배열을 순회하며 콜백함수를 실행하고 값을 하나 만들어 반환. 두번째 인자는 initial value
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 var values = [1,2,3,4,5];
 var sum = values.reduce(function(prev,cur,index,array) {
