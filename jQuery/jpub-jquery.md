@@ -133,6 +133,28 @@
         * on
         * (.click(), .hover(), submit()같은 메서드들도 보게 될것인데, 이벤트 처리를 위한 on()메서드가 나타나며 사라짐)
 
+### 효과 예제
+```javascript
+$('h2').hide().slideDown();
+var $li = $('li');
+$li.hide().each(function(index) {   //일단 숨기고, 아이템들이 하나씩 나타나기.
+    $(this).delay(700*index).fadeIn(700);
+});
+$li.on('click', function(){
+    $(this).fadeOut(700);
+});
+```
+
+### CSS속성에 애니메이션 적용
+- height, width, font-size처럼 값이 숫자로 표현될 수 있는 속성이라면 어떠한 CSS속성이라도 애니메이션에 사용가능.
+```javascript
+$(this).animate({
+    opacity: 0.0,
+    paddingLeft: '+=80'
+    }, 500, function() {
+        $(this).remove(); //애니메이션이 완료되면 콜백함수가 아이템을 제거
+});
+```
 ## tips
 ### 정보
 - 획득 
