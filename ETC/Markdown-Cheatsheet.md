@@ -89,7 +89,7 @@ Some text to show that the reference links can follow later.
 [1]: http://slashdot.org
 [link text itself]: http://www.reddit.com
 
-##Links
+## Image
 ```
 Inline-style: 
 ![alt text](http://cdn.lezhin.com/old-assets/home.png "Logo Title Text 1")
