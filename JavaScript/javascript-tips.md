@@ -18,3 +18,18 @@ http://www.sitepoint.com/shorthand-javascript-techniques/
 
 ## javascript 성능 향상 팁
 https://drive.google.com/drive/u/1/folders/0B9wrUHe_cO9Gfjd0dVFGTl9hYVFBcFhpQnp5bUtva2lMX3puR3Zfa0VkY2ZxYzhsdFI2M3M
+
+## Using map to reverse String
+```javascript
+var str = '12345';
+[].map.call(str, function(x) {
+  return x;
+}).reverse().join(''); 
+// Output: '54321'
+```
+
+## Array 빈 값으로 초기화
+```javascript
+var arr = Array.apply(null, Array(3));
+```
+http://www.2ality.com/2013/11/initializing-arrays.html
