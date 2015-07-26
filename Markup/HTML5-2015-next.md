@@ -121,3 +121,48 @@
 - requestAnimationFrame 부드러움
     + 모니터 갱신 주기에 맞춰서 바뀌니.
     
+## 0721 수업
+- CSS animation이 성능이 더 좋지만
+    + 나의 인터랙션에 의해 애니메이션이 바뀌어야 하거나
+    + 저사양 브라우저같은 경우는 js로 해야한다.
+- Animation이 버블링된다는것도 숙지! 
+- try catch의 비용도 생각해라.
+    + context switching(with구문!!(쓰지마))
+- native js와 jQuery섞어쓰면 문제점
+    + maintainess 이슈
+- 시간 이슈
+    + 1. 초기성능
+        * 핵심포인트: 네트워크
+            - 적게 호출하는게 좋음!
+    + 2. 인터렉션 성능
+        * 핵심포인트: DOM
+            - 가능하면 적게 돔을 다루는게 좋음!!
+- fileupload는 blob으로 분할해서 할 수 있다.
+
+## 0726 week4 강의
+[link](http://portal.nhnnext.org/streaming/2014/2%ED%95%99%EA%B8%B0/HTML5%20Programming%20-%201/%EC%A0%84%EC%9A%A9%EC%9A%B0/325)
+- 학습할거
+    + online/offline 이벤트
+    + pushstate, popstate, replacestate를 이용한 히스토리 관리
+- 만약 인터넷이 끊겼다면?
+    + online/offline 상황 알수있다
+        * window.addEventListener('online', callback);
+        * window.addEventListener('offline', callback);
+        * navigator.online //boolean
+- 히스토리 관리
+    + active는 해야할것, completed는 완료된것 보여준다.
+    + 동적으로 페이지를 바꿀 때도 히스토리 관리가 필요.(사용자가 뒤로가기 눌렀을때)
+    + =>popstate...
+    + history.pushState({'id':1}, "active", "active.html"); //파라미터, url, 보여줄 html
+    + history.pushState({'id':2}, "completed", "completed.html");
+    + completed.html에서 뒤로가기 누르면 
+    + window.addEventListener('popstate', function(e){e.state'//파라미터 객체{'id':2 => {'id':1}}})
+- 메서드/이벤트
+    + history.pushState(param, titleName, url);
+        * 주소도 바뀌고 히스토리도 변경
+    + history.replaceState(param, titleName, url);
+        * 주소만 바뀌고 히스토리는 변경안함
+    + window.addEventListener('popstate', function(e){e.state;});
+        * pushstate나 replaceState에서 첫 번째 인자로 넣은 객체가 들어있음.
+    
+
