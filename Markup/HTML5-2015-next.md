@@ -164,5 +164,39 @@
         * 주소만 바뀌고 히스토리는 변경안함
     + window.addEventListener('popstate', function(e){e.state;});
         * pushstate나 replaceState에서 첫 번째 인자로 넣은 객체가 들어있음.
-    
+- 메소드 호출을
+    + `a.some()`으로 호출할 수 있고
+    + `a['some']()`으로 할수도 있지.
+```javascript
+//얘랑
+if(navigator.online) {
+    document.getElementById("header").classList.remove('offline');
+} else {
+    document.getElementById("header").classList.add('online');
+}
+//얘는 동일
+document.getElementById("header").classList[navigator.online? "remove" : "add"] ("offline")
+```
 
+## 0728 수업
+```javascript
+//모듈화 - 외부에서 접근불가
+var TODO = (function() {
+    function fadeIn() {
+
+        },
+    return {
+        "make" : function() {
+            ...
+        }, 
+        "delete": function() { //예약어를 이름으로 쓸때 이래 쓴다. 호출시엔 ['delete']이런식. 혹은 데이터로 주고받는다(valid한 JSON)할때 따옴표 쓴다.
+
+        } 
+    }
+})
+```
+- 클로져?!
+- jQuery attr vs prop
+    + attr는 실제 html태그에 있는 속성을 가져옴.
+    + prop은 현재상태
+- 
