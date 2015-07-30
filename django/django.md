@@ -3,3 +3,4 @@
 [Django, 저는 이렇게 씁니다](http://www.slideshare.net/perhapsspy/django-42665652)
 [간단한 블로그를 만들며 django 이해하기](http://www.slideshare.net/perhapsspy/django-44664022)
 [Sublime Text 3 for python and django](http://www.slideshare.net/raccoonyy/sublime-text-3-for-python-and-django)
+[pyenv + virtualenv + autoenv 를 통한 Python 개발 환경 구축하기](https://dobest.io/how-to-set-python-dev-env/)
