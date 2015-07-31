@@ -12,3 +12,20 @@ https://css-tricks.com/zooming-squishes/
 저도 예전에 미디어쿼리에 em을 사용한 소스를 보고 왜 em을 썼을까 생각한 적이 있었는데 이 이슈 때문이었던 것 같네요.
 
 대개 90% 축소 ~ 125% 확대의 범위에서 zoom을 쓰시는 분들이 많지만, 스크린에 아주 가까이 눈을 대고 사용하시는 저시력 장애인들을 생각하면 zoom에 대한 처리도 될 수 있다면 좋겠지요.
+
+## preprecessor
+[sass](http://www.sass-lang.com/guide)
+[less](http://lesscss.org/)
+
+## Grid
+- [bootstrap](http://getbootstrap.com/2.3.2/scaffolding.html)
+- [pure](http://purecss.io/start/)
+- [jeet](http://jeet.gs/)
+- [skeleton](http://getskeleton.com/)
+- [foundation](http://foundation.zurb.com/)
+- [best front end frameworks for bootstrap alternative](http://beebom.com/2015/01/best-front-end-frameworks-for-bootstrap-alternative)
+- [flexbox](http://ko.learnlayout.com/flexbox.html)
+    + [CSS Flexbox 레이아웃 짜는데 고생 그만하고 Flexie](http://blog.weirdx.io/css-flexbox-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83-%EC%A7%9C%EB%8A%94%EB%8D%B0-%EA%B3%A0%EC%83%9D-%EA%B7%B8%EB%A7%8C%ED%95%98%EA%B3%A0-flexie/)
+
+## Carousel
+[owlcarousel](http://owlgraphic.com/owlcarousel/)
