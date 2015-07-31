@@ -29,3 +29,18 @@ https://css-tricks.com/zooming-squishes/
 
 ## Carousel
 [owlcarousel](http://owlgraphic.com/owlcarousel/)
+
+## Responsive iframe(youtube, vimeo) embed
+http://stackoverflow.com/questions/17838607/making-an-iframe-responsive
+http://www.letmecompile.com/responsive-%EC%9C%A0%ED%8A%9C%EB%B8%8C-%EB%B9%84%EB%A9%94%EC%98%A4-%EC%9E%84%EB%B2%A0%EB%94%A9-%ED%95%98%EA%B8%B0-2/
+
+## centering absolute elements
+```css
+ #myContent{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+```
+http://stackoverflow.com/questions/1776915/how-to-center-absolute-element-in-div
