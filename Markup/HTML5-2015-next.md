@@ -199,4 +199,18 @@ var TODO = (function() {
 - jQuery attr vs prop
     + attr는 실제 html태그에 있는 속성을 가져옴.
     + prop은 현재상태
-- 
+
+## 140802
+```javascript
+//얘랑
+if(method === 'all') { // 삼항연산자로 해결
+    this.allView();
+} else if(method === 'active') {
+    this.activeView();
+} else if(method === 'completed') {
+    this.completedView();
+}
+
+//얘는 같다
+this[method+"View"]();
+```
