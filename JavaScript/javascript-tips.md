@@ -33,3 +33,28 @@ var str = '12345';
 var arr = Array.apply(null, Array(3));
 ```
 http://www.2ality.com/2013/11/initializing-arrays.html
+
+## Javascript history.pushState 오류 – Failed to execute ‘pushState’ on ‘History’
+> Uncaught DOMException: Failed to execute 'pushState' on 'History': A history state object with URL 'file://localhost/Users/jayjin/Documents/Programming/2015-02-HTML5/active' cannot be created in a document with origin 'null'.
+
+투두리스트 웹앱을 만들며 탭간 이동에 history를 주려고 탭을 클릭했을 때
+
+```javascript
+
+history.pushState({"method":"active"}, null, "active");
+
+```
+
+이 코드를 실행하게 해두었더니, 글 제일 위의 저런 에러가 뜨는것이었다.
+역시나 스택오버플로우 님께서 도와주셨는데,
+local에서 돌릴 때 경로 인식이 꼬여서 그런것이었다.
+
+```javascript
+
+history.pushState({"method":"active"}, null, "#/active");
+
+```
+
+이와같이 #/active 로 고쳐주니 정상동작!
+### Refer
+http://stackoverflow.com/questions/20079704/javascript-history-pushstate-not-working
