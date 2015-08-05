@@ -20,15 +20,18 @@ https://css-tricks.com/zooming-squishes/
 ## Grid
 - [bootstrap](http://getbootstrap.com/2.3.2/scaffolding.html)
 - [pure](http://purecss.io/start/)
+    + [pure에 gutter넣기](https://github.com/yahoo/pure/issues/380)
 - [jeet](http://jeet.gs/)
 - [skeleton](http://getskeleton.com/)
 - [foundation](http://foundation.zurb.com/)
 - [best front end frameworks for bootstrap alternative](http://beebom.com/2015/01/best-front-end-frameworks-for-bootstrap-alternative)
 - [flexbox](http://ko.learnlayout.com/flexbox.html)
     + [CSS Flexbox 레이아웃 짜는데 고생 그만하고 Flexie](http://blog.weirdx.io/css-flexbox-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83-%EC%A7%9C%EB%8A%94%EB%8D%B0-%EA%B3%A0%EC%83%9D-%EA%B7%B8%EB%A7%8C%ED%95%98%EA%B3%A0-flexie/)
-
+- [2kb짜리 작은 그리드 minigrid](http://alves.im/minigrid/)
 ## Carousel
-[owlcarousel](http://owlgraphic.com/owlcarousel/)
+- [owlcarousel](http://owlgraphic.com/owlcarousel/)
+- [semantic ui](http://semantic-ui.com/)
+- [uikit](http://getuikit.com/docs/grid.html)
 
 ## Responsive iframe(youtube, vimeo) embed
 http://stackoverflow.com/questions/17838607/making-an-iframe-responsive
