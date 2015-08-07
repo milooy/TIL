@@ -50,3 +50,7 @@ http://stackoverflow.com/questions/1776915/how-to-center-absolute-element-in-div
 
 ## Less Media Queries Sortcodes
 http://codepen.io/ericrasch/pen/HzoEx
+
+## Youtube thumbnail crop
+http://stackoverflow.com/questions/13220715/removing-black-borders-43-on-youtube-thumbnails
+http://www.nelsdrums.com/inspiration/tips/cropping-youtube-thumbnails-using-css
