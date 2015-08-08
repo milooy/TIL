@@ -58,3 +58,6 @@ history.pushState({"method":"active"}, null, "#/active");
 이와같이 #/active 로 고쳐주니 정상동작!
 ### Refer
 http://stackoverflow.com/questions/20079704/javascript-history-pushstate-not-working
+
+## 클래스 기반 언어 vs 자바스크립트 (꼭 읽을것!)
+http://www.bsidesoft.com/?p=318
