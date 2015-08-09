@@ -8,7 +8,11 @@
 
 ## 디자인
 [Web design resources](http://enboard.co/webdesign/)
+[예쁜 ppt 참고](http://slides.com/gsklee/functional-programming-in-5-minutes#/)
+
+## Tutorial
+[building list jquery local storage](http://www.sitepoint.com/building-list-jquery-local-storage/)
 
 ## 기타
 - [marxi.co](marxi.co)
-    - 짱 좋다. 이걸로 (개인프로젝트) 개발일지 계속 작성하기로 결정. 입력은 마크다운으로, 저장은 에버노트에 싱크. 이미지도 Ctrl+V로 바로 업로드 가능, LaTeX, Code highlight 지원.]
+    - 짱 좋다. 이걸로 (개인프로젝트) 개발일지 계속 작성하기로 결정. 입력은 마크다운으로, 저장은 에버노트에 싱크. 이미지도 Ctrl+V로 바로 업로드 가능, LaTeX, Code highlight 지원.
