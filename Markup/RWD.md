@@ -54,6 +54,10 @@ nav a, button {
     + Mostly Fluid
         * 제일 커지면 옆에 마진 생긴다.
         * margin-left: auto; margin-right:auto;
+    + Layout Shifter
+        * 레이아웃 변하면 col들이 이곳 저곳 움직임
+        * .dark_blue{order:4;} .light_blue{order:-1;}
+        * ![layout shifter image](../img/RWD/1.png "layout shifter image")
 
 ## ETC
 [스매싱북 사달라하기](http://www.smashingmagazine.com/books/#smashing-book-5)
