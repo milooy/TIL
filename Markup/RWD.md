@@ -58,6 +58,9 @@ nav a, button {
         * 레이아웃 변하면 col들이 이곳 저곳 움직임
         * .dark_blue{order:4;} .light_blue{order:-1;}
         * ![layout shifter image](../img/RWD/1.png "layout shifter image")
+    + Off Canvas
+        * 작아지면 햄버거아이콘으로 쫄아들음
+        * ![off canvas image](../img/RWD/2.png "off canvas image")
 
 ## ETC
 [스매싱북 사달라하기](http://www.smashingmagazine.com/books/#smashing-book-5)
