@@ -27,6 +27,7 @@ https://css-tricks.com/zooming-squishes/
 - [best front end frameworks for bootstrap alternative](http://beebom.com/2015/01/best-front-end-frameworks-for-bootstrap-alternative)
 - [flexbox](http://ko.learnlayout.com/flexbox.html)
     + [CSS Flexbox 레이아웃 짜는데 고생 그만하고 Flexie](http://blog.weirdx.io/css-flexbox-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83-%EC%A7%9C%EB%8A%94%EB%8D%B0-%EA%B3%A0%EC%83%9D-%EA%B7%B8%EB%A7%8C%ED%95%98%EA%B3%A0-flexie/)
+    + [complete guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [2kb짜리 작은 그리드 minigrid](http://alves.im/minigrid/)
 ## Carousel
 - [owlcarousel](http://owlgraphic.com/owlcarousel/)
