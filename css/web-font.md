@@ -79,6 +79,7 @@ body{font-family:나눔고딕, NanumGothic, ng}
 [웹 폰트 문제 해결. @font-face troubleshooting](http://naradesign.net/wp/2012/06/19/1830/)
 [구글 웹폰트를 빠르게 로드하는 팁 7가지](https://nolboo.github.io/blog/2013/10/22/google-web-font-faster-tip/)
 [한글 웹 폰트 경량화해 사용하기](http://blog.coderifleman.com/post/111825720099/%ED%95%9C%EA%B8%80-%EC%9B%B9-%ED%8F%B0%ED%8A%B8-%EA%B2%BD%EB%9F%89%ED%99%94%ED%95%B4-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+[웹폰트 사용](http://www.freezner.com/archives/215)
 https://www.igvita.com/2014/01/31/optimizing-web-font-rendering-performance/
 https://www.igvita.com/2012/09/12/web-fonts-performance-making-pretty-fast/
 [경량화된 한글 노토 산스 폰트를 웹폰트로 사용할 수 있도록 CDN 서비스를 하는 곳.](http://theeluwin.github.io/NotoSansKR-Hestia/)
