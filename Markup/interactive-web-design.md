@@ -32,4 +32,4 @@ tranform: translateZ(500px); //사용자가 브라우저를 바라보는 시점�
 - transition구문의 위치는 변경후인 :hover부분이 아니고 변경 전인 원래의 태그선택자.
 transition: 속성명 전환시간 가속도설정 지연시간;
 transition: all 1s ease 0s;
-
+```
