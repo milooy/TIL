@@ -5,6 +5,11 @@
 
 ## Web Programming
 - [HTML5 Demo](http://html5demos.com/)
+- [웹 브랜드 스타일가이드 쉽게 만들기](https://frontify.com/styleguide)
+
+## 기획
+- [프로덕트 헌트](http://www.producthunt.com/)
+    + 일별로 웹/모바일 서비스를 소개하고 의견을 나누는 리뷰 사이트. 짱 굿
 
 ## 분석툴
 - [추천 분석툴 hotjar](http://www.dev-diary.com/archives/4424?utm_source=weirdmeetup&utm_medium=original_link_on_post&utm_campaign=%EC%B6%94%EC%B2%9C+%EB%B6%84%EC%84%9D%ED%88%B4+Hotjar)
