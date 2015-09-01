@@ -31,7 +31,7 @@
 - mouseover: 요소 위로 마우스를 움직였을 때(터치스크린X)
 - mouseout: 요소 바깥으로 마우스를 움직였을 때(터치스크린X)
 - mouseenter: 특정영역 안으로
-- mouseleave: 특정영역 밖으로
+- mouseleave: 특정영역 밖으로 (마우스오버랑 아웃은 엘리먼트 기준인 것이랑 차이가 난다)
 
 ### Focus Event
 - focus / focusin: 포커스를 얻었을 때
