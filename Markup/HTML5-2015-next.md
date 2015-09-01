@@ -237,4 +237,83 @@ this[method+"View"]();
     + 2. 누를때마다 불러온다 (초기로딩 fast, UX감소)
     + 3. 양 옆 세개만 불러온다 (1과 2의 중간. 보통 이렇게 많이 씀)
     + => 사용자 패턴 분석해서 결정한다.
-- 
+    + 엔터와 리브: 엘리먼트 기준
+    + 오버와 아웃: 영역기준 (거꾸론가??)
+
+## 0901
+- 캔버스에서 외부에서 가져온 이미지를 조작할 수 없다!
+    + xhr을 사용한다
+    + img.crossOrigin = 'anonymous'를 쓴다.
+- 정말 많이 쓰는 패턴
+
+```javascript
+uploader.on('drop', function() {
+    //do sth
+    count++;
+    if(count<data.files.length) {
+        read(data.files[count]);
+    }
+}
+reader.readAsDataURL(file);
+})
+```
+- [Web Audio API](http://www.html5rocks.com/en/tutorials/webaudio/intro/)
+- [placeholder](https://github.com/JB1021/MWIKI-02-2015/commit/fe336d4f798cba0531cf63a3874a44ab746561e0#commitcomment-12976046)
+- [canvas에 해상도](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL)
+- promise 활용하기
+
+```javascript
+function foo () {
+var promise = new Promise(function(resolve){
+        setTimeout(function(){
+            console.log("foo done");
+            resolve(bar);
+        },1000);
+    });
+
+    return promise;
+}
+
+
+function bar () {
+    var promise = new Promise(function(resolve){
+        setTimeout(function(){
+            console.log("bar done");
+            resolve(barz);
+        },1000);
+    });
+
+    return promise;
+}
+
+function barz () {
+    var promise = new Promise(function(resolve){
+        setTimeout(function(){
+            console.log("barz done");
+            resolve(bar);
+        },1000);
+    });
+
+    return promise;
+}
+
+// foo을 호출하면 bar을 반환하고 bar을 호출하면 barz을 반환한다.
+// barz가 완료되면 console.log("완료")라고 출력한다.
+
+// then을 활용하여 "foo done -> bar done -> barz done -> 완료"의 로그가 나오도록 구현하라.
+```
+- [link, import의 차이](http://www.stevesouders.com/blog/2009/04/09/dont-use-import/)
+    - 그럼 왜 web font에는 import를 사용하라고 했을까?
+- 이미지 슬라이드를 어떻게 만들까?
+- HTML5 WebWorker
+    - 설명 [링크](http://www.html5rocks.com/en/tutorials/workers/basics/), [링크](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
+    - [JS없이 생성하는 방법](https://github.com/minhyeok4dev/Backorage.js/blob/master/dist/backorage.js#L33)
+- [File Drag/Drop 링크](https://github.com/helloheesu/jpeg_compressor/blob/master/index.js#L19)
+- Canvas CORS
+    - canvas에서 내부 이미지를 가져올 때
+        - FileReader을 사용한다.
+        - createObjectURL을 사용한다.(로컬일 때 안됨)
+    - canvas에서 외부 이미지를 가져올 때 (둘 다 CORS을 따른다)
+        - xhr을 사용한다.
+        - img.crossOrigin = 'anonymous'을 사용한다.
+- canvas pixel data 링크
