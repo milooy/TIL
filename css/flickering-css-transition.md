@@ -8,7 +8,7 @@
 해결책은
 1. `-webkit-transform: translate3d(0,0,0)`를 깜빡이는 요소에 집어넣어
 2. `-webkit-backface-visibility: hidden;`를 넣어라
-등등이 있었는데, 나는 모두 되지 않았고, 
+등등이 있었는데, 나는 모두 되지 않았고, stackoverflow에서 아무도 추천하지 않았던 답변인
 3. transition을 all말고 특정지어서 해보세요^^
 에서 걸렸다. 후...
 
