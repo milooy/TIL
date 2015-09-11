@@ -317,3 +317,15 @@ function barz () {
         - xhr을 사용한다.
         - img.crossOrigin = 'anonymous'을 사용한다.
 - canvas pixel data 링크
+
+## 0908
+```js
+var aArgs = Array.prototype.slice.call(arguments, 1);
+var fBound = function() {
+    return fToBind.applay(this instanceof fNOP
+        ? this
+        : oThis,
+        aArgs.concat(Array.prototype.slice.call(arguments)));
+};
+```
+- 제일 위의 aArgs코드: 배열이 아닌 것(e.g. 노드리스트)을 배열로 바꾸는 코드
