@@ -86,7 +86,7 @@ top, parent, self 객체
 ### 1.3 창의 위치
 
 창 위치를 판단하는 크로스 브라우저 코드 (IE, 오페라 vs 파이어폭스, 사파리/크롬은 양쪽 지원)
-```
+```js
 var leftPos = (typeof window.screenLeft "number") ? window.screenLeft : window.screenX;
 var topPos = (typeof window.screenTop "number") ? window.screenTop : window.screenY;
 ```
