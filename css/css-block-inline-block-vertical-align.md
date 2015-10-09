@@ -41,6 +41,37 @@
 1. 텍스트 div만들어 div에 div랑 같은 크기의 line-height속성
 2. 필요하면 div에 height값도 적용.
 
+## 레이어 중앙정렬 팁
+[CSS]
+지금까지 레이어 중앙 정렬 할때 보통
+```css
+.layer {
+position : absolute || fixed;
+left : 50%;
+top : 50%;
+width : 500px;
+height : 500px;
+margin: -250px 0 0 -250px;
+}
+```
+같은 형태로 넣었는데, 오늘 크리스 코이어 블로그 보다가
+
+```css
+.layer {
+position : absolute;
+left : 50%;
+top : 50%;
+transform : translate(-50% -50%);
+}
+```
+겁나 천재같아..
+내가 정말 CSS를 잘 알고있냐고 물어보면 사실 잘 모르는게 분명한 거 같음.
+
+(코드예제)
+http://codepen.io/ChoEun/pen/Dcjqp
+
+http://demosthenes.info/blog/723/Seven-Ways-of-Centering-With-CSS
+
 ## Refer
 [vertical-align속성 자세히 알기](http://aboooks.tistory.com/171)
 [수직으로 가운데 정렬 5가지](http://aboooks.tistory.com/180)
