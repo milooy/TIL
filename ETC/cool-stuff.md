@@ -18,6 +18,7 @@
 ## 디자인
 [Web design resources](http://enboard.co/webdesign/)
 [예쁜 ppt 참고](http://slides.com/gsklee/functional-programming-in-5-minutes#/)
+[웹디자인에서 자간, 행간에 대한 고찰](http://slowalk.tistory.com/2194?utm_content=buffer1c8a3&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer)
 
 ## Tutorial
 [building list jquery local storage](http://www.sitepoint.com/building-list-jquery-local-storage/)
