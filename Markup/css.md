@@ -30,10 +30,18 @@ https://css-tricks.com/zooming-squishes/
     + [complete guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [2kb짜리 작은 그리드 minigrid](http://alves.im/minigrid/)
 ## Carousel
-- [owlcarousel](http://owlgraphic.com/owlcarousel/)
 - [semantic ui](http://semantic-ui.com/)
 - [uikit](http://getuikit.com/docs/grid.html)
 - [직접 그리드 만들기 (beautifulCSS)](http://beautifulcss.com/archives/1368)
+
+## Carousel
+- [owlcarousel](http://www.owlcarousel.owlgraphic.com/)
+    + 라인스토어도 이거 사용한단다. slickjs와 owl이 양대산맥이란다.
+    + [owl용 플러그인. 풀스크린 포커스 캐러셀](http://www.jqueryrain.com/?00y0dpgM)
+- [종류 참 많은 wow slider](http://wowslider.com/demo.html)
+- [slick js](http://kenwheeler.github.io/slick/)
+- [하단 네비 슬라이드 캐러셀 포토라마. 많은 기능. 커스텀하려면 CSS랑 api만지는게 약간 까다로](http://fotorama.io/)
+- [sly](http://darsa.in/sly/)
 
 ## Responsive iframe(youtube, vimeo) embed
 http://stackoverflow.com/questions/17838607/making-an-iframe-responsive
