@@ -17,7 +17,7 @@ div:before {
   border-bottom:1px solid magenta;
 }
 ```
-sudo 클래스로 넣어주면 된다.
+pseudo 클래스로 넣어주면 된다.
 
 ## refer
 http://stackoverflow.com/questions/8572952/border-length-smaller-than-div-width
