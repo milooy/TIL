@@ -59,5 +59,15 @@ history.pushState({"method":"active"}, null, "#/active");
 ### Refer
 http://stackoverflow.com/questions/20079704/javascript-history-pushstate-not-working
 
+## 자바스크립트 공부
+- JS 배우는 예쁜 사이트
+    - http://jstherightway.org/
+    - http://bonsaiden.github.io/JavaScript-Garden/ko/
+- 제이쿼리 강좌
+    - http://direct.co.kr/cs/jQuery.pdf
+    - http://xguru.net/503
+    - http://www.taeyo.pe.kr/Columns/List.aspx?SEQ=29&IDX=0
+    - http://m.ppomppu.co.kr/new/bbs_view.php?id=developer&no=2304
+
 ## 클래스 기반 언어 vs 자바스크립트 (꼭 읽을것!)
 http://www.bsidesoft.com/?p=318
