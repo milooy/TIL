@@ -13,3 +13,8 @@ https://packagecontrol.io/packages/MarkdownEditing
 - ⌘⇧6  Inserts a footnote and jump to its definition. If your cursor is in a definition, it will jump back to the marker.
 - ⌥⇧F Locates footnote markers without definitions and inserts their markers for the definition.
 - ⌥⇧G Locates link references without definitions and inserts their labels at the bottom for the definition.
+- cmd g : 원하는 행으로 이동
+- cmd shift k: 행 삭제
+- cmd enter: 다음 행에 입력 공간 만들기
+- cmd shift enter: 이전 행에 입력 공간 만들기
+- cmd ctrl 상하: 행 이동
