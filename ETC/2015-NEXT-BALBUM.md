@@ -1,9 +1,5 @@
 ## 서버 시작하기
 ```
-vi /etc/hosts
-```
-서버 현재 상태
-
 ci.balbum.net
 dev.balbum.net
 www.balbum.net (default)
@@ -33,3 +29,23 @@ tomcat 실행
 
 ./bin/shutdown.sh
 ./bin/startup.sh
+```
+
+## TODO
+- gulp
+- yeoman: 파일구조 잡아줌
+- sass / less
+- bower: 각종 라이브러리 다운
+
+## Gulp
+### gulp 설치
+```shell
+# package.json 생성(처음 한번)
+$ npm init 
+# gulp다운 (전역으로 되어있으면 됨.)
+$ npm install gulp -g
+```
+
+## useful
+- [vertical timeline template](https://codyhouse.co/gem/vertical-timeline/)
+- [ideabox timeline](http://codecanyon.net/item/ideabox-timeline-news-ticker/full_screen_preview/11370199?ref=jqueryrain)
