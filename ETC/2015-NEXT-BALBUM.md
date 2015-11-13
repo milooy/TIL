@@ -48,4 +48,9 @@ $ npm install gulp -g
 
 ## useful
 - [vertical timeline template](https://codyhouse.co/gem/vertical-timeline/)
-- [ideabox timeline](http://codecanyon.net/item/ideabox-timeline-news-ticker/full_screen_preview/11370199?ref=jqueryrain)
+- [css login form](http://bashooka.com/coding/interesting-css-login-form-designs/)
+- [landing page](http://bashooka.com/html/best-landing-page-design-templates/)
+- [material design icon](https://www.google.com/design/icons/)
+- [semantic ui](http://semantic-ui.com/)
+- [semantic이랑 react같이쓰기 ](http://mobicon.tistory.com/471)
+- [bootsnipp timeline bar](http://bootsnipp.com/search?q=timeline&page=3)
