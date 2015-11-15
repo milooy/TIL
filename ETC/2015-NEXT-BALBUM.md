@@ -54,3 +54,6 @@ $ npm install gulp -g
 - [semantic ui](http://semantic-ui.com/)
 - [semantic이랑 react같이쓰기 ](http://mobicon.tistory.com/471)
 - [bootsnipp timeline bar](http://bootsnipp.com/search?q=timeline&page=3)
+    + http://bootsnipp.com/snippets/3qr0q
+    + http://bootsnipp.com/snippets/featured/timeline-with-images-and-tooltip
+    + http://bootsnipp.com/snippets/yBo8
