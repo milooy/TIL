@@ -1,5 +1,7 @@
 # Emmet 단축키
 
+단축키 실행: cmd + E
+
 ## child: >
 ```html
 div>ul>li
