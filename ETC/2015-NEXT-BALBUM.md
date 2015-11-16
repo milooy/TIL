@@ -46,6 +46,11 @@ $ npm init
 $ npm install gulp -g
 ```
 
+## 서버 API
+```
+http://dev.balbum.net/api/card
+```
+
 ## useful
 - [vertical timeline template](https://codyhouse.co/gem/vertical-timeline/)
 - [css login form](http://bashooka.com/coding/interesting-css-login-form-designs/)
