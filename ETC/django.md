@@ -1,144 +1,156 @@
-## 장고로 웹 만들기 with 핑크퐁 TV
-### `settings.py`
-```python
-INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    ...
-    'tv',
-    'movie',
-)
+# django girls
+## 웹사이트 동작 방식
+- 편지 보내고 받는거랑 비슷
+    + 편지(데이터패킷) 보내면 각기 다른 우체국(라우터)를 통해 전달되어 주소지에 최종도착
+    + 주소: IP주소
+    + 컴퓨터가 DNS(도메인 주소 시스템)가서 djangogirls.org의 IP주소 뭔지 물어본다.
+        * 전화번호부에서 이름 찾고 전화번호 알아내는거랑 비슷
+    + 규칙을 지켜야 제대로 배달됨
+        * 데이터패킷도 규칙 잘 지켜야 웹사이트 볼 수 있다.
+            - HTTP(하이퍼텍스트 전송 프로토콜)라는 프로토콜 사용.
+        * 서버에서 요청(편지)를 받으면 다시 웹사이트(답장)으로 돌려줌
+- 그렇다면 장고는?
+    + 답장 보낼 때 받는 사람에 따라 각각 다른 답장 보낼 수 있게 해줌.
 
-STATIC_URL = '/static/'
-```
-- `tv`와 `movie`라는 앱을 만듦
-- css, js, image는 `/static/`으로 접근
+## 장고란?
+- 웹사이트 만들때 비슷한 유형 요소들 항상 필요하다(회원가입, 로그인, 관리자 패널, 파일 업로드 등등)
+- 웹서버: Request가 도착했는지 확인해주는 Port
+    + 받은 request를 읽고 웹 페이지와 함께 답장을 준다.
+    + 그 request 안의 내용을 만들 수 있는 역할을 한다. 장고가!
+- 누군가 서버에 웹사이트를 요청한다!
+    + 웹서버에 요청이 오면 장고로 전달
+    + 장고는 실제로 어떤 요청이 들어왔는지 확인
+        * **urlresolver**: 웹페이지의 주소를 가져와 무엇을 할지 확인
+            - 우편배달부
+            - 위에서 아래로 그 패턴 확인해봐서 일치하면 그 요청을 관련 함수(view)에 넘겨줌.
+    + **view함수**
+        * 재밌는 일들 처리
+        * 특정 정보를 DB에서 찾을 수 있다.
+        * 사용자가 수정 요청 "데이터를 바꿔주세요"
+            - view함수: 수정할 수 있는 권한 있는지 확인
+            - 수정하고 "완료했다!"라고 답장 준다.
+            - 장고가 그 답장을 사용자의 웹브라우저에 보내준다.
 
-### tv> `views.py`
-```python
-from django.shortcuts import render
-from django.views.generic import ListView
-from movie.models import Video
-
-class HomeView(ListView):
-    model = Video
-    template_name = 'home.html'
-```
-- 쓸 데이터 모델은 Video
-- 보여줄 템플릿은 home.html
-
-### tv > `urls.py`
-```python
-from movie.views import VideoDetailView, VideoHomeView, video_home_view, video_home_view_ajax
-from tv.views import HomeView
-
-url(r'^$', HomeView.as_view(), name='home'),
-url(r'^video/$', VideoHomeView.as_view(), name='video-home'),
-```
-- 매칭될 url에 맞는 View를 import하고 `.as_view()`를 호출해준다.
-
-### tv > templates > `base.html`
-```html
-<!doctype html>
-<html class="no-js" lang="">{% load staticfiles %}
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-        <title>{{ title }}</title>
-        <meta name="description" content="핑크퐁 - 어린이 동요 홈스쿨링"/>
-        ...
-        {% block css %}
-        {% endblock %}
-        <script src="{% static 'js/vendor/modernizr-2.8.3.min.js' %}"></script>
-        {% block js %}
-        {% endblock %}
-        ...
-    <nav class="header">
-        ...   
-    </nav>
-    {% block content %}
-    {% endblock %}
-
-```
-- `{% load staticfiles %}` : `static`을 쓰려면 필요함
-- `{% block css %}{% endblock %}`: 여기서만 쓸 CSS를 넣어둔다는 뜻.
-- `{% block content %}{% endblock %}`: 갈아낄 컨텐츠 블록. extend에 상속받은것에서 찾는다.
-
-### tv > templates > `home.html`
-```html
-{% extends 'base.html' %}
-{% block content %}
-<div class="splash-container">
-...
-{% endblock %}
-```
-- 갈아낄 템플릿. base.html를 extends해오고, `content`라는 이름의 block 만든다.
-
-### movie > `views.py` 
-```python
-from django.views.generic import DetailView, TemplateView
-from movie.models import Video
-from django.shortcuts import render
-
-
-class AjaxChangeTemplateMixin(object):
-    ajax_template_name = None
-    def get_template_names(self):
-        ...
-        return name
-
-
-class VideoDetailView(DetailView): <!-- 업뎃 필요 -->
-    model = Video
-    template_name = 'video/detail.html'
-
-
-class VideoHomeView(AjaxChangeTemplateMixin, TemplateView):
-    model = Video
-    template_name = 'video/home.html'
-    ajax_template_name = 'video/_home.html'
-
-
-
-def video_home_view(request):
-    template_name = 'video/home.html'
-    if request.is_ajax():
-    # if 'ajax' in request.GET:
-        template_name = 'video/_home.html'
-    return render(request, template_name, {'object_list': []})
-
-
-def video_home_view_ajax(request):
-    template_name = 'video/_home.html'
-    return render(request, template_name, {'object_list': []})
-```
-- `VideoHomeView`는 AjaxChangeTemplateMixin(ajax통신에 씀)과 TemplateView를 가져옴.
-    + home.html을 뿌려주고, ajax로는 _home.html을 뿌려준다.
-- `video_home_view`: 얘는 어디에 쓰죠? >> 얘는 ajax통신 설명하는걸 보여줄때 썼습니다.
-
-## movie > `home.html`
-```html
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% block css %}
-    <link rel="stylesheet/less" href="{% static 'less/video.less' %}">
-    <link rel="stylesheet/less" href="{% static 'less/video2.less' %}">
-{% endblock %}
-{% block content %}
-<div class="splash-container">
-    ...
-</div>
-{% include 'video/_home.html' %}
-{% endblock %}
-```
-- base를 뼈대로 받아오고,
-- staticfiles, css, content를 넣어준다. 그리고 그 속에 또 ajax로 들어갈 것을 `{% include 'video/_home.html' %}`로 삽입.
-- `_home.html`에는 별다른 python코드 없이 그냥 짜준다.
-
-
-## 새로운 앱 만들기
+## 가상 환경
+원하는 디렉토리에서 아래 명령을 치면 myvenv라는 디렉토리 만들어짐.
 ```shell
-./manage.py startapp app
+python3 -m venv myvenv
+```
+그리고 그 디렉토리에 우리가 사용할 가상환경이 들어있음.
+이렇게 가상환경 실행하면 된다.
+```shell
+source myvenv/bin/activate
+```
+
+## 장고 설치하기
+```shell
+pip install django==1.8
+```
+
+## 장고 프로젝트
+- 장고에선 디렉토리나 파일 이름 매우 중요. 이름 변경하거나 옮기면 안됨. 
+- 중요한 것들을 찾을 수 있게 특정한 구조를 유지해야 함.
+
+앞에 가상환경이 실행되어있어야 하고, 마지막에 .을 찍는걸 잊지 말자. (.: 현재 디렉토리에 장고를 설치하라고 스크립트에 알려줌)
+```shell
+(myvenv) ~/djangogirls$ django-admin startproject mysite .
+```
+
+django-admin.py는 스크립트로, 디렉토리와 파일을 생성. 스크립트 실행하면 이렇게 새로 만들어진 디렉토리 구조 나온다.
+```
+djangogirls
+├───manage.py
+└───mysite
+        settings.py
+        urls.py
+        wsgi.py
+        __init__.py
+```
+- manage.py: 스크립트. 사이트 관리를 도와줌. 이 스크립트로 다른 설치 없이 컴에서 웹서버 시작 가능.
+- settings.py: 웹사이트 설정이 있는 파일
+- urls.py: 앞에서 설명한 `urlresolver`가 사용하는 패턴 목록을 포함.
+
+## 설정 변경
+- settings.py에서
+    + `TIME_ZONE = 'Asia/Seoul'`을 고쳐본다!
+    + 맨 밑에 `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`를 추가해본다!
+        * 정적파일 경로
+
+## 데이터베이스 설정하기
+많은 DB소프트웨어 중 sqlite3를 이용. settings.py에 설치되어있음. 장고 기본.
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+```
+
+콘솔에서 코드 실행해 블로그에 데이터베이스를 생성한다. 
+```shell
+python manage.py migrate
+```
+
+웹서버를 돌려보자
+```shell
+python manage.py runserver
+```
+
+## Django 모델
+- 장고의 모델: 객체의 특별한 종류.
+    + 이 모델을 저장하면 그 내용이 데이터베이스에 저장된다!
+
+## 어플리케이션 제작
+프로젝트 내부에 별도의 어플리케이션 만들자.
+```shell
+python manage.py startapp blog
+```
+
+그럼 blog디렉토리가 생성된다.
+```
+djangogirls
+├── mysite
+|       __init__.py
+|       settings.py
+|       urls.py
+|       wsgi.py
+├── manage.py
+└── blog
+    ├── migrations
+    |       __init__.py
+    ├── __init__.py
+    ├── admin.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+```
+
+- mysite/settings.py
+    - 어플리케이션 생성하면 장고에게 이거 사용하라고 알려주는 역할.
+    - INSTALLED_APPS밑에 `blog`추가해준다.
+
+## 블로그 글 모델 만들기
+`blog/models.py`파일에 선언해 모델 만든다.
+```python
+from django.db import models
+from django.utils import timezone
+
+class Post(models.Model):
+    author = models.ForeignKey('auth.User')
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(
+            default=timezone.now)
+    published_date = models.DateTimeField(
+            blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
 ```
 
 
@@ -146,3 +158,5 @@ def video_home_view_ajax(request):
 [간단한 블로그를 Django 이해하기](http://www.slideshare.net/perhapsspy/django-44664022?qid=7a619eb7-d359-4f72-83ac-1eddfbf23123&v=qf1&b=&from_search=1)
 [Django, 저는 이렇게 씁니다](http://www.slideshare.net/perhapsspy/django-42665652)
 [쉽게 씌여진 장고](http://www.slideshare.net/carpedm20/django-32473577?related=1)
+[Django로 웹사이트 만들고 런칭하기](https://github.com/youngrok/startup-dev-tutor)
+[django girls tutorial](http://tutorial.djangogirls.org/ko/index.html)
