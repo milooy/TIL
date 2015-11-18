@@ -9,3 +9,5 @@
 
 ## Refer
 http://clubmate.fi/100-percent-height-columns-fixed-width-sidebar-pure-css-solutions-to-commons-fluid-layout-problems/
+
+https://limpid.nl/lab/css/fixed/left-sidebar-and-header
