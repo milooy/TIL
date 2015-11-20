@@ -133,24 +133,92 @@ djangogirls
 ## 블로그 글 모델 만들기
 `blog/models.py`파일에 선언해 모델 만든다.
 ```python
+#다른 파일에 있는 것을 추가
 from django.db import models
 from django.utils import timezone
 
-class Post(models.Model):
-    author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200)
-    text = models.TextField()
+#모델을 정의
+class Post(models.Model): #models.Model: Post(클래스첫자는 대문자)가 장고 모델(=객체)임을 나타낸다. 이 코드 덕에 장고는 Post가 DB에 저장된다 알게 됨.
+    author = models.ForeignKey('auth.User') #다른 모델에 대한 링크
+    title = models.CharField(max_length=200) #글자수가 제한된 텍스트
+    text = models.TextField() #글자수에 제한 없는 텍스트
     created_date = models.DateTimeField(
-            default=timezone.now)
+            default=timezone.now) #날짜와 시간
     published_date = models.DateTimeField(
             blank=True, null=True)
 
-    def publish(self):
+    def publish(self): #메서드. 이름은 소문자로 시작.
         self.published_date = timezone.now()
         self.save()
 
-    def __str__(self):
+    def __str__(self): #얘를 호출하면 Post모델의 title을 얻음
         return self.title
+```
+## DB에 모델을 위한 테이블 만들기
+장고 모델에 우리가 몇가지 변화 줌을 알려준다.
+```
+python manage.py makemigrations blog
+```
+
+실제 DB에 모델 추가를 반영
+```
+python manage.py migrate blog
+```
+
+## Django 관리자
+```python
+from django.contrib import admin
+from .models import Post #앞에서 만든 Post모델을 가져온다.
+
+admin.site.register(Post) #만든 모델을 관리자 페이지에서 볼려면!
+```
+
+서버를 실행하고, `http://127.0.0.1:8000/admin/ `로 들어가면 administration페이지가 나온다. 여기서 superuser를 만들려면 `python manage.py createsuperuser`로 아이디를 생성해준다.
+
+## 배포하기
+.gitignore란 파일 만들고 아래 추가
+```
+*.pyc
+__pycache__
+myvenv
+db.sqlite3
+.DS_Store
+```
+
+pythonanywhere에 배포하기: bash에 들어가서 아래 코드를 입력한다.
+```
+git clone https://github.com/milooy/djangogirls-blog-tutorial
+```
+`tree djangogirls-blog-tutorial`라 치면 구조를 확인할 수 있다.
+
+## PythonAnyware에서 가상환경 생성
+bash콘솔에 이렇게 입력
+```bash
+cd djangogirls-blog-tutorial
+virtualenv --python=python3.4 myvenv
+source myvenv/bin/activate
+pip install django whitenoise
+```
+
+## 정적 파일 모으기
+- whitenose: `정적 파일`로 불리는 것들을 제공하는 프로그램.
+    + 정적 파일: HTML, CSS와 같이 정기적인 수정이 없거나, 프로그래밍 코드를 실행하지 않는 파일.
+    + 서버에서 정적 파일은 컴퓨터와 다르게 작동하기 때문에 정적 파일들을 제공하기 위해서 `백색소음`과 같은 프로그램 필요
+- 서버 bash 콘솔에 `collectstatic`실행. 
+    + 장고가 서버에 있는 모든 정적 파일들을 모으는 것을 지시.
+    + 관리자 페이지를 예쁘게 만들어줌
+
+```bash
+python manage.py collectstatic
+```
+
+## PythonAnywhere에서 DB생성
+- 컴퓨터와 서버는 다른 DB를 사용한다!
+    + 그래서 사용자 계정과 글은 서버와 내 컴이랑 다를 수 있다.
+
+```bash
+python manage.py migrate
+python manage.py createsuperuser
 ```
 
 
