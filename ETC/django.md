@@ -221,6 +221,79 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
+## web app으로 블로그 배포
+pythonAnyWhere > Web > add a new web app
+
+
+## URL이란?
+- URLconf(URL Configuration): 장고에서 URL과 일치하는 뷰를 찾기 위한 패턴들의 집합
+
+mysite > urls.py
+```python
+from django.conf.urls import include, url
+    from django.contrib import admin
+
+    urlpatterns = [
+        # Examples:
+        # url(r'^$', 'mysite.views.home', name='home'),
+        # url(r'^blog/', include('blog.urls')),
+
+        url(r'^admin/', include(admin.site.urls)),
+    ]
+```
+regex를 사용해 찾아낸다.
+
+```
+^ 문자열이 시작할 떄
+$ 문자열이 끝날 때
+\d 숫자
++ 바로 앞에 나오는 항목이 계속 나올 때
+() 패턴의 부분을 저장할 때
+```
+
+- 밑에 `url(r'', include('blog.urls')),`를 추가해 모든 접속 요청을 blog.urls로 전송하고 추가 명령을 찾는다.
+- 파이썬에서 정규 표현식 작성할땐 앞에 `r`붙인다.
+
+## blog.urls
+`blog/urls.py`를 생성하고
+```python
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.post_list, name='post_list'),
+]
+```
+- 장고의 메소드와 blog어플리케이션에서 사용할 모든 views들을 불러온다.
+- 그리고 `post_list`란 이름의 view가 ^로 시작해서 $로 끝나는, 즉 문자열이 없는, 즉 `http://127.0.0.1:8000/`로 들어왔을 때 `views.post_list`를 보여주라고 한다.
+- 이름짓는 이유: 뷰마다 고유한 이름을 붙여, 식별하기 쉽게 하고 많이 쓴다.
+
+## Django 뷰 만들기
+> 뷰: 모델에서 필요한 정보를 받아와서 템플릿에 전달
+`blog/views.py`
+
+```python
+def post_list(request):
+    return render(request, 'blog/post_list.html', {})
+```
+post_list메서드는 요청(request)을 넘겨받아 render메서드를 호출.
+render메서드는 요청과 `blog/post_list.html`템플릿을 받아 리턴된 내용이 브라우저에 보여짐
+
+## 템플릿
+blog/tamplates/blog 디렉토리 밑에 `post_list.html`만들기
+그리고 pythonanywhere다시 가서 `git pull` `python manage.py collectstatic`하면 배포된다.
+
+## Django ORM
+- 쿼리셋: 전달받은 모델의 객체 목록. DB로부터 데이터를 읽고, 필터를 걸거나 정렬함
+
+```shell
+python manage.py shell
+
+from blog.models import Post
+Post.objects.all() #하면 장고 관리자로 만든 포스트들이 출력된다.
+
+from django.contrib.auth.models import User
+```
 
 ## Refer
 [간단한 블로그를 Django 이해하기](http://www.slideshare.net/perhapsspy/django-44664022?qid=7a619eb7-d359-4f72-83ac-1eddfbf23123&v=qf1&b=&from_search=1)
