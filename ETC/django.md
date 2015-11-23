@@ -286,14 +286,253 @@ blog/tamplates/blog 디렉토리 밑에 `post_list.html`만들기
 ## Django ORM
 - 쿼리셋: 전달받은 모델의 객체 목록. DB로부터 데이터를 읽고, 필터를 걸거나 정렬함
 
-```shell
+```
 python manage.py shell
 
-from blog.models import Post
-Post.objects.all() #하면 장고 관리자로 만든 포스트들이 출력된다.
+from blog.models import Post # Post모델을 불러온다
+Post.objects.all() # 하면 장고 관리자로 만든 포스트들이 출력된다.
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User # User모델을 불러온다.
+User.objects.all() # 하면 슈퍼유저로 만들었던 사용자가 나온다
+me = User.objects.get(username='jayjin') # 'jayjin'User 인스턴스 받아오기
+Post.objects.create(author=me, title='Sample title', text="Test") # 게시물 만들기
+Post.objects.all() # 잘 들어갔는지 확인한다
+
+Post.objects.filter(author=me) # author가 me인 게시물들
+Post.objects.filter(title__contains='title') # 제목에 title이란 글자가 들어간 글들. 필드이름/연산자/필터를 밑줄 2개 사용해 구분.
+
+from django.utils import timezone
+Post.objects.filter(published_date__lte=timezone.now()) # 출판날짜가 과거인 글들
+post = Post.objects.get(title="Sample title") # 아까 만든 게시물 인스턴스 얻고
+post.publish() # 출판한다
+
+Post.objects.order_by('created_date') # created_date필드로 정렬
+Post.objects.order_by('-created_date') # 내림차순
+
+Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') # 체이닝도 가능
+
+exit() #종료
 ```
+
+## 템플릿의 동적 데이터
+- `views`: 모델과 템플릿을 연결한다
+```python
+from django.shortcuts import render
+from django.utils import timezone
+from .models import Post # .은 현재 디렉토리/어플리케이션을 의미. Post를 불러온다.
+
+def post_list(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/post_list.html', {'posts':posts})
+```
+
+- `Django template tags`: 파이썬을 HTML로 바꿔줌
+- `blog/templates/blog/post_list.html`에서 `{{posts}}`하면 객체들 목록 나온다.
+
+```python
+{% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaks }}</p>
+    </div>
+{% endfor %}
+```
+하면 for loop 돈다.
+
+## CSS
+- `blog/static/css/blog.css`를 만든다.
+- `blog/templates/blog/post_list.html`에서 가장 위에 `{% load staticfiles %}`를 추가한다. 그럼 정적 파일이 실행됨!
+- <head>사이에 `<link rel="stylesheet" href="{% static 'css/blog.css' %}">`를 추가한다. 
+- 그럼 css가 먹는다! (안되면 서버 껏다 켜라)
+
+## 템플릿 확장
+- `blog/templates/blog/base.html`만들기
+
+```html
+{% load staticfiles %}
+<html>
+<head>
+    <title>Django Girls blog</title>
+    ...
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+    ...
+    {% block content %}
+    {% endblock %}
+    ...
+</body>
+</html>
+```
+- `base.html`을 확장한 이 블럭에 HTML을 추가할 수 있게 해준다.
+
+```html
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaks }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}
+```
+`blog/base.html`를 확장한거고, `content`에 그걸 껴넣는다.
+
+## 프로그램 어플리케이션 확장하기
+`post_list.html`에 
+```html
+<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+```
+를 추가한다. post목록에 있는 제목에서 post내용 페이지로 가는 링크.
+- `post_detail`뷰의 경로: `blog.views.post_detail`. 여기서 `views`는 views.py이다.
+
+`urls.py`에
+```python
+url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
+```
+을 추가한다. `post/`로 시작하고, 
+(?P<pk>[0-9]+): 장고가 우리가 여기 넣은 모든것을 pk변수에 넣어 뷰로 전송하겠다는 뜻. 
+`http://127.0.0.1:8000/post/1234567890/`이 완벽히 매칭되겠지.
+`http://127.0.0.1:8000/post/5/`를 입력하면, `post_detail`인 view를 찾고있다고 생각하고 pk가 5인 view로 정보를 보낸다.
+**pk**: 프라이머리 키 라는 뜻으로 장고 프로젝트에서 자주 사용하는 변수이름.
+
+### 404 추가
+`blog/views.py`에 `from django.shortcuts import render, get_object_or_404`추가한다.
+밑에는
+```python
+def post_detail(request, pk): # request, 그리고 urls에 지정한것과 동일한 이름인 pk를 넣어준다.
+    post = get_object_or_404(Post, pk=pk) # pk가 없는 포스트라면 404페이지로 넘겨준다.
+    return render(request, 'blog/post_detail.html', {'post': post})
+```
+을 추가한다.
+
+### post상세페이지 템플릿 만들기
+`blog/templates/blog/post_detail.html`생성하고
+```html
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if post.published_date %} <!-- published date 있다면 보여주기 -->
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaks }}</p>
+    </div>
+{% endblock %}
+```
+
+## Django 폼
+```python
+from django import forms # forms 모델을 import
+from .models import Post # Post모델 임포트
+
+class PostForm(forms.ModelForm): # 우리가 만들 폼의 이름, 그리고 이 폼은 `ModelForm`이란걸 알려주면 장고가 이것저것 해준다.
+    class Meta:
+        model = Post # 이 폼을 만들기 위해 어떤 모델이 쓰여야 하는지
+        fields = ('title', 'text') # 필드를 넣는다.
+```
+
+`base.html`에 이걸 추가한다. 
+```html
+<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+```
+
+`blog/urls.py`에 이걸 추가한다.
+```python
+url(r'^post/new/$', views.post_new, name='post_new'),
+```
+
+`blog/views.py`에 추가
+```python
+from .forms import PostForm
+...
+def post_new(request):
+    form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form});
+```
+
+`templates/blog/post_edit.html`을 추가하고 아래를 적어준다.
+```html
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>New post</h1>
+    <form method="POST" class="post-form">{% csrf_token %} <!-- 폼 보안을 위함 -->
+        {{ form.as_p }} <!-- 폼을 보여준다 -->
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
+```
+
+`blog/views.py`에서 지금은 폼 제출시에도 동일한 뷰가 나온다. 조건문으로 분기
+```python
+def post_new(request):
+    if request.method == "POST": # 폼에 입력된 데이터를 view페이지로 가지고 올 때. request는.POST 우리가 입력했던 데이터들 갖고있음.
+        form = PostForm(request.POST)
+        if form.is_valid(): # 폼에 들어있는 값들이 올바른지 확인. 잘못된 값이 있다면 저장 ㄴㄴ
+            post = form.save(commit=False) # 폼을 저장하는 작업.commit=False라고 해서 넘겨진 데이터를 바로 POST모델에 저장하지 말라. 작성자 추가해야하니까.
+            post.author = request.user # 작성자를 추가.
+            post.published_date = timezone.now()
+            post.save() # 작성자까지 추가되고 저장.
+            return redirect('blog.views.post_detail', pk=post.pk)
+    else: # 처음 페이지에 접속했을때. 폼이 비어있어야 한다.
+        form = PostForm()
+        
+
+    return render(request, 'blog/post_edit.html', {'form': form});
+```
+
+블로그 글 작성하고 post_detail로 자동으로 가기 위해
+```python
+from django.shortcuts import redirect # 리다이렉트를 임포트해오고
+...
+return redirect('blog.views.post_detail', pk=post.pk) # pk첨부해서 post_detail로 리다이렉트
+```
+
+## 폼 수정하기
+`post_detail.html`에 추가한다.
+```html
+<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+```
+
+`urls.py`에도 추가한다
+```python
+ url(r'^post/(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
+```
+
+`views.py`에도 추가한다.
+```python
+def post_edit(request, pk): #url에서 pk를 받아서 처리
+    post = get_object_or_404(Post, pk=pk) #수정하고자 하는 글의 Post모델 인스턴스를 가져온다. 원하는 글은 pk를 이용해 찾는다.
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('blog.views.post_detail', pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/post_edit.html', {'form': form});
+```
+
+## 보안
+`base.html`에서 관리자로 로그인한 유저들만 링크 보이게 함.
+```python
+<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+```
+
 
 ## Refer
 [간단한 블로그를 Django 이해하기](http://www.slideshare.net/perhapsspy/django-44664022?qid=7a619eb7-d359-4f72-83ac-1eddfbf23123&v=qf1&b=&from_search=1)
@@ -301,3 +540,5 @@ from django.contrib.auth.models import User
 [쉽게 씌여진 장고](http://www.slideshare.net/carpedm20/django-32473577?related=1)
 [Django로 웹사이트 만들고 런칭하기](https://github.com/youngrok/startup-dev-tutor)
 [django girls tutorial](http://tutorial.djangogirls.org/ko/index.html)
+
+
