@@ -201,7 +201,7 @@ pip install django whitenoise
 ```
 
 ## 정적 파일 모으기
-- whitenose: `정적 파일`로 불리는 것들을 제공하는 프로그램.
+- whitenoise: `정적 파일`로 불리는 것들을 제공하는 프로그램.
     + 정적 파일: HTML, CSS와 같이 정기적인 수정이 없거나, 프로그래밍 코드를 실행하지 않는 파일.
     + 서버에서 정적 파일은 컴퓨터와 다르게 작동하기 때문에 정적 파일들을 제공하기 위해서 `백색소음`과 같은 프로그램 필요
 - 서버 bash 콘솔에 `collectstatic`실행. 
@@ -540,5 +540,5 @@ def post_edit(request, pk): #url에서 pk를 받아서 처리
 [쉽게 씌여진 장고](http://www.slideshare.net/carpedm20/django-32473577?related=1)
 [Django로 웹사이트 만들고 런칭하기](https://github.com/youngrok/startup-dev-tutor)
 [django girls tutorial](http://tutorial.djangogirls.org/ko/index.html)
-
+[초심자를 위한 웹개발 - django와 회원가입 하기 등등](http://studybee.kr/beginner/8)
 
