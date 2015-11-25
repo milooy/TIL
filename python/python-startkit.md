@@ -58,5 +58,5 @@ bower update
 ## 패키지 업데이트
 npm install같은거.
 ```
-pip install -i https://pypi.smartstudy.co.kr/devops/prod/ -r dev-requirements.txt —upgrade 
+pip install -i https://pypi.smartstudy.co.kr/devops/prod/ -r dev-requirements.txt --upgrade 
 ```
