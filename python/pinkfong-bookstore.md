@@ -29,10 +29,29 @@ http://10.0.0.249:8987/
         * 클래스에서 as_view()하면 안의 메서드들 다 실행시키는건가?
         * `form_valid`(폼뷰 기본제공)메서드로 폼 잘 적혔는지 체크한다.
             - valid form data가 POST되었을 때 불리는 메서드
+            - 기존에 만든 form에서 세이브 클래스를 간다.
             - HTTPResponse를 리턴한다.
-        * `get_success_url` 기본 메서드. 폼이 성공적으로 validated되었을 때 불린다.
+    + `forms.py`: form.save()
+        * 여기서 self는 this같은건가?
+        * def clean(self)는 언제 불리는거지, 자동으로 언제? 폼 불리면?
+        * `def clean`
+            - `cleaned_data` = super(SignupForm, self).clean() 하면 cleaned_data에 클린해온게 저장됨. form 기본제공.
+                + 얜 어디서든 접근가능?
+            - 비번 두개 맞나 체크
+        * cd에 cleaned된 데이터를 저장
+        * `_create_user`호출. 왜 앞에 _를 붙이지?
+    + `models.py`
+        * 디비에 모델이 저장되며 훅 낚아챈다
+        * post_save.connect(create_user_profile, sender=User)
+        * 프로필 모델을 유저 생성시 자동으로 만들고 걍 유저 생성시는 비활성화로 고쳐준다.
+    * `SignupView`
+        * `get_success_url` 기본 메서드. 폼이 성공적으로 validated되었을 때 불린다. 'welcome'으로 리다이렉트시킨다.
 
-
+url 뒤에 /로 끝나는게 좋은 이유 
+alt cmd l : 자동 포매팅
+pep8 <- 포매팅에 대한 규칙
+cmd alt o : 임포트 모듈 정리
+alt enter: 커서 있는 것의 임포트 해오기 
 
 ## Refer
 [meterializecss](http://materializecss.com/grid.html)
