@@ -64,3 +64,10 @@ http://dev.balbum.net/api/card
     + http://bootsnipp.com/snippets/yBo8
 - [dropzone 이미지 업로더 npm](https://www.npmjs.com/package/dropzone)
 - [dropzone 이미지 업로더 홈피](http://www.dropzonejs.com/)
+- 모달
+    + [모달 인 모달](http://foundation.zurb.com/sites/docs/v/5.5.3/components/reveal.html)
+    + [모달 ajax처리, full width 모달](http://jschr.github.io/bootstrap-modal/bs3.html)
+    + [uikit dialog 모달](http://getuikit.com/docs/modal.html)
+    + [signup signin 모달](https://codyhouse.co/gem/loginsignup-modal-window/)
+    + [step by step modal with bootstrap](http://www.jqueryscript.net/other/Create-Step-By-Step-Modal-with-jQuery-Bootstrap.html)
+    + [jquery bootstrap modal step](https://github.com/orige/jquery-bootstrap-modal-steps)
