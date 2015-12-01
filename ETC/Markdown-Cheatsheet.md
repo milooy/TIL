@@ -19,7 +19,6 @@ Strikethrough is ~~Scratch~~.
 ```
 Italics is *asterisks* or _underscores_.
 Strong is **asterisks** of __underscores__.
-Strikethrough is ~~Scratch~~.
 
 ##Lists 
 ```

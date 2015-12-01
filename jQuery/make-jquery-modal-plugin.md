@@ -280,7 +280,6 @@ https://github.com/orige/jquery-bootstrap-modal-steps 를 커스텀.
     };
 }(jQuery));
 ```
-    + 
 
 ## Refer
 [jquery plugin 작성 가이드](http://www.sqler.com/456517)
