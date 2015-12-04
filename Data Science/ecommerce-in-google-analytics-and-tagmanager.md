@@ -164,3 +164,4 @@ http://enhancedecommerce.appspot.com/
 ## Refer
 [GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS](http://datum.io/google-analytics-mooc-ecommerce-analytics-%ED%9B%84%EA%B8%B0/)
 [GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS 후기](https://analyticsacademy.withgoogle.com/course03/unit?unit=1&lesson=1)
+[GA set multiple categories](http://webmasters.stackexchange.com/questions/56501/google-analytics-assign-multiple-values-to-a-custom-variable-at-pagelevel)
