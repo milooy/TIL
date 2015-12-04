@@ -5,7 +5,19 @@
 
 ## 무엇이냐?
 [mind the log 자료](http://mindthelog.com/2014/05/%EA%B5%AC%EA%B8%80-%EC%A0%84%EC%9E%90%EC%83%81%EA%B1%B0%EB%9E%98-%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D-%EA%B3%BC%EC%A0%95-%EA%B0%9C%EB%85%90/)
-
+주문완료 되면 사이트 서버에서 해당 정보 처리 후 GA서버에 2종류 데이터 전달
+1. 주문 정보
+  - 주문번호(ID)
+  - 제휴사(Affiliation)
+  - 총액(Revenue)
+  - 배송비(shipping)
+  - 세금(Tax)
+2. 제품 정보
+  - 주문정보(ID): 위의 주문번호와 동일
+  - 제품명(Name)
+  - 제품코드(SKU)
+  - 제품가격(Price)
+  - 제품수량(Quantity)
 
 ## 향상된 전자상거래 켜기
 Google Analytics사이트 > 설정원하는 앱 > Admin > Property Settings > Use enhanced link attribution을 On으로 켠다.
@@ -80,9 +92,58 @@ ga('set', 'contentGroup1', 'My Group Name');
 GTM에서 태그 추가 > `Track Type: Page View` > `Configure Tag` > `More setting` > `add content group`에서 위에서 지정한 최상이 콘텐츠 분류의 `색인 번호`를 적어준다.
 Content Group에는 하위 분류를 적어둔다(e.g 셔츠)
 
+## 추적코드 달기 
+[mind the log](http://mindthelog.com/2014/06/ecommerce-%EC%A0%84%EC%9E%90%EC%83%81%EA%B1%B0%EB%9E%98-%EC%BD%94%EB%93%9C-%EC%84%A4%EC%A0%95/)
+### Intro
+기본코드 외 4가지가 필요하다.
+1. Ecommerce.js플러그인 호출
+2. 결제정보(e.g. 주문번호, 구매액 등) 코드
+3. 제품정보(e.g. 제품 아이디, 제품명) 코드
+4. GA로 위 정보를 전송하는 커맨드
+
+이 4가지가 기본 GA코드에 추가되어 구매완료(영수증) 페이지에 삽입되어야 함.
+
+### 1. Ecommerce.js 플러그인 호출
+페이지마다 삽입되는 기본 GA코드에 
+```javascript
+ga('require', 'ecommerce', 'ecommerce.js');
+```
+를 추가함. `구매완료` 페이지에만 추가하면 된다.
+
+### 2. 결제정보 코드 추가
+`구매완료`페이지에 추가한다.
+```javascript
+ga('ecommerce:addTransaction', { 
+  'id': '1234', // 시스템에서 생성된 주문번호. 필수. 
+  'affiliation': 'store.co.kr', // 제휴사이름. 선택사항. 쿠폰이름 같은거 넣어도 된다.
+  'revenue': '127000', // 구매총액. 필수. 배송비 및 세금 기타 모든 비용 포함
+  'shipping': '5000', // 배송비. 선택사항. 
+  'tax': '2000' // 세금. 선택사항.
+});
+```
+
+### 3. 제품정보 코드 추가
+구매완료 페이지에 추가
+```javascript
+ga('ecommerce:addItem', { 
+  'id': '1234', //시스템에서 생성된 주문번호. 필수. 
+  'name': '남성용 긴팔셔츠 흰색 XL', // 제품명. 필수. 
+  'sku': 'XXX56789', // SKU 또는 제품고유번호. 선택사항. 
+  'category': '남성의류', // 제품 분류. 
+  'price': '30000', // 제품 단가. 
+  'quantity': '1' // 제품 수량.
+});
+```
+
+### 4. GA로 위 정보 전송
+구매완료 페이지에 추가
+```javascript
+ga('ecommerce:send');
+```
+
+
 ## tagmanager로 전자상거래 추적 달기
 [참고링크](https://support.google.com/tagmanager/answer/6107169)
-[mind the log](http://mindthelog.com/2014/06/ecommerce-%EC%A0%84%EC%9E%90%EC%83%81%EA%B1%B0%EB%9E%98-%EC%BD%94%EB%93%9C-%EC%84%A4%EC%A0%95/)
 1. 태그매니저 사이트에 들어가서 `Variables>new>Custom Javascript`에 아래 코드를 넣는다.
 ```javascript
 function() {
@@ -101,5 +162,5 @@ function() {
 http://enhancedecommerce.appspot.com/
 
 ## Refer
-[GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS 후기](http://datum.io/google-analytics-mooc-ecommerce-analytics-%ED%9B%84%EA%B8%B0/)
-[GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS 후기]https://analyticsacademy.withgoogle.com/course03/unit?unit=1&lesson=1
+[GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS](http://datum.io/google-analytics-mooc-ecommerce-analytics-%ED%9B%84%EA%B8%B0/)
+[GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS 후기](https://analyticsacademy.withgoogle.com/course03/unit?unit=1&lesson=1)
