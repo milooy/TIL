@@ -11,7 +11,7 @@ JayJin이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. [
 
 ## 로컬에서 띄우기
 
-[gollum](https://github.com/gollum/gollum), [pow](http://http://pow.cx/) 와 [anvil](http://anvilformac.com/)을 사용한다.
+[gollum](https://github.com/gollum/gollum), [pow](http://pow.cx/) 와 [anvil](http://anvilformac.com/)을 사용한다.
 
 ### gollum 설치
 ```bash
