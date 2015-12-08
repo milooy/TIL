@@ -161,6 +161,42 @@ function() {
 ## 실제로 어떻게 동작하나 살펴볼 수 있는 사이트
 http://enhancedecommerce.appspot.com/
 
+## 환불
+마찬가지로 '환불영수증' 을 발행시키면 되는데요, 주문번호를 그대로 두되 같은 액수를 마이너스로 해서 마이너스 주문을 입력하는 방식입니다.
+
+두 가지 방법을 알려드리자면,
+
+1) 아래와 같이 구매총액 및 상품갯수를 마이너스로, 제품단가는 양수로 입력한 환불영수증 페이지를 만들어서 로드합니다.
+```javascript
+ga('ecommerce:addTransaction', { 
+'id': '1234', // 시스템에서 생성된 주문번호. 필수. 
+'affiliation': 'store.co.kr', // 제휴사이름. 선택사항. 
+'revenue': '-127000', // 구매총액의 마이너스 입력!!! 필수. 
+'shipping': '-5000', // 배송비 마이너스 입력!!! 선택사항. 
+'tax': '-2000' // 세금 마이너스 입력!!! 선택사항.
+});
+
+// 제품별 데이터
+ga('ecommerce:addItem', { 
+'id': '1234', //시스템에서 생성된 주문번호. 필수. 
+'name': '남성용 긴팔셔츠 흰색 XL', // 제품명. 필수. 
+'sku': 'XXX56789', // SKU 또는 제품고유번호. 선택사항. 
+'category': '남성의류', // 제품 분류. 
+'price': '30000', // 제품 단가. 양수로 입력!!! 
+'quantity': '-1' // 제품 수량. 마이너스 입력!!!
+});
+```
+
+참조: https://support.google.com/analytics/answer/1037443?hl=ko
+
+2) 만약 향상된전자상거래 (Enhanced Ecommerce) 를 사용중이시면, Data Import 를 통해 보다 손쉽게 일괄적으로 처리 가능합니다.
+
+참조: https://support.google.com/analytics/answer/6014861?hl=ko
+
+답변이 되었기를 바랍니다~
+[refer](http://mindthelog.com/2014/06/ecommerce-%EC%A0%84%EC%9E%90%EC%83%81%EA%B1%B0%EB%9E%98-%EC%BD%94%EB%93%9C-%EC%84%A4%EC%A0%95/)
+
+
 ## Refer
 [GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS](http://datum.io/google-analytics-mooc-ecommerce-analytics-%ED%9B%84%EA%B8%B0/)
 [GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS 후기](https://analyticsacademy.withgoogle.com/course03/unit?unit=1&lesson=1)
