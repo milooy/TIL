@@ -146,3 +146,4 @@ https://angularjs.org/
 http://www.dhyebo.com/blog/?p=29
 http://blog.outsider.ne.kr/975
 [Post form data using angularjs](http://tutsnare.com/post-form-data-using-angularjs/)
+[multiple controllers with angularjs in sinle page app](http://stackoverflow.com/questions/24316355/multiple-controllers-with-angularjs-in-single-page-app)
