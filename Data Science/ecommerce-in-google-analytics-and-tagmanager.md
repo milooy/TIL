@@ -186,6 +186,34 @@ ga('ecommerce:addItem', {
 'quantity': '-1' // 제품 수량. 마이너스 입력!!!
 });
 ```
+function cancel_paid {
+    ga('require', 'ecommerce', 'ecommerce.js');
+    ga('ecommerce:addTransaction', {
+        'id': '{{ object.id }}',
+        'revenue': '-{{ object.total_price }}',
+        'shipping': '-{{ object.delivery_charge }}'
+    });
+    {% for item in object.orderedproduct_set.all %}
+    ga('ecommerce:addItem', {
+        'id': '{{ object.id }}',
+        'name': '{{ item.product.name }}',
+        'category': '{{ item.product.get_categories_ga }}',
+        'price': '{{ item.sales_price }}',
+        'quantity': '-{{ item.quantity|safe }}'
+    });
+    {% endfor %}
+    ga('ecommerce:send');
+}
+
+url(r'^order/(?P<pk>\d+)/(?P<status>[a-z]+)/$',
+        login_required(order.OrderDetailView.as_view()),
+        name='order-detail-cancelled'),
+
+return redirect('order-list')
+
+
+return redirect(reverse('order-list-cancelled', kwargs={'status': 'done'}))
+from django.core.urlresolvers import reverse        
 
 참조: https://support.google.com/analytics/answer/1037443?hl=ko
 
