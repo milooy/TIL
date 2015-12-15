@@ -1,4 +1,4 @@
-# Enhanced Ecommerce with Tag manager
+# Ecommerce with Tag manager
 [공식가이드](https://developers.google.com/tag-manager/enhanced-ecommerce)
 [미리 읽어야 할 Enhanced Ecommerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)
 [tagmanager ecommerce 동영상강의](https://youtu.be/ZKjlIhFJMCU)
@@ -123,7 +123,7 @@ ga('ecommerce:addTransaction', {
 ```
 
 ### 3. 제품정보 코드 추가
-구매완료 페이지에 추가
+구매완료 페이지에 추가. for문으로 돌린다.
 ```javascript
 ga('ecommerce:addItem', { 
   'id': '1234', //시스템에서 생성된 주문번호. 필수. 
@@ -186,44 +186,17 @@ ga('ecommerce:addItem', {
 'quantity': '-1' // 제품 수량. 마이너스 입력!!!
 });
 ```
-function cancel_paid {
-    ga('require', 'ecommerce', 'ecommerce.js');
-    ga('ecommerce:addTransaction', {
-        'id': '{{ object.id }}',
-        'revenue': '-{{ object.total_price }}',
-        'shipping': '-{{ object.delivery_charge }}'
-    });
-    {% for item in object.orderedproduct_set.all %}
-    ga('ecommerce:addItem', {
-        'id': '{{ object.id }}',
-        'name': '{{ item.product.name }}',
-        'category': '{{ item.product.get_categories_ga }}',
-        'price': '{{ item.sales_price }}',
-        'quantity': '-{{ item.quantity|safe }}'
-    });
-    {% endfor %}
-    ga('ecommerce:send');
-}
-
-url(r'^order/(?P<pk>\d+)/(?P<status>[a-z]+)/$',
-        login_required(order.OrderDetailView.as_view()),
-        name='order-detail-cancelled'),
-
-return redirect('order-list')
-
-
-return redirect(reverse('order-list-cancelled', kwargs={'status': 'done'}))
-from django.core.urlresolvers import reverse        
-
 참조: https://support.google.com/analytics/answer/1037443?hl=ko
 
-2) 만약 향상된전자상거래 (Enhanced Ecommerce) 를 사용중이시면, Data Import 를 통해 보다 손쉽게 일괄적으로 처리 가능합니다.
+만약 향상된전자상거래 (Enhanced Ecommerce) 를 사용중이시면, Data Import 를 통해 보다 손쉽게 일괄적으로 처리 가능합니다.
 
 참조: https://support.google.com/analytics/answer/6014861?hl=ko
 
 답변이 되었기를 바랍니다~
 [refer](http://mindthelog.com/2014/06/ecommerce-%EC%A0%84%EC%9E%90%EC%83%81%EA%B1%B0%EB%9E%98-%EC%BD%94%EB%93%9C-%EC%84%A4%EC%A0%95/)
 
+## 공식가이드
+[공식가이드 링크](https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce)
 
 ## Refer
 [GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS](http://datum.io/google-analytics-mooc-ecommerce-analytics-%ED%9B%84%EA%B8%B0/)
