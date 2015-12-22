@@ -139,19 +139,6 @@ ga('ecommerce:send');
 
 ## tagmanager로 전자상거래 추적 달기
 [참고링크](https://support.google.com/tagmanager/answer/6107169)
-1. 태그매니저 사이트에 들어가서 `Variables>new>Custom Javascript`에 아래 코드를 넣는다.
-```javascript
-function() {
-  var ecommerceData = {
-    'ecommerce' : {
-      currencyCode : 'EUR',
-      // add additional parameters as needed...
-    }
-  };
-  return ecommerceData;
-}
-```
-이 변수에서 이 데이터를 데이터 영역으로 푸시하는 데 사용하는 동일한 구문을 이용해라.
 
 ## 실제로 어떻게 동작하나 살펴볼 수 있는 사이트
 http://enhancedecommerce.appspot.com/
