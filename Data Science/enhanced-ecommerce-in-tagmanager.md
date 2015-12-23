@@ -46,3 +46,5 @@ dataLayer.push({
 
 ## Refer
 [Magento Google Tag Manager Add To Cart Tag](https://youtu.be/GM2L4tp6wd4?list=PLXIUlXaKkxrx_--L98C11vErhnW8AB5XB)
+[ecommerce tips google tag-manager](http://www.simoahava.com/analytics/ecommerce-tips-google-tag-manager/)
+[persist-datalayer-google-tag-manager](http://www.simoahava.com/analytics/persist-datalayer-google-tag-manager/)
