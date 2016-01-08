@@ -185,6 +185,10 @@ ga('ecommerce:addItem', {
 [미리 읽어야 할 Enhanced Ecommerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)
 [tagmanager ecommerce 동영상강의](https://youtu.be/ZKjlIhFJMCU)
 
+## Tips
+- GTM enhanced ecommerce할 때 그 이벤트에 명시된 이벤트에서 불리워지나 확인해보아야 한다. (e.g. `impression`이 잘 동작하는지 확인하려면, 무작정 GTM Preview의 summary에서 dataLayer가 잘 들어갔는지 보기 전에 `gtm.dom`이 불리워지는 `DOM Ready`에 그 데이터레이어가 잘 들어갔는지 확인한다. )
+- datalayer를 위로 두는 것 때문에 돔을 못잡는다면 `$(function() {...}`처럼 dom ready가 된 이후에 넣어주면 된다. 이는 `gtm.dom`이벤트랑도 잘 맞는다.
+
 ## Refer
 [GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS](http://datum.io/google-analytics-mooc-ecommerce-analytics-%ED%9B%84%EA%B8%B0/)
 [GOOGLE ANALYTICS MOOC - ECOMMERCE ANALYTICS 후기](https://analyticsacademy.withgoogle.com/course03/unit?unit=1&lesson=1)
