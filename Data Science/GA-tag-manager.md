@@ -87,6 +87,17 @@ These are exactly the same as the Click Variables. I’m not sure why we need tw
 ## Tagmanager CSS Selector
 http://www.simoahava.com/analytics/matches-css-selector-operator-in-gtm-triggers/
 
+## Load order of GTM events
+`…gtm.js… > …gtm.dom… > …gtm.load`
+
+If you want your tags to fire on the earliest possible moment, use either {{event}} equals gtm.js or {{url}} matches regex .*.
+
+If you want your tags to fire after the DOM has loaded, for example if you know you have important variables processed at the very bottom of your page template, use {{event}} equals gtm.dom.
+
+If you want to wait for the window to load, meaning all initial requests have to be processed first, use {{event}} equals gtm.load.
+
+Note! I strongly recommend against leaving any critical tags to wait for gtm.load, since any hitches or timeouts in loading your page might lead to the tag never firing.
+
 ##reference
 https://support.google.com/tagmanager/answer/6102821
 https://support.google.com/tagmanager/answer/2574305?hl=ko&ref_topic=3441530
