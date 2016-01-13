@@ -272,3 +272,6 @@ http://www.slideshare.net/yongho/ga-47277482
 - 데이터레이어랑 커스텀자바스크립트 차이
 - 상품이 노출된 것(impression) 을 체크하는 방법 (노출도 대비 클릭 수)
 - 보통 내보내는 방법: 스프레드시트로? CSV로? 
+
+## Refer
+[Google Analtyics 삽질냠냠 #1 구글 애널리틱스 설치부터 적용까지](https://milooy.wordpress.com/2016/01/14/google-analtyics-1-intro/)
