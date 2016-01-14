@@ -109,3 +109,4 @@ http://www.simoahava.com/analytics/trigger-guide-google-tag-manager/
 [Variable Guide For Google Tag Manager](http://www.simoahava.com/analytics/variable-guide-google-tag-manager/)
 [Trigger Guide For Google Tag Manager](http://www.simoahava.com/analytics/trigger-guide-google-tag-manager/)
 [track banner impressions](http://marketlytics.com/tracking-banner-impressions-using-google-tag-manager-and-universal-analytics/)
+[Google Analtyics 삽질냠냠 #2 이벤트, 그리고 Google Tag Manager](https://milooy.wordpress.com/2016/01/14/google-analtyics-2-google-tag-manager/)
