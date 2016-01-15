@@ -375,3 +375,6 @@ function addToCart(product) {
 ### 4. 데모
 https://ga-dev-tools.appspot.com/enhanced-ecommerce/
 여기서 확인해볼 수 있다.
+
+## refer
+[Google Analtyics 삽질냠냠 #3 Enhanced Ecommerce 적용하기 (feat. Google Tag Manager)](https://milooy.wordpress.com/2016/01/14/google-analtyics-3-enhanced-ecommerce/)
