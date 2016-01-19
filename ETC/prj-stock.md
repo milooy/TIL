@@ -89,3 +89,7 @@
 ## Auth
 with.pinkfong.com처럼 권한 추가.
 로그인 페이지만 있으면 된다.
+
+## django REST framework
+- Getting Started with Django Rest Framework and AngularJS: http://blog.kevinastone.com/getting-started-with-django-rest-framework-and-angularjs.html
+- http://blog.kevinastone.com/getting-started-with-django-rest-framework-and-angularjs.html
