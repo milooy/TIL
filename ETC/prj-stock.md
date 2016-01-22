@@ -7,8 +7,8 @@
     -설명
     -전체 창고 + 재고 수량
 
-    +물품 추가하기
-    +물품 이동하기
+    +물품 등록하기
+    +(물품 이동하기)
     +발송장 만들기
 
 물품
@@ -35,8 +35,7 @@
     -이름
     -설명
 
-    +창고 추가하기
-    +창고 수정하기
+    +창고 등록하기
     +발송장 만들기
 
 창고
@@ -46,8 +45,6 @@
     -재고 목록
 
     +창고 수정하기
-    +재고 추가하기
-    +물품 이동하기
     +발송장 만들기
 
 발송장 목록
@@ -65,10 +62,8 @@
     -dest
     -발송 상태
     -발송장 상태 이력 + 변경자 이름
-    -물품 내역(StockEntry) 목록
+    -적재 내역(StockEntry) 목록
         -물품
-        -수량
-        -주문 종류(kind)
 
     +발송장 만들기
     +발송장 삭제하기
@@ -93,3 +88,13 @@ with.pinkfong.com처럼 권한 추가.
 ## django REST framework
 - Getting Started with Django Rest Framework and AngularJS: http://blog.kevinastone.com/getting-started-with-django-rest-framework-and-angularjs.html
 - http://blog.kevinastone.com/getting-started-with-django-rest-framework-and-angularjs.html
+
+## api 수정
+- api/stock
+    + stockId 추가
+-  api/stock/stockId
+    +  invoice의 dest, source를 id값 말고 이름으로 출력
+    +  stock_entry.kind가 뭐죵?
+    +  invoice고유아이디를 앞에 넣는게 좋을까
+- api/inventory
+    + inventoryId추가
