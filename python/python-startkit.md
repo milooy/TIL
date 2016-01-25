@@ -64,3 +64,8 @@ pip install -r /path/to/requirements.txt
 
 pip install -i https://pypi.smartstudy.co.kr/devops/prod/ -r dev-requirements.txt --upgrade 
 ```
+
+## setup.py
+```shell
+python setup.py install
+```
