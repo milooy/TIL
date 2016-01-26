@@ -544,3 +544,5 @@ def post_edit(request, pk): #url에서 pk를 받아서 처리
 [Sublime Text 3 for python and django](http://www.slideshare.net/raccoonyy/sublime-text-3-for-python-and-django)
 [pyenv + virtualenv + autoenv 를 통한 Python 개발 환경 구축하기](https://dobest.io/how-to-set-python-dev-env/)
 [Developing Websites Using Python and Django 비디오 튜토리얼](https://mva.microsoft.com/en-US/training-courses/developing-websites-using-python-and-django-11415?l=AQdTENEJB_4004300477)
+[django로 파이스타그램 만들기](http://blog.hannal.com/category/start-with-django-webframework/)
+[django girls 심화](https://djangogirls.gitbooks.io/django-girls-tutorial-extensions/content/)
