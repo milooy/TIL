@@ -543,3 +543,4 @@ def post_edit(request, pk): #url에서 pk를 받아서 처리
 [초심자를 위한 웹개발 - django와 회원가입 하기 등등](http://studybee.kr/beginner/8)
 [Sublime Text 3 for python and django](http://www.slideshare.net/raccoonyy/sublime-text-3-for-python-and-django)
 [pyenv + virtualenv + autoenv 를 통한 Python 개발 환경 구축하기](https://dobest.io/how-to-set-python-dev-env/)
+[Developing Websites Using Python and Django 비디오 튜토리얼](https://mva.microsoft.com/en-US/training-courses/developing-websites-using-python-and-django-11415?l=AQdTENEJB_4004300477)
