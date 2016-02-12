@@ -81,6 +81,30 @@
 `-`로 표시된 것은 해당 페이지의 내용이 되겠고
 `+`로 표시한 것은 해당 페이지의 기능? 버튼?이라고 볼 수 있겠습니다.
 
+## api
+```
+창고 두 개와 수량을 받는 API
+POST: inventory_a, inventory_b, quantity
+
+stock/(id)/afterservice/
+    inventory_a - 물건이 반환될 창고
+    inventory_b - 물건이 나갈 창고
+stock/(id)/transfer/
+    inventory_a - 물건이 들어올 창고
+    inventory_b - 물건이 나갈 창고
+
+
+창고 하나와 수량을 받는 API
+POST: inventory, quantity
+
+stock/(id)/promote/
+stock/(id)/refund/
+stock/(id)/discard/
+stock/(id)/store/
+stock/(id)/bind/
+stock/(id)/unbind/
+```
+
 ## Auth
 with.pinkfong.com처럼 권한 추가.
 로그인 페이지만 있으면 된다.
