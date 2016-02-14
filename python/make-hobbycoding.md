@@ -83,16 +83,33 @@ MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_files')
 ```
 
+그리고 urls.py에도 추가해준다.
+```python
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+
+이는 models.py에서 uploade_to에서 이렇게 쓸 수 있다.
+```python
+class Photo(models.Model):
+    image_file = models.ImageField(upload_to='%Y/%m/%d')
+```
+
 ### Refer
 http://blog.hannal.com/2015/04/start_with_django_webframework_06/
 http://intersnipe.blogspot.kr/2015/02/django-media-file-local-s3.html
 
+## User Model 확장
+http://initialkommit.github.io/2015/05/28/extending-the-existing-user-model/
+https://www.caktusgroup.com/blog/2013/08/07/migrating-custom-user-model-django/
+
 ## TODO
-- grunt, bower로 구조잡기
 - meetup 모델 짜기
-- static file, media file이해하기
+- migrations폴더랑 db는 gitignore에 추가해야하나?
+- 메인화면, 밋업 만들기, 밋업 리스트, 밋업 디테일 사이클 만들기
 
 ## DONE
+- grunt, bower로 구조잡기
+- static file, media file이해하기
 
 ## MODEL
 - meetup
@@ -103,6 +120,12 @@ http://intersnipe.blogspot.kr/2015/02/django-media-file-local-s3.html
     + 모임 장소
     + 댓글
     + 모임 태그
+- User
+    + 썸네일
+    + 닉네임
+    + 이메일
+    + 비번
+
 
 ## 기능 명세
 - auth
