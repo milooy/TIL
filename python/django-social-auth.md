@@ -65,7 +65,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '페북에서 받아온 시크릿키를 넣으세�
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-FACEBOOK_EXTENDED_PERMISSIONS = ['email', 'picture']
+# FACEBOOK_EXTENDED_PERMISSIONS = ['email', 'picture']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'fields': 'id, name, email, age_range'
 }
@@ -73,6 +73,9 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 
 이메일은 디폴트로 받아오지 않으므로, 이메일을 쓰고 싶다면 하단의 변수들을 추가해준다.
 변수명은 [페이스북 사이트](https://developers.facebook.com/docs/facebook-login/permissions#reference-public_profile)를 참고한다.
+
+> (+추가)
+> `FACEBOOK_EXTENDED_PERMISSIONS`에 email을 추가해주니, 이게 기본 email을 덮어씌워서 페이스북에서 '추가 이메일'이 입력된 것을 받아오게 되어버렸다. 그래서 추가 이메일을 쓰지 않은 사람은 이메일을 받아오지 못하는 불상사가... 부들부들... 이틀 헤맸다.
 
 ## urls.py
 urls.py에도 추가해준다.
