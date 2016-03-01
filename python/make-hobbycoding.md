@@ -189,3 +189,19 @@ https://www.caktusgroup.com/blog/2013/08/07/migrating-custom-user-model-django/
         * 하비코딩 + 고래상어
     + 도메인
         * hobbycoding.do
+
+## 사이트맵
+- 상단 네비게이션
+    + 로고
+    + [비로그인]로그인
+    + [비로그인]회원가입
+    + [로그인완료]내 정보
+        * 내가 주최한 hoco
+        * 내가 참석한 hoco
+        * 설정
+        * 로그아웃
+- 메인
+- 내가 주최한 hoco
+- 관심 hoco
+    + 다가오는
+    + 지나간
