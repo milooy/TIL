@@ -11,6 +11,8 @@
 - [웹 브랜드 스타일가이드 쉽게 만들기](https://frontify.com/styleguide)
 - [쩌는 아이콘 폰트 Fontello](http://fontello.com/)
 - [웹사이트 퍼포먼스 분석](https://website.grader.com/)
+- [웹 api documentation만드는 프로그램](https://github.com/tripit/slate)
+- [Material design 가이드 한글판](http://davidhyk.github.io/google-design-ko/material-design/introduction.html)
 
 ## 기획
 - [프로덕트 헌트](http://www.producthunt.com/)
