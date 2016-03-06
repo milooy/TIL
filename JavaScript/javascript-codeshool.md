@@ -151,3 +151,28 @@ cities.push(["Olathe", 500]);
 twister.constructor; // function(category, affected, wind) { this.category = category 어쩌구저쩌구}
 twister.constructor.prototype; // Object {valueOf: function, toString: function...}
 twister.__proto__; // 위랑 똑같음
+```
+
+# Javascript Best Practices
+## conditional
+```javascript
+var isArthur = false;
+var sth = isArthur? "참이다" : "거짓이다";
+console.log("지금 상태:" + isArthur? "참이다" : "거짓이다"); //이렇게 하면 +가 먼저 실행되기에 참으로 가버린다. 오류.
+console.log("지금 상태:" + (isArthur? "참이다" : "거짓이다")); //괄호 씌워주면 제대로 동작
+
+/* 즉시실행함수 */
+isArthur? function() {
+        alert("true");
+    }() : function() { //함수 뒤에 괄호 치는게 포인트
+        alert("false");
+    }();
+
+/* 다중 적용 */
+isArthur? (weapon = "excalbur", helmet="white"):
+          (weapon = "longsword", helmet="black");
+
+/* 분기 한번 더 타기 */
+isArthur? (weapon = "excalbur", helmet="white"):
+            isKing? (weapon = "longsword", helmet="black"):
+          (weapon = "shortsword", helmet="black");
