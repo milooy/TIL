@@ -98,3 +98,56 @@ function getNum() {
     }
 }
 ```
+
+## Object Functionality
+```javascript
+var aquarium = {
+    Nemo: {type: "fish", species: "clownfish"...},
+    Dory: {type: "fish", species: "blue tang"...},
+    addCritter: function(name, type, species) {
+        this[name] = {type:type, species...}
+        // 여기서 this는 'aquarium'을 가리킨다.
+    }
+}
+```
+
+## Object Construnctors
+Object를 만드는 또 하나의 방법
+```javascript
+var shoe = {size:6, gender:"woman"};
+var magicShoe = Object.create(shoe);
+magicShoe.jewels = "ruby";
+console.log(magicShoe);
+```
+
+Object를 생성하는 공장같은 `Constructor`를 만들기
+```javascript
+function Shoe(size, color, gender) { //대문자 사용
+    this.size = size;
+    this.color= color;
+    this.gender= gender;
+
+    this.putOn = function() {alert("hi")};
+}
+
+var beachShoe = new Show(10, 'red', 'woman'); // new 키워드로 생성
+beachShoe.hasOwnProperty("color"); // true. 상속이 아니고 자체로 갖고있냐?
+```
+
+Constructor에 prototype 빼기. 위는 각 오브젝트마다 putOn 함수가 할당되어버리니 공통으로 빼서 묶는다.
+```javascript
+Shoe.prototype = {
+    putOn: function() {alert("hi, color is"+this.color)},
+    takeOff: function() {alert("ho")}
+}
+```
+
+overriding prototype
+```javascript
+var cities = [["kansas", 300], ["Topeka", 100]];
+var twister = new Tornado("F5", cities,200);
+cities.push(["Olathe", 500]);
+
+twister.constructor; // function(category, affected, wind) { this.category = category 어쩌구저쩌구}
+twister.constructor.prototype; // Object {valueOf: function, toString: function...}
+twister.__proto__; // 위랑 똑같음
