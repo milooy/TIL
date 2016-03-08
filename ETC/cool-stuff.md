@@ -27,6 +27,7 @@
 [웹디자인에서 자간, 행간에 대한 고찰](http://slowalk.tistory.com/2194?utm_content=buffer1c8a3&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer)
 [Todoist Material Design 적용기](https://blog.todoist.com/ko/2015/07/30/what-we-learned-from-crafting-todoists-material-design/)
 [애니메이션 라이브러리들](http://koreawebdesign.com/animation-library-2016/)
+[실전 UI Designer의 음표 그리기](http://yeun.github.io/2014/07/26/note-icon.html)
 
 ## Tutorial
 [building list jquery local storage](http://www.sitepoint.com/building-list-jquery-local-storage/)
