@@ -200,8 +200,24 @@ https://www.caktusgroup.com/blog/2013/08/07/migrating-custom-user-model-django/
         * 내가 참석한 hoco
         * 설정
         * 로그아웃
+    + 주최하기
 - 메인
+    + 위에 작게 사이트 설명 영역 (http://codepen.io/ 참고)
+    + 다가오는 hoco 리스트
+- 
+
+
+
 - 내가 주최한 hoco
 - 관심 hoco
     + 다가오는
     + 지나간
+
+
+## 모델 짜기
+유저 >-< 호코 -< 댓글
+
+- 한 유저당 여러 호코 만들기
+- 한 유저당 여러 호코 참여하기
+- 한 호코당 여러 댓글
+- 
