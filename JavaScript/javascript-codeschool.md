@@ -250,3 +250,148 @@ arr.join("\n");
 ```
 
 ## Measuring Performance
+### 시간 재기
+`console.time`을 활용한다.
+두 타이머를 묶으려면 parameter labels가 같아야 한다.
+브라우저별로 다를 수 있다. 중첩도 가능(하지만 중첩하면 밖의 타이머는 안의 타이머까지 한번 더 더한다!).
+그리고 돌릴때마다 미세하게 속도가 다르다.
+```javascript
+console.time("Time to add: " + arr.length);
+for(어쩌구) {
+    저쩌구
+}
+console.timeEnd("Time to add: " + arr.length);
+// Time to add 3: 0.036ms 자동으로 계산해서 :뒤에 넣어준다.
+```
+
+### 시간 관련 클래스로 시간 재기
+```javascript
+var rightNow = new Date();
+console.log(rightNow); // Mon Apr 10 2014 17:02:31 GMT-0500 (EST)
+console.log(+rightnow); // 1392072557874
+// 위는 console.log(new Number(rightNow))와 같다.
+
+var rightNow = +new Date();
+var endTime = +new Date();
+console.log(endTime - rightNow); //87874
+```
+
+스피드 테스트 클래스 만들기
+```javascript
+function SpeedTest(tstImplement, testParams, repetitions) {
+    this.testImplement = testImplement;
+    this.testParams = testParams;
+    this.repetitions = repetitions || 10000;
+}
+
+SpeedTest.prototype = {
+    startTest: function() {
+        var beginTime, endTime, sumTimes = 0;
+        for(var i=0, x=this.repetitions; i<x; i++) {
+            beginTime = +new Date();
+            this.testImplement(this.testParams);
+            endTime = +new Date();
+            sumTimes ++ endTime - beginTime;
+        }
+        this.average = sumTimes / this.repetitions;
+        return console.log("Average execution across " +this.repetitions+": "+this.average);
+    }
+}
+
+var noBP = function(listOfParams) {
+    for(var i=0l i<listOfParams[0].length; i++) {
+        어쩌구
+    }
+}
+
+var noBPtest = new SpeedTest(noBP, arr, 10000);
+bTest.startTest();
+```
+
+## The Crystal of Caution
+`===`은 타입까지 검사한다.
+```javascript
+'4' == 4 // true
+'4' === 4 // false
+
+true == 1 //true
+false == 0 //true
+true === 1 //false
+false === 0 //false
+
+"\n \n \t" == 0 //true
+```
+
+`instanceOf`로 상속받아온거에 있는지 확인(프로토타입 포함)
+```javascript
+kingsMail instanceof Armor; // true
+```
+
+### Exceptions
+런타임 에러는 `try~catch`로 잡는다.
+에러가 나지 않지만 우리가 예상할 수 있는 오류상황에서는 try문 안에서 `throw`해준다.
+`finally`는 try가 success되든, failure되든 마지막에 불려짐.
+```javascript
+alert(alarm); //알람 변수가 없는 상태에서 호출. 런타임 에러.이건 그냥 콘솔에 자동으로 나오지 않음. 잡아야 한다. 
+
+try {
+    alert(alarm);
+    if(list === undefined) {
+        throw new ReferenceError();
+    }
+} catch(error) {
+    try { //이 안에 중첩해도 됨.
+
+    } 
+    alert("에러다: "+error);
+    if(error instanceof ReferenceError) {
+        alert("레퍼런스 에러다");
+    }
+    if(error instanceof TypeError) {
+        alert("타입에러다!");
+    }
+}
+finally {
+    console.log(list);
+}
+```
+
+### Stuff that sucks
+1. `with`키워드는 파라미터의 encapsulated된 환경을 받아 그 안 블록 안과 합쳐 새로운 `local`스코프를 만든다. 이는 processing-expensive하다.
+이게 뭐지.
+```javascript
+var drawbridge = {
+    soldiers: 8,
+    capacity: 20,
+    open: function() {
+        alert("bang");
+    }
+}
+
+with(drawbridge) {
+    open(); //뱅 나온다!
+
+    close = function() { //생각처럼 안돌아감
+        alert("ahahahah")
+    }
+}
+```
+
+2. `eval`은 string을 파라미터로 받아 그 스트링을 코드처럼 생각하여 execute한다.
+함부로 쓰지 말아라.
+```javascript
+function foo(number, moto) {
+    eval("haha" + number + ".moto='" + moto+"'");
+}
+
+foo(1, "The Kings' Own"); // haha1.moto = 'The Kings's Own'이라 되버려 '가 중첩되어 오류가 난다.
+```
+
+3. `JSON.parse()`는 JSON이 accepted될때만 써라
+```javascript
+JSON.parse(regiments);
+```
+
+4. 웬만하면 한줄짜리 코드라도 {}를 빼먹지 말아라.
+
+5. 
