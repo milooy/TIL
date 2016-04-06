@@ -1,5 +1,6 @@
 ## Programming
 - [zenhub - Github project management](https://www.zenhub.io/)
+- [Kite - copilot](https://kite.com/)
 
 ## Web Storage
 - [store.js](https://github.com/marcuswestin/store.js)
