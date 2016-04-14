@@ -59,6 +59,7 @@ bower update
 npm install같은거.
 ```shell
 pip install -r /path/to/requirements.txt
+pip install -r requirements.txt
 
 #혹은
 
