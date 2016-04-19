@@ -4,7 +4,6 @@
 - 지시자(directive): ng-app, ng-init과 같은 별도의 html태그나 속성
 - ng-app: HTML이 앵귤러js application이라는걸 나타냄
 - ng-controller: todo.js에 있는 TodoListController이
-- 
 
 ```html
 <div ng-app="todoApp">

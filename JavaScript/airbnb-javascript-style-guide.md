@@ -1,6 +1,6 @@
 # Airbnb JavaScript Style Guide
 https://github.com/airbnb/javascript
-한글판(아 내가 번역하려했는데 ㅠㅠ)https://github.com/tipjs/javascript-style-guide
+[한글판(아 내가 번역하려했는데 ㅠㅠ)](https://github.com/tipjs/javascript-style-guide)
 
 ## types
 ```javascript
