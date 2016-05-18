@@ -29,3 +29,4 @@ https://github.com/blueimp/jQuery-File-Upload/wiki/Client-side-Image-Resizing
 https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin
 https://hacks.mozilla.org/2011/01/how-to-develop-a-html5-image-uploader/
 https://github.com/calvintwr/Hermite-resize
+http://fiddle.jshell.net/BADfT/12/
