@@ -7,8 +7,8 @@
 - ctrl+space: 코드 컴플리션
 - cmd shift enter: complete statement
 - cmd shift delete: 바로 전 커서위치로 가기
-- 
-
+- ctrl alt o : 임포크 옵티마이저
+- shift f6: 한번에 바꾸기 
 
 ## Refer
 https://www.jetbrains.com/pycharm/help/keyboard-shortcuts-you-cannot-miss.html
