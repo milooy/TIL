@@ -1,3 +1,6 @@
+## ES6
+- [[ES6] var, let 그리고 const](http://blog.nekoromancer.kr/2016/01/26/es6-var-let-%EA%B7%B8%EB%A6%AC%EA%B3%A0-const/)
+
 ## outsider's dev story
 - [페이스북의 인기 오픈소스 기술, ‘리액트’란?](http://www.bloter.net/archives/233564) : React를 소개한 글이다. 기술적인 내용이 약간 있긴 하지만 블로터에 실린 기사인 만큼 React를 전혀 모르는 사람이라도 어떤 기술이고 어떤 장점이 있는지 이해하기 쉽게 정리되어 있고 관련 레퍼런스 목록도 있어서 공부를 시작하려고 할 때 좋은 시작점이다.(한국어)
 - [Lodash의 지연 평가 소개 by Filip Zawada](http://haruair.com/blog/2983) : JavaScript 유틸리티 라이브러리인 lodash가 성능을 높히기 위해서 지연평가를 어떻게 사용하는지를 설명한 글의 번역 글이다. 구현 코드 수준으로 설명하는 것은 아니지만, 지연 평가로 성능을 높인 접근 방법과 파이프라인을 어떻게 사용하고 있는지를 아주 명쾌하게 설명하고 있어서 이 방법을 다른 곳에서도 적용할 수 있고 lodash에 대한 신뢰도 높일 수 있는 글이다.(한국어)
