@@ -105,7 +105,7 @@ Queryset이 evaluated되기 전까진 장고는 쿼리를 돌리지 않는다.
 filter()는 싱글 오브젝트를 반환하더라도 쿼리셋으로 반환한다.
 하나 오브젝트를 가져오려면 get()을써라.
 ```python
-one_entry = Engry.objects.get(pk=1)
+one_entry = Entry.objects.get(pk=1)
 ```
 get 안에 filter처럼 쓰면 된다.
 쿼리 반환값이 없을 때 get()은 `DoesNotExist` exception을 뱉는다. 반환값이 1 이상일때는 `MultipleObjectsReturned`.
@@ -291,9 +291,6 @@ e.authors.filter(name__contains='John')
 
 a = Author.objects.get(id=5)
 a.entry_set.all() # Returns all Entry objects for this Author.
-```
-
-### 일대일(One-to-one)
 ```
 
 ## Refer
