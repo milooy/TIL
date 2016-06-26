@@ -14,7 +14,19 @@ class Album(models.Model):
     name = models.CharField(max_length=100)
     release_date = models.DateField()
     num_stars = models.IntegerField()
+
+class Person(models.Model):
+    SHIRT_SIZES = (
+        ('S', 'Small'),
+        ('M', 'Medium'),
+        ('L', 'Large'),
+    )
+    name = models.CharField(max_length=60)
+    shirt_size = models.CharField(max_length=1, choices=SHIRT_SIZES)    
 ```
+- `null`: True면, DB의 컬럼에 NULL을 할당할 수 있게 된다. (DB의 `NOT NULL`)
+- `blank`: True면, 필드값 입력하지 않아도 된다. 디비의 제약과 관련 없음. 유효성 검증(validation)과 연관.
+
 
 ### Verbose field names
 ForeignKey, ManyToManyField, OneToOneField빼고 모든 필드는 첫 인자로(옵션) `Verbose name`을 받는다. 따로 지정하지 않으면 필드명으로 대신한다(언더스코어를 스페이스로 바꾸어서) 
@@ -49,7 +61,7 @@ class Dog(models.Model):
     
 ```
 
-좀 더 복잡한 M2M관계를 표현하기 위해서는 별도의 argument를 넣는다.
+좀 더 복잡한 M2M관계를 표현하기 위해서는 별도의 모델을 만든다. (중간모델/intermediate model)
 ```python
 class Person(models.Model): #인간
     name = models.CharField
@@ -101,13 +113,15 @@ class Membership(models.Model): #뮤지컬 멤버십
 ...     group__name='The Beatles',
 ...     membership__date_joined__gt=date(1961,1,1))
 ```
+- 중간 모델을 직접 만들 때는, 관계를 가지는 두 모델에 대한 `ForeignKey`필드를 선언하고 추가적인 필드를 선언하면 된다.
+
 
 3. One-to-one
-다른 오브젝트를 extend받을 때 유용하다.
+다른 모델을 확장하여 새로운 모델을 만드는 경우 유용.
+`가게`라는 데이터베이스가 이미 있었는데, `맛집` 데이터베이스를 추가적으로 만들게 되었다. 이 때 `가게`를 extend받아서 확장시킬 수 있다.
 
 ## Meta 옵션
-모델 필드가 아닌 데이터들을 담는다.
-
+모델클래스 내부에 메타데이터를 추가할 수 있다.
 ```python
 class Ox(models.Model):
     horn_length = models.IntegerField()
@@ -118,8 +132,8 @@ class Ox(models.Model):
 ```
 
 ## Model Attributes - objects
-모델의 가장 중요한 특징은 `Manager`이다. 디비의 인스턴스를 반환. 
-커스텀 Manager를 써주지 않으면, 기본은 'objects'라고 잡힌다.
+모델에서 가장 중요한 attribute은 `Manager`다. 모델 클래스 선언 기반하여 실제 디비에 대한 쿼리 인터페이스를 제공하며, 디비 레코드를 모델 객체로 인스턴스화 하는데 사용된다.
+커스텀 Manager를 만들지 않으면, 기본은 'objects'라는 이름으로 잡힌다.
 ```python
 class Person(models.Model):
     people = models.Manager()
@@ -129,7 +143,7 @@ class Person(models.Model):
 
 ## 모델에 메서드 추가하기
 ```python
-class Person(models.Model):
+class Person(models.Model)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     birth_date = models.DateField()
@@ -149,12 +163,12 @@ class Person(models.Model):
         return '%s %s' % (self.first_name, self.last_name)
     full_name = property(_get_full_name)
 ```
-- `__str__() `: python3의 메서드.
-- `__unicode__() `: python2에서 위와 같다.
+- `__unicode__() `: 해당 클래스의 유니코드 표현. (python2)
+- `__str__() `:  python3에서 위와 같다. utf-8
 - `get_absolute_url()`: 오브젝트의 URL. 어드민이나 오브젝트에 url이 필요할 때 쓰인다.
 
 ## 미리 정의된 메서드 오버라이드
-종종 `save()`랑 `delete()`를 오버라이드 할 일이 생긴다.
+`save()`랑 `delete()`를 오버라이드 할 경우가 많다.
 ```python
 class Blog(models.Model):
     name = models.CharField(max_length=100)
@@ -164,7 +178,7 @@ class Blog(models.Model):
         super(Blog, self).save(*args, **kwargs) # 원래 save() method 부르기
         do_something_else()
 ```
-superclass method를 부르는거 중요. 안그러면 디폴트 행동이 불리지 않고, 디비가 touched되지 않을것이다.
+superclass method를 불러서 원래 기능을 호출한다.
 
 ## 모델 상속(Inheritance)
 ### Abstract base classes
@@ -198,5 +212,9 @@ class ChildB(Base): # related_name: common_childb_related
     pass
 ```
 
+### Multi-table inheritance
+공통 부분의 데이터는 부모모델에 저장, 자식 모델의 데이터는 자식모델 테이블에 저장.
+
 ## refer
 https://docs.djangoproject.com/es/1.9/topics/db/models/
+http://nukggul.tistory.com/17
