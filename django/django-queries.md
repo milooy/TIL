@@ -1,6 +1,6 @@
 # Making Queries
-앞으로 예시들에 사용할 모델.
-글마다 블로그, 다수 작가가 연결.
+앞으로 예시들에 사용할 모델. 
+글 하나에 블로그 여러 개 중 하나가 연결되어있고, author는 m2m.
 ```python
 class Blog(models.Model): # 블로그
     name = models.CharField(max_length=100)
@@ -12,7 +12,7 @@ class Blog(models.Model): # 블로그
 class Author(models.Model): # 작가
     name = models.CharField(max_length=50)
     email = models.EmailField()
-                                                                                          
+
     def __str__(self):
         return self.name
 
@@ -292,7 +292,6 @@ e.authors.filter(name__contains='John')
 a = Author.objects.get(id=5)
 a.entry_set.all() # Returns all Entry objects for this Author.
 ```
-
 
 ## Refer
 https://docs.djangoproject.com/en/1.9/topics/db/queries/
