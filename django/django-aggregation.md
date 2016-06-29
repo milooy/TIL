@@ -48,7 +48,7 @@ class Store(models.Model): # 상점
 
 # 모든 책들 중 가장 비싼 가격
 >>> Book.objects.all().aggregate(Max('price'))
-{'price__max': Decimal('81.20')}
+{'price__max':  Decimal('81.20')}
 
 # 'price_per_page'란 이름으로, 장당 가격을 구한다.
 >>> Book.objects.all().aggregate(
@@ -72,6 +72,55 @@ class Store(models.Model): # 상점
 1323
 ```
 
+## 쿼리셋에 aggreates하기
+장고에선 두 가지 방식으로 aggreates를 만들 수 있다. 
+
+### 1. 전체 쿼리셋에 Summary values 만들기
+e.g. 모든 책에 대한 평균 가격 구하기
+```python
+>>> Book.objects.aggregate(Avg('price'))
+{'price__avg': 34.35}
+
+>>> Book.objects.aggregate(average_price=Avg('price'))
+{'average_price': 34.35} # 이름 명시
+
+>>> Book.objects.aggregate(Avg('price'), Max('price'), Min('price'))
+{'price__avg': 34.35, 'price__max': Decimal('81.20'), 'price__min': Decimal('12.99')} # 다중 반환
+```
+aggreate()는 Queryset의 Terminal clause로, 키-밸류 쌍을 반환한다.
+
+### 2. 쿼리셋 각 요소에 aggregates하기
+e.g. 책 리스트가 있을 때, 각 책마다 저자가 몇 명 있는지 계산.
+이는 `annotate()`으로 만들 수 있다. `aggreate()`랑은 다르게 terminal clause가 아니고 QuerySet을 반환한다. 
+Book과 Authors는 M2M 관계이다. 
+```python
+# 책마다 저자가 몇 명 있는지 계산된 책 리스트 반환
+>>> q = Book.objects.annotate(Count('authors'))
+
+>>> q[0]
+<Book: The Definitive Guide to Django>
+>>> q[0].authors__count
+2
+
+# 이름 지어주기
+>>> q = Book.objects.annotate(num_authors=Count('authors'))
+>>> q[0].num_authors
+2
+```
+
+## Joins and aggregates
+Store마다 책들의 min, max 가격 표기
+Store에 M2M으로 연결되어있는 books를 찾아, books모델의 price를 비교.
+더블 언더스코어로 관계된 모델을 찾아갈 수 있다.
+```python
+>>> Store.objects.annotate(min_price=Min('books__price'), max_price=Max('books__price'))
+```
+
+### 역참조
+Publisher엔 Book이 거꾸로 Foriegn key로 연결되어있다. Lowercase로 역참조를 할 수 있다.
+```python
+>>> Publisher.objects.annotate(Count('book'))
+```
 
 ## Refer
 https://docs.djangoproject.com/en/1.9/topics/db/aggregation/
