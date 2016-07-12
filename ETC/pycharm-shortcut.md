@@ -9,6 +9,9 @@
 - cmd shift delete: 바로 전 커서위치로 가기
 - ctrl alt o : 임포크 옵티마이저
 - shift f6: 한번에 바꾸기 
+- alt cmd l : 자동 포매팅
+- cmd alt o : 임포트 모듈 정리
+- alt enter: 커서 있는 것의 임포트 해오기 
 
 ## Refer
 https://www.jetbrains.com/pycharm/help/keyboard-shortcuts-you-cannot-miss.html
