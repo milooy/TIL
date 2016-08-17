@@ -70,3 +70,9 @@ pip install -i https://pypi.smartstudy.co.kr/devops/prod/ -r dev-requirements.tx
 ```shell
 python setup.py install
 ```
+
+## 코드 정리
+```
+flake8
+pep8
+```
