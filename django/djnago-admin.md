@@ -55,3 +55,4 @@ class QuestionAdmin(admin.ModelAdmin):
 ```
 
 ## Refer
+https://docs.djangoproject.com/en/1.9/intro/tutorial07/
