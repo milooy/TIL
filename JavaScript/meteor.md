@@ -47,14 +47,55 @@ meteor add underscore
     + 브라우저 저장소(storage): 쿠키, 로컬 스토리지. 세션 한계를 넘어 저장.
     + 서버 데이터베이스: 영구적으로 데이터 저장.
 
-서버에서의 컬렉션. Mongo 데이터베이스로의 API로 가능
+### 서버에서의 컬렉션
+Mongo 데이터베이스로의 API로 가능
 ```shell
 meteor mongo
-
 > db.posts.insert({title: "A new post"});
-
 > db.posts.find();
-{ "_id": ObjectId(".."), "title" : "A new post"};
-``` 
+# { "_id": ObjectId(".."), "title" : "A new post"};
+```
 
+### 클라이언트에서 컬렉션
+`Posts = new Mongo.Collection('posts');`: 실제 몽고 컬렉션의 로컬 인 브라우저 캐시를 생성하는 것. 
+클라이언트 쪽 컬렉션을 '캐시'라고 말하는 것은, 데이터의 부분 집합을 가지며 데이터에 빠르게 접근할 수 있다는 것을 의미.
+```js
+# 브라우저 콘솔
+❯ Posts.findOne();
+{title: "A new post", _id: LocalCollection._ObjectID};
+
+❯ Posts.find().count();
+1
+❯ Posts.insert({title: "A second post"});
+'xxx'
+❯ Posts.find().count();
+2
+```
+참고: `find()`는 커서를 리턴. 반응형 데이터 소스. 그 데이터 내용 얻으려 할 때, 현재 커서 위치에서 데이터를 배열로 변환하는 `fetch()`를 사용
+
+
+```shell
+# 몽고 쉘
+❯ db.posts.find();
+{title: "A new post", _id: ObjectId("..")};
+{title: "A second post", _id: 'yyy'};
+```
+
+클라에서 서버로 보내는 코드 작성 없이 post를 MongoDB로 삽입했다.
+`Posts = new Mongo.Collection('posts');` 요 코드로!
+이는 다른 탭의 브라우저에서도 유지된다.
+
+### 데이터베이스 활용
+```shell
+meteor reset # 몽고 데이터베이스를 완전히 비운다.
+```
+
+## 미티어 방식
+- 미티어 앱은 서버 뿐만 아니라 클라에서도 동작한다.
+- 데이터베이스는 *어디에서나*
+    + db에 넣기만 하면 미티어가 부분집합을 가져와 클라에 복사해 둘 것이다.
+    + => 1. HTML코드를 클라로 보내는 대신, 미티어 앱은 실제 생 데이터를 보내고 클라가 그것을 처리하게 한다.(데이터만 전송)
+    + => 2. 서버에 갔다오는 시간 기다려야 하는 일 없이 즉시 데이터에 접속할 수 있다.
+
+## 발행(Publishing)
 
