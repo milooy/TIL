@@ -218,6 +218,12 @@ python manage.py shell --settings=twoscoops.settings.local
 python manage.py runserver --settings=twoscoops.settings.local
 ```
 
+이렇게 바꾼 후에는 `project_name/wsgi.py`와 `manage.py`에 기본 구동 세팅을 설정해줘야 한다.
+```python
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project_name.settings.local")
+```
+[참고 링크](http://stackoverflow.com/questions/19128540/django-improperlyconfigured-the-secret-key-setting-must-not-be-empty)
+
 ### 개발 환경의 settings 파일 예제
 ```python
 # settings/local.py
