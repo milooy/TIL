@@ -174,3 +174,175 @@ ___
     + signals.py: 커스텀 시그널을 넣기 유용
     + utils.py
     + viewmixins.py
+
+___
+
+## 5. settings와 requirements파일
+세팅값의 새로운 적용은 서버를 재시작해야만 가능. 아래는 최선의 장고 설정 방법.
+
+- 버전 컨트롤 시스템으로 모든 설정 파일을 관리해야 한다.
+    + 날짜, 시간 등 세팅 변화에 대한 기록이 반드시 문서화되어야 함
+- 반복되는 설정 없애기
+    - 기본 세팅 파일로부터 상속
+- 암호나 비밀 키 등은 안전하게 보관
+    + 민감한 보안 관련 사항은 버전 컨트롤 시스템에서 제외
+
+### 버전 관리되지 않는 로컬 세팅은 피하라
+이전엔 `local_settings`로 보안과 관련된 세팅은 빼두었다.
+`SECRET_KEY`같은 것들은 다 빼야 한다. 아마존 API 키, 비밀번호, OAuth 토큰 등 설정 변수
+하지만 문제는
+
+- 모든 머신에 버전 컨트롤에 기록되지 않는 코드가 존재하게 됨.
+- 운영 환경 문제점 로컬에서 구현해보려 죽쑤다가 local_setting값 때문이란걸 알게 됨
+- 여러 팀원이 서로의 local_settings.py를 복사해서 여기저기 붙여 쓴다.
+
+### 여러 개의 settings 파일 이용하기
+하나의 파일보단 `settings/` 디렉터리 아래에 여러 개의 셋업 파일을 구성하여 이용. 
+(각 세팅 모듈은 그에 해당하는 독립적인 requirements파일을 필요)
+```shell
+settings/
+    __init__.py
+    base.py # 공용 세팅 파일
+    local.py # 로컬 환경에서 작업할 때 쓰이는 파일. django-debug-toolbar같은 도구 활성화
+    staging.py # 스테이징 서버. store-test.pinkfong.com같은거. 
+    test.py # 테스트 러너, 인메모리 데이터베이스 정의, 로그 세팅을 포함
+    production.py # 운영 서버에서 실제로 운영되는 세팅 파일
+```
+
+이는 다음과 같이 실행시킨다.
+```shell
+# settings/local.py세팅 파일로 셸 시작 
+python manage.py shell --settings=twoscoops.settings.local
+
+# settings/local.py세팅 파일로 서버 구동
+python manage.py runserver --settings=twoscoops.settings.local
+```
+
+### 개발 환경의 settings 파일 예제
+```python
+# settings/local.py
+from .base import * # 베이스 세팅 받아오기
+
+DEBUG = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "twoscoops",
+        "USER", "",
+        "PASSWORD": "",
+        "HOST": "localhost",
+        "PORT": "",
+    }
+}
+
+INSTALLED_APPS += ("debug_toolbar",)
+```
+
+### 코드에서 설정 분리하기
+환경 변수 패턴.
+- 걱정 없이 세팅 파일을 버전 컨트롤 시스템에 추가할 수 있다.
+- 파이썬 코드 수정 없이 시스템 관리자들이 프로젝트 코드를 쉽게 배치할 수 있다.
+
+맥이나 리눅스 배포판의 경우 다음 구문을 `bashrc`, `.bash_profile`, 또는 `.profile`의 뒷부분에 추가하면 된다.
+```shell
+export SOME_SECRET_KEY=1c3-sadf-123fsaf
+export JAYJIN_FREEZER_KEY = weljfak-123r-1faldk
+```
+
+운영 환경에서 환경 변수를 세팅하기
+히로쿠는 다음과 같이 개발 환경의 환경 변수들을 지정한다.
+```shell
+heroku config:set SOME_SECTRET_KEY=123-1sdfa-123
+```
+
+파이썬에서 환경 변수에 접근하려면
+```shell
+import os
+SOME_SECRET_KEY = os.environ["SOME_SECRET_KEY"]
+```
+
+비밀 키가 존재하지 않을 때 예외 처리하기
+```python
+# settings/base.py
+import os
+
+from django.core.exceptions import ImproperlyConfigured
+
+def get_env_variable(var_name):
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the {} environmental variable".format(var_name)
+        raise ImporperlyConfigured(error_msg)
+```
+
+### 환경 변수를 이용할 수 없을 때
+아파치, Nginx기반 환경에서도 특정 경우에 한해 환경 변수를 이용하는 방법이 작동되지 않는다.
+이럴 경우 `비밀 파일 패턴`방법을 이용한다. JSON, Config, YAML 또는 XML로 작성하고 gitignore에 추가.
+
+```json
+{
+    "FILENAME": "secrets.json",
+    "SECRET_KEY": "비밀이당",
+    "DATABASE_HOST": "127.0.0.1",
+    "PORT": "5432"
+}
+```
+
+settings.py엔 다음과 같이 추가.
+```python
+# settings/base.py
+import os
+
+from django.core.exceptions import ImproperlyConfigured
+
+# JSON기반 비밀 모듈
+with open("secret.json") as f:
+secrets = json.loads(f.read())
+
+def get_env_variable(setting, secrets = secrets):
+    try:
+        return os.secrets[setting]
+    except KeyError:
+        error_msg = "Set the {0} environmental variable".format(setting)
+        raise ImporperlyConfigured(error_msg)
+
+SECRET_KEY = get_secret("SECRET_KEY")
+```
+
+### 여러 개의 requirements.txt 추가하기
+그 환경에 필요한 컴포넌트만 설치
+```
+requirements/
+    base.txt
+    local.txt
+    staging.txt
+    production.txt
+```
+
+base.txt예제
+```
+Django==1.8.0
+psycopg2=2.6
+```
+
+local.txt예제
+```
+-r base.txt # base.txt requirements 파일 포함
+coverage==3.7.1
+django-debug-toolbar==1.3.0
+```
+
+ci.txt 예제
+```
+-r base.txt
+coverage==3.7.1
+django-jenkins==0.16.4
+```
+
+설치하기
+```
+pip install -r requirements/local.txt
+```
