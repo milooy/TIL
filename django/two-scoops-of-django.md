@@ -352,3 +352,174 @@ django-jenkins==0.16.4
 ```
 pip install -r requirements/local.txt
 ```
+
+___
+
+## 6. 장고에서 모델 이용하기
+- 유용한 패키지들
+    + django-model-utils: TimeStampedModel같은 일반적인 패턴 처리 이용
+    + django-extensions: 모든 앱에 모델 클래스를 자동으로 로드해 주는 `shell_plus`라는 관리 명령 제공. 단점은 너무 다양한 기능 포함
+- 시작하기
+    + 모델이 너무 많으면 앱을 나눈다
+        * 각 앱이 가진 모델의 수는 5개 넘지 말아야 한다
+    + 모델 상속에 주의하자
+        * 상속을 이용하지 않는다
+            - 공통 필드 있을 때 그 모델 모두에 필드 만듦.
+            - pros: 한눈에 보기 쉬움
+            - cons: 모델 간 중복되는 테이블 많으면 지속적 관리 어려움
+        * 추상화 기초 클래스(Abstract base class)
+            - 오직 상속받아 생성된 모델들의 테이블만 생성
+            - pros: 추상화된 클래스에 공통 부분 추려둬서 한 번만 타이핑
+            - pros: 추가 테이블 생성 x, 여러 테이블에 걸쳐 조인 함으로써 발생하는 성능 저하도 없다
+            - cons: 부모 클래스를 독립적으로 이용 불가
+        * 멀티테이블 상속(multi-table inheritance)
+            - 부모와 자식 모델에 대해서 모두 테이블 생성. OneToOne필드는 부모와 자식 간에 적용
+            - pros: 각 모델에 대해 매칭되는 테이블이 생성. 부모 또는 자식 모델 어디로든지 쿼리 할 수 잇다
+            - cons: 자식 테이블에 대한 각 쿼리에 대해 부모 테이블로 조인 필요해서 부하 발생. 이용하지 말기를 권한다.
+        * 프락시 모델(proxy model)
+            - 원래 모델에 대해서만 테이블 생성.
+            - pros: 각기 다른 파이썬 작용(behavior)을 하는 모델들의 별칭을 가질 수 있다
+            - cons: 모델의 필드 변경 불가
+
+### 모델 상속해보기
+```python
+class TimeStampedModel(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    class Meta: 
+        abstract = True
+```
+아래 `class Meta`를 달면 추상화 기초 클래스로 변경해준다. 
+그럼 마이그레이션 실행할 때 이 테이블이 생성되지 않는다.
+
+### 데이터베이스 마이그레이션
+- 생성되는 마이그레이션 갯수에 연연하지 마라. 너무 많아진다면 `squashmigrations`를 이용하는 것도 방법.
+- 배포 전에 마이그레이션을 rollback할 수 있는지 확인해보자.
+- 테이블에 수백만 개의 데이터가 이미 존재한다면 운영서버에서 돌리기 전에 스테이징 서버에서 비슷한 크기의 데이터에 대해 충분히 테스트하자
+- MySQL을 이용한다면
+    + 스키마 변환 전 데이터베이스를 반드시 백업해둔다. MySQL은 스키마 변경에 대해 트랜잭션을 지원 x. 따라서 롤백이 불가능 <- `?`
+    + 가능하다면 데이터베이스를 변환하기 이전에 프로젝트를 read-only모드로 변경한다 <-`?`
+    + 상당히 큰 테이블의 경우 주의하지 않으면 스키마 변경에 상당한 시간이 걸릴 수 있다. 몇 시간이 걸릴 수도 있음.
+
+### 장고 모델 디자인
+- 정규화하기
+    + Database Normalization에 익숙해져야 한다.
+    + 장고 모델 디자인은 항상 정규화로부터 시작. 충분한 시간을 가지고 이미 모델에 포함된 데이터들이 중복되어 다시 다른 모델에 포함되지 않도록 신경써야 함.
+- 캐시와 비정규화
+    + 적절한 위치에서 캐시를 세팅하는 건 모델을 비정규화 할 때 발생하는 문제점들을 상당 부분 해결.
+- 반드시 필요한 경우에만 비정규화를 하도록 하자
+    + 비정규화 생각하기 이전에 캐시에 대해 좀 더 연구
+- 언제 null을 쓰고 언제 blank를 쓸 것인가
+    + CharField, TextField, SlugField, EmailField, CommaSeperatedIntegerField, UUIDField
+        * `null=True`: 안쓴다. 빈 값은 빈 문자열로 저장. 'null'이란 값이나 ''를 빈 문자열에 대해 반환
+        * `blank=True`: 쓴다. 빈 값을 허용한다면.
+    + FileField, ImageField
+        * `null=True`: 안쓴다. 장고는 `MEDIA_ROOT`의 경로를 CharField에 파일 또는 이미지로 저장한다. 같은 패턴이 FileField에도 적용됨.
+        * `blank=True`: 쓴다. CharField에 적용된 것과 같은 규칙 적용 <-`?`
+    + BooleanField
+        * `null=True`: 안쓴다. 대신 `NullBooleanField`이용.
+        * `blank=True`: 안쓴다.
+    + IntegerField, FloatField, DecimalField, DurationField 등
+        * `null=True`: 해당 값이 DB에 NULL로 들어가도 문제 없다면 이용
+        * `blank=True`: 위젯에서 해당 값이 빈 값을 받아와도 문제가 없다면 이용. null=True랑 같이 이용.
+    + DateTimeField, DateField, TimeField 등
+        * `null=True`: 해당 값이 DB에 NULL로 들어가도 문제 없다면 이용
+        * `blank=True`: 위젯에서 해당 값이 빈 값 받아와도 문제없다거나 auto_now나 auto_now_add를 이용하고 있다면 이용한다. 
+    + ForeignKey, ManyToManyField, OneToOneField
+        * `null=True`: 해당 값이 DB에 NULL로 들어가도 문제 없다면 이용
+        * `blank=True`: 위젯에서 해당 값이 빈 값 받아와도(e.g. 셀렉트박스) 문제없다면 괜춘 <-`?`
+    + GenericIPAddressField (*IPAddress보다 선호*)
+        * `null=True`: 해당 값이 DB에 NULL로 들어가도 문제 없다면 이용
+        * `blank=True`: 위젯에서 해당 값이 빈 값 받아와도 문제없다면 이용
+    + IPAddressField
+        * `null=True`: 사용 x
+        * `blank=True`: 사용 x
+- 언제 BinaryField를 이용할 것인가
+    + raw binary data 또는 byte를 저장하는 필드. 
+    + filter, exclude, 등 SQL액션들이 적용되지 않는다.
+    + 사용 예
+        * 메시지팩 형태의 콘텐츠 <-`?`
+        * 원본 센서 데이터
+        * 압축된 데이터
+    + 크기가 방대할 수 있고 그로 인해 DB가 느려질 수 있다는 것을 명시
+        * 해당 데이터를 파일 형태로 저장하고 FileField에 레퍼런스만 저장하는 방법도 있음
+        * BinaryField에 파일을 직접 저장하는건 피하자.
+        * 데이터베이스 필드에 파일 직접 저장하는건 피하자 <- `?`
+        * DB의 읽기/쓰기 속도는 항상 파일 시스템보다 느림.
+        * DB백업에 드는 공간과 시간이 점점 증가
+        * 파일 자체에 접근하는 데 앱(장고)레이어와 데이터베이스 레이어 둘 다를 거쳐야 한다.
+- 범용 관계(generic relations) 피하기
+    + generic relations와 models.field.GenericForiegnKey이용에 부정적.
+    + Generic Relations: 한 테이블로부터 다른 테이블을 서로 제작 조건이 없는 외부 키(GenericForiegnKey)로 바인딩.
+    + 시간이 흐르며 favorite, ratings...앱을 ForiegnKey와 M2M필드 이용 안해도 구현 <-`?`
+
+### 모델의 _meta API
+- 언제 필요하나 <-`?`
+    + 모델 필드의 리스트를 가져올 때
+    + 모델 특정 필드 클래스 가져올 때(또는 상속 관계나 상속 등을 통해 생성된 정보 가져올 때)
+    + 앞으로 장고 버전들에서 이러한 정보를 어떻게 가져오게 되었는지 확실하게 상수로 남기기를 원할 때
+    + 장고 모델의 자체 검사 도구
+    + 라이브러리 이용해서 특별하게 커스터마이징 된 자신만의 장고 만들 때
+    + 장고 모델 데이터 조정하거나 변경할 수 있는 일종의 관리 도구를 제작할 때
+    + 시각화 또는 분석 라이브러리 제작할 때(e.g. 'foo'라는 단어로 시작하는 필드에 대한 분석 정보)
+
+### 모델 매니저
+- 모델에 질의 하면 장고 ORM통하게 되는데 이 때 `모델 매니저`라는 DB와 연동하는 인터페이스를 호출하게 된다.
+- 기본적으로 제공하며, 스스로 제작할 수도 있다.
+```python
+class PublishedManage(models.Manager):
+    
+    use_for_related_fields = True
+
+    def published(self, **kwargs):
+    return self.filter(pub_date__lte==timezone.now(), **kwargs)
+
+class FlavorReview(models.Model):
+    review = models.CharField(max_length=255)
+    pub_date = models.DateTimeField()
+
+    # 커스텀 모델 매니저는 여기에 추가. 이렇게 해서 오버라이드하는게 명확
+    objects = PublishedManager()
+```
+
+```python
+FlavorReview.objects.count()
+FlavorReview.objects.published().count() #이렇게 사용
+```
+
+### 거대 모델(fat model) 이해하기
+거대 모델 개념: 데이터 관련 코드를 뷰나 템플릿에 넣기보단 모델 메서드, 클래스 메서드, 프로퍼티 혹은 매니저 메서드 안에 넣어서 캡슐화.
+
+- 메서드 예
+    + `Review.create_view(clas, user, rating, title, description)`: 리뷰를 생성하는 클래스 메서드. HTML과 REST 뷰에서 호출되는 모델 클래스, 스프레드시트를 처리하는 임포트 도구에서 호출
+    + `review.product_average`: 리뷰된 프로젝트의 평균 점수를 반환하는 리뷰 인스턴스 속성. 
+    + `review.found_useful(self, user, yes)`: 해당 리뷰가 유용했는지 아닌지 사용자가 기록할 수 있는 메서드.
+
+코드 재사용을 개선할 수 있는 최고의 방법. 대신 너무 커지면 이해하기 어렵고 유지보수하기도 어렵다. 
+
+- Mixin
+    + 모델 행동은 믹스인을 통한 캡슐화와 구성화의 개념으로 이루어짐.
+    + 모델은 추상화 모델로부터 로직들을 상속받음
+- stateless한 Helper함수
+    + 모델로부터 로직 떼어내 유틸리티 함수로 넣음. 독립적으로 구성하면 로직에 대한 테스트가 좀 더 쉬워짐.
+    + 단점은 해당 함수들이 stateless해서 함수에 더 많은 인자를 필요로 하게 함
+- 모델 행동과 헬퍼 함수
+
+___
+
+## 7. 쿼리와 데이터베이스 레이어
+- 단일 객체에서 get_object_or_404() 이용하기
+    + 단일 객체를 가져와서 작업을 하는 세부 페이지 같은 뷰에서는 get()대신에 get_object_or_404()를 이용해라.
+    + 뷰에서만 이용해야 한다. 아니면 특정 데이터 지웠을때 모두 망가지는 경우가 있음.
+- 예외를 일으킬 수 있는 쿼리를 주의하자
+    + ObjectDoesNotExist(어떤 모델 객체에도 이용 가능), DoesnotExist(특정 모델에만 이용 가능)
+    + MultipleObjectsReturned: 쿼리가 하나 이상 객체 반환되었을 예외경우
+- 쿼리를 명확하게 하기 위해 지연 연산 이용
+    + filter 등으로 여러 줄 된 쿼리는 분리해서 적어준다. 데이터가 정말로 필요하기 전까지는 SQL 호출하지 않기 때문.
+- 고급 쿼리 도구 이용
+    + `Customer.objects.filter(scopps_ordered__gt=F('store_visits))`
+- 데이터베이스 함수들
+    + 
+
+
