@@ -520,6 +520,175 @@ ___
 - 고급 쿼리 도구 이용
     + `Customer.objects.filter(scopps_ordered__gt=F('store_visits))`
 - 데이터베이스 함수들
-    + 
 
+**WIP**
 
+___
+
+## 8. 함수 기반 뷰와 클래스 기반 뷰
+### URL 네임스페이스 이용하기
+`tasting_detail` 대신 `tastings:detail`과 같이 명확한 이름 사용하기
+```python
+# urls.py
+urlpatterns += [
+    url(r'^tastings/', include('tasting.urls', namespace='tastings')),
+]
+
+# tastings/views.py
+class TasteUpdateView(UpdateView):
+    model = Tasting
+
+    def get_success_url(self):
+        return reverse("tastings:detail", kwargs={"pk": self.object.pk})
+
+# HTML 템플릿
+{% url "tastings:detail" taste.pk %}
+```
+
+### urlconf에서 view를 문자열로 지목하지 말자
+```python
+urlpatterns = patterns('', 
+    url(r'^$', 'polls.views.index', name='index'), # 이렇게 말고
+    url(r'^$', views.index, name='index'), # 이렇게 써라
+)
+```
+
+___
+
+## 9. 함수 기반 뷰의 모범적 이용
+### 함수 기반 뷰로 코드 작성할 때의 가이드라인
+- 뷰 코드는 작을수록 좋다
+- 뷰에서 절대 코드를 반복해서 사용하지 말자
+- 뷰는 프레젠테이션 로직을 처리해야 한다. 비즈니스 로직은 가능한 한 모델 로직에 적용시키고 만약 해야 한다면 폼 안에 내재
+- 뷰를 가능한 한 단순하게 유지
+- 403, 404, 500을 처리하는 커스텀 코드를 쓰는 데 이용하라
+- 복잡하게 중첩된 if 블록 구문을 피하자
+
+### HTTPRequest객체 전달하기
+미들웨어나 context processors같은 글로벌 액션에 연동되어 있지 않은 경우 재사용에 문제 생김.
+프로젝트 전체를 아우르는 유틸리티 함수 만드는 것을 추천
+```python
+# sprinkles/utils.py
+from django.core.exceptions import PermissionDenied
+
+# 사용자의 권한을 체크하고 없으면 HTTP 403을 사용자에게 반환
+def check_sprinkle_rights(request):
+    if request.user.can_sprinkle or request.user.is_staff:
+        request.can_sprinkle = True
+        return request
+
+    raise PermissionDenied 
+
+# sprinkles/views.py
+def sprinkle_list(request):
+    request = check_sprinkles(request)
+
+    return render(request, 
+        "sprinkles/sprinkle_list.html",
+        {"sprinkles": Sprinkle.objects.all()}
+        )
+
+# template
+{% if request.user.can_sprinkle or request.user.is_staff } # 이거 대신
+{% if request.can_sprinkle } # 요렇게 쓸 수 있다.
+```
+
+### 데코레이터
+꼭 필요한 것이 아닌, 코드를 더 간결하게 해주는 것.
+
+```python
+# sprinkles/decorators.py
+from functools import wraps
+
+from . import utils
+
+def check_sprinkles(view_func):
+    @wraps(view_func)
+    def new_view_func(request, *args, **kwargs):
+        request = util.can_sprinkle(request) # request객체를 utils.can_sprinkle()에 넣는다
+        response = view_func(request, *args, **kwargs) # 뷰 함수 호출
+        return response
+    return new_view_func
+
+# views.py
+from .decorators import check_sprinkles
+
+@check_sprinkles
+def sprinkle_detail(request, pk):
+    sprinkle = get_object_or_404(Sprinkle, pk=pk)
+
+    return render(request, 
+        "sprinkles/sprinkle_detail.html",
+        {"sprinkle": sprinkle}
+        )
+```
+데코레이터 남용하지 않아야 한다.
+
+___
+
+## 10. 클래스 기반 뷰의 모범적 이용
+함수 기반 뷰에서는 뷰 함수 자체가 내장 함수이고,
+클래스 이반 뷰에서는 뷰 클래스가 내장 함수를 반환하는 as_view() 클래스 메서드를 제공한다.
+django.views.generic.View에서 해당 메커니즘 구현. 모든 클래스 뷰는 이걸 상속받아서 이용.
+
+### 클래스 기반 뷰 이용할 때 가이드라인
+- 뷰 코드 양은 적을수록 좋다
+- 뷰 안에서 DRY
+- 뷰는 프레젠테이션 로직에서 관리. 비즈니스 로직은 모델에서. 매우 특별한 경우에는 폼에서 처리
+- 뷰는 간단 명료해야 한다
+- 403, 404, 500에러 핸들링에 CBV는 이용X. 대신 FBV이용.
+- 믹스인은 간단 명료해야 한다.
+
+### CBV와 믹스인 이용하기
+믹스인: 실체화된 클래스가 아니라 상속해 줄 기능들을 제공하는 클래스 의미. (실체화(instatiation)되기 전 단계)
+
+```python
+class FreshFruitMixin(object):
+    def get_context_data(self, **kwargs):
+        context = super(FreshFruitMixin, self).get_context_data(**kwargs)
+        context["has_fresh_fruit"] = True
+        return context
+
+class FruityFlavorView(FreshFruitMixin, TemplateView):
+    template_name = "fruity_flavor.html"
+```
+`TemplateView`가 장고 제공하는 기본 클래스이기 때문에 가장 오른쪽.
+- 장고 제공 기본 뷰는 오른쪽에 놓는다
+- 믹스인은 왼쪽에 놓는다
+- 믹스인은 파이썬의 기본 객체 타입을 상속해야 한다
+
+### 장고 CBV 종류
+- View: 기본 뷰
+- RedirectView: 다른 URL로 리다이렉트
+- TemplateView: 장고 HTML 템플릿 보여줄 때
+- ListView: 객체 목록
+- DetailView: 객체 보여줌
+- FormView: 폼 전송
+- CreateView: 객체를 만들 때
+- UpdateView: 객체 업데이트
+- DeleteView: 객체 삭제
+- generic date view: 시간 순으로 객체 나열해 보여줄 때. 블로그에서 일반적으로 이용
+
+### 인증된 사용자에게만 접근 가능하게 하기
+`django-braces`가 제공하는 `LoginRequiredMixin`
+
+```python
+# flavors/views.py
+from braces.views import LoginRequiredMixin
+
+class FlavorDetailView(LoginRequiredMixin, DetailView):
+    솰라라라
+```
+
+### 뷰에서 유효한 폼을 이용해 커스텀 액션 구현
+```python
+class FlavorCreateView(LoginRequiredMixin, CreateView):
+    model = Flavor
+    fields ('title', 'slug', 'scoops_reaining')
+
+    def form_valid(self, form):
+        # 이미 체크된 폼에 대해 커스텀 로직 적용. 원하는 일 한다
+        return super(FlavorCreateView, self).form_valid(form)
+
+    def form_invalid(self, form):
+        return super(FlavorCreateView, self).form_invalid(form)
