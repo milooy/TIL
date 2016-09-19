@@ -533,6 +533,11 @@ def post_edit(request, pk): #url에서 pk를 받아서 처리
 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
 ```
 
+## migration 꼬였을 때 앱의 처음부터 다시 돌리기
+```shell
+manage.py migrate --fake yourapp zero
+```
+refer: http://stackoverflow.com/questions/12364157/south-how-to-force-certain-migration
 
 ## Refer
 [간단한 블로그를 Django 이해하기](http://www.slideshare.net/perhapsspy/django-44664022?qid=7a619eb7-d359-4f72-83ac-1eddfbf23123&v=qf1&b=&from_search=1)
