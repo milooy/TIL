@@ -10,7 +10,7 @@
 아직 shell에 익숙하지 않은 것도 있고, 다른 개발자와 json으로 공유하는게 한 눈에 보기 편할 것 같아서다.
 
 ## 비밀 값 코드에서 분리시키기
-`secret.json`이란 비밀 값들을 저장하는 파일을 만든다. 나는 장고 `SECRET_KEY`와 facebook OAuth 키 값들을 넣었다. 이 파일은 코드 저장소에 저장되면 안되게에, `.gitignore`에 추가해준다.
+`secret.json`이란 비밀 값들을 저장하는 파일을 만든다. 나는 장고 `SECRET_KEY`와 facebook OAuth 키 값들을 넣었다. 이 파일은 코드 저장소에 저장되면 안되기에, `.gitignore`에 추가해준다.
 ```json
 {
   "SECRET_KEY": "m-4#rp68ffwi어쩌구",
