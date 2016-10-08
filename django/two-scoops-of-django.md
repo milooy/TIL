@@ -6,7 +6,7 @@
         * 뷰와 템플릿을 제외한 다른 부분에 더 많은 로직 넣는 것을 추천.
     + [12팩터 앱](https://12factor.net/ko/): 웹 기반 애플리케이션 디자인의 통합 전략.
         * 확장 가능하고 배포 가능한 앱을 만드는 방법론
-        * 코드베이스 
+        * 코드베이스
             * 버전 관리되는 하나의 코드베이스, 다양한 배포
             * 코드베이스는 하나여야 하지만, 배포는 여러개여야 한다.
             * 배포: 앱의 실행중인 인스턴스(store-test, store, 그들 사이에도 3개 인스턴스. 아마존 ec2)
@@ -115,7 +115,7 @@ patterns = [
     + http://javascript.crockford.com/code.html
 - JSCS
     + 자바스크립트 코드 스타일 린터
-    + http://jscs.info/ 
+    + http://jscs.info/
 - HTML, CSS 스타일 가이드
     + http://codeguide.co/
     + https://github.com/necolas/idiomatic-css
@@ -162,12 +162,12 @@ ___
     + 서드 파티 장고 패키지: 파이썬 패키지 도구들에 의해 패키지화된, 재사용 가능한 플러그인 형태로 이용 가능한 장고 앱.
 - 비공통 앱 모듈
     + behaviors.py: 모델 믹스인 위치에 대한 옵션
-    + constants.py: 앱 레벨에서 이용되는 세팅을 저장하는 장소. 
+    + constants.py: 앱 레벨에서 이용되는 세팅을 저장하는 장소.
     + context_processors.py
     + decorators.py
     + db/ : 여러 프로젝트에서 이용되는 커스텀 모델이나 컴포넌트
     + exceptions
-    + fields.py: 폼 필드 이용에 쓰임. 
+    + fields.py: 폼 필드 이용에 쓰임.
     + factories.py: 테스트 데이터 팩터리 파일
     + helpers.py: 헬퍼 함수. 뷰랑 모델에서 추출한 코드를 저장. utils.py랑 비슷.
     + managers.py: models.py가 너무 커질 경우, 일반적인 해결책으로 커스텀 모델 매니저가 여기로 이동.
@@ -197,21 +197,21 @@ ___
 - 여러 팀원이 서로의 local_settings.py를 복사해서 여기저기 붙여 쓴다.
 
 ### 여러 개의 settings 파일 이용하기
-하나의 파일보단 `settings/` 디렉터리 아래에 여러 개의 셋업 파일을 구성하여 이용. 
+하나의 파일보단 `settings/` 디렉터리 아래에 여러 개의 셋업 파일을 구성하여 이용.
 (각 세팅 모듈은 그에 해당하는 독립적인 requirements파일을 필요)
 ```shell
 settings/
     __init__.py
     base.py # 공용 세팅 파일
     local.py # 로컬 환경에서 작업할 때 쓰이는 파일. django-debug-toolbar같은 도구 활성화
-    staging.py # 스테이징 서버. store-test.pinkfong.com같은거. 
+    staging.py # 스테이징 서버. store-test.pinkfong.com같은거.
     test.py # 테스트 러너, 인메모리 데이터베이스 정의, 로그 세팅을 포함
     production.py # 운영 서버에서 실제로 운영되는 세팅 파일
 ```
 
 이는 다음과 같이 실행시킨다.
 ```shell
-# settings/local.py세팅 파일로 셸 시작 
+# settings/local.py세팅 파일로 셸 시작
 python manage.py shell --settings=twoscoops.settings.local
 
 # settings/local.py세팅 파일로 서버 구동
@@ -387,10 +387,10 @@ class TimeStampedModel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
-    class Meta: 
+    class Meta:
         abstract = True
 ```
-아래 `class Meta`를 달면 추상화 기초 클래스로 변경해준다. 
+아래 `class Meta`를 달면 추상화 기초 클래스로 변경해준다.
 그럼 마이그레이션 실행할 때 이 테이블이 생성되지 않는다.
 
 ### 데이터베이스 마이그레이션
@@ -425,7 +425,7 @@ class TimeStampedModel(models.Model):
         * `blank=True`: 위젯에서 해당 값이 빈 값을 받아와도 문제가 없다면 이용. null=True랑 같이 이용.
     + DateTimeField, DateField, TimeField 등
         * `null=True`: 해당 값이 DB에 NULL로 들어가도 문제 없다면 이용
-        * `blank=True`: 위젯에서 해당 값이 빈 값 받아와도 문제없다거나 auto_now나 auto_now_add를 이용하고 있다면 이용한다. 
+        * `blank=True`: 위젯에서 해당 값이 빈 값 받아와도 문제없다거나 auto_now나 auto_now_add를 이용하고 있다면 이용한다.
     + ForeignKey, ManyToManyField, OneToOneField
         * `null=True`: 해당 값이 DB에 NULL로 들어가도 문제 없다면 이용
         * `blank=True`: 위젯에서 해당 값이 빈 값 받아와도(e.g. 셀렉트박스) 문제없다면 괜춘 <-`?`
@@ -436,7 +436,7 @@ class TimeStampedModel(models.Model):
         * `null=True`: 사용 x
         * `blank=True`: 사용 x
 - 언제 BinaryField를 이용할 것인가
-    + raw binary data 또는 byte를 저장하는 필드. 
+    + raw binary data 또는 byte를 저장하는 필드.
     + filter, exclude, 등 SQL액션들이 적용되지 않는다.
     + 사용 예
         * 메시지팩 형태의 콘텐츠 <-`?`
@@ -454,7 +454,7 @@ class TimeStampedModel(models.Model):
     + Generic Relations: 한 테이블로부터 다른 테이블을 서로 제작 조건이 없는 외부 키(GenericForiegnKey)로 바인딩.
     + 시간이 흐르며 favorite, ratings...앱을 ForiegnKey와 M2M필드 이용 안해도 구현 <-`?`
 
-### 모델의 _meta API
+### 모델의 `_meta API`
 - 언제 필요하나 <-`?`
     + 모델 필드의 리스트를 가져올 때
     + 모델 특정 필드 클래스 가져올 때(또는 상속 관계나 상속 등을 통해 생성된 정보 가져올 때)
@@ -469,7 +469,7 @@ class TimeStampedModel(models.Model):
 - 기본적으로 제공하며, 스스로 제작할 수도 있다.
 ```python
 class PublishedManage(models.Manager):
-    
+
     use_for_related_fields = True
 
     def published(self, **kwargs):
@@ -493,10 +493,10 @@ FlavorReview.objects.published().count() #이렇게 사용
 
 - 메서드 예
     + `Review.create_view(clas, user, rating, title, description)`: 리뷰를 생성하는 클래스 메서드. HTML과 REST 뷰에서 호출되는 모델 클래스, 스프레드시트를 처리하는 임포트 도구에서 호출
-    + `review.product_average`: 리뷰된 프로젝트의 평균 점수를 반환하는 리뷰 인스턴스 속성. 
+    + `review.product_average`: 리뷰된 프로젝트의 평균 점수를 반환하는 리뷰 인스턴스 속성.
     + `review.found_useful(self, user, yes)`: 해당 리뷰가 유용했는지 아닌지 사용자가 기록할 수 있는 메서드.
 
-코드 재사용을 개선할 수 있는 최고의 방법. 대신 너무 커지면 이해하기 어렵고 유지보수하기도 어렵다. 
+코드 재사용을 개선할 수 있는 최고의 방법. 대신 너무 커지면 이해하기 어렵고 유지보수하기도 어렵다.
 
 - Mixin
     + 모델 행동은 믹스인을 통한 캡슐화와 구성화의 개념으로 이루어짐.
@@ -547,7 +547,7 @@ class TasteUpdateView(UpdateView):
 
 ### urlconf에서 view를 문자열로 지목하지 말자
 ```python
-urlpatterns = patterns('', 
+urlpatterns = patterns('',
     url(r'^$', 'polls.views.index', name='index'), # 이렇게 말고
     url(r'^$', views.index, name='index'), # 이렇게 써라
 )
@@ -577,13 +577,13 @@ def check_sprinkle_rights(request):
         request.can_sprinkle = True
         return request
 
-    raise PermissionDenied 
+    raise PermissionDenied
 
 # sprinkles/views.py
 def sprinkle_list(request):
     request = check_sprinkles(request)
 
-    return render(request, 
+    return render(request,
         "sprinkles/sprinkle_list.html",
         {"sprinkles": Sprinkle.objects.all()}
         )
@@ -617,7 +617,7 @@ from .decorators import check_sprinkles
 def sprinkle_detail(request, pk):
     sprinkle = get_object_or_404(Sprinkle, pk=pk)
 
-    return render(request, 
+    return render(request,
         "sprinkles/sprinkle_detail.html",
         {"sprinkle": sprinkle}
         )
@@ -679,6 +679,7 @@ from braces.views import LoginRequiredMixin
 class FlavorDetailView(LoginRequiredMixin, DetailView):
     솰라라라
 ```
+질문: @login_required대신 이 믹스인을 쓰는 이유
 
 ### 뷰에서 유효한 폼을 이용해 커스텀 액션 구현
 ```python
@@ -692,3 +693,76 @@ class FlavorCreateView(LoginRequiredMixin, CreateView):
 
     def form_invalid(self, form):
         return super(FlavorCreateView, self).form_invalid(form)
+```
+
+### 뷰 객체 이용하기
+자체적 메서드/속성 제공하는 뷰 객체로 다른 메서드/속성에서 호출이 가능하게 하는 방법 쓸 수 있다.
+이 뷰 객체들은 템플릿에서도 호출 가능
+```python
+from .tasks import update_users_who_favorited
+
+class FavoriteMixin(object):
+    @cached_property
+    def likes_and_favorites(self):
+        likes = self.object.likes()
+        favorites = self.object.favorites()
+        return {
+            "likes": likes,
+            "favorites": favorites,
+            "favorites_count": favorites.count()
+        } # likes와 favorites의 딕셔너리를 반환
+
+
+class FlavorUpdateView(LooginRequireMixin, FavoriteMixin, UpdateView):
+    model = Flavor
+    fields = ('title', 'slug', 'scoops_remaining')
+
+    def form_valid(self, form):
+        update_users_who_favorited(
+            instance=self.object,
+            favorites=self.likes_and_favorites['favorites']
+            )
+        return super('FlavorCreateView', self).form_valid(form)
+```
+
+```
+<li>likes: {{view.likes_and_favorites.likes}}</li>
+<li>Favorites: {{view.likes_and_favorites.favorites_count}}</li>
+```
+
+질문: 어떻게 쓰는지 헷갈린다. context넘기는거랑 어떻게 다른지
+
+### 제네릭 클래스 기반 뷰와 폼 사용하기
+```python
+from django.contrib import messages
+
+class FlavorActionMixin(object):
+    fields = ('title', 'slug', 'scoops_remaining')
+
+    @property
+    def success_msg(self):
+        return NotImplemented
+
+    def form_valid(self, form);
+        messages.info(self.request, self.success_msg)
+        return super(FlavorActionMixin, self).form_valid(form)
+
+class FlavorCreateView(LoginRequiredMixin, FlavorActionMixin, CreateView):
+    model = Flavor
+    success_msg = "Flavor 만들어짐"
+
+class FlavorUpdateView(LoginRequiredMixin, FlavorActionMixin, UpdateView):
+    model = Flavor
+    success_msg = "Flavor 업데이트됨"
+
+class FlavorDetailView(DetailView):
+    model = Flavor
+```
+
+---
+
+## 11. 장고 폼의 기초
+
+장고 폼에 대해 기억해야 할 가장 중요한 점은 어떠한 데이터든 간에 입력 데이터라고 한다면 장고 폼을 이용하여 유효성 검사를 해야 한다는 것이다.
+
+### 장고 폼으로 모든 입력 데이터 유효성 검사
