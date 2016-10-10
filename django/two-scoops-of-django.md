@@ -766,3 +766,34 @@ class FlavorDetailView(DetailView):
 장고 폼에 대해 기억해야 할 가장 중요한 점은 어떠한 데이터든 간에 입력 데이터라고 한다면 장고 폼을 이용하여 유효성 검사를 해야 한다는 것이다.
 
 ### 장고 폼으로 모든 입력 데이터 유효성 검사
+장고 폼은 파이썬 딕셔너리 유효성 검사시 최상 도구.
+다른 프로젝트로부터 CSV파일 받아 모델에 업데이트하는 장고 앱
+
+```python
+def add_csv_purchases(rows):
+    rows = StringIO.StringIO(rows)
+    records_added = 0
+
+    for row in csv.DictReader(rows, delimiter='.'):
+        # 절대 따라하지 말것. 유효성 검사 없이 바로 모델로 데이터 입력
+        purchase.objects.create(**row)
+        records_added += 1
+    return records_added
+```
+
+```python
+class PurchaseForm(forms.ModelForm):
+    class Meta:
+        model = Purchase
+
+    def clean_seller(self):
+        seller = self.cleaned_data['seller']
+        try:
+            Seller.objects.get(name=seller)
+        except Seller.DoesNotExist:
+            msg = "{0}은 purchase #{1}에 없습니다".format(
+                seller,
+                self.cleaned_data['purchase_number']
+                )
+            raise forms.ValidationError(msg)
+        return seller
