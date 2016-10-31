@@ -1,4 +1,16 @@
 # Two scoops of django
+
+## 김승진님 역자 만남
+- FANCY 개발자는 15명
+- 쿼리최적화랑 캐시만 잘해도 반은 먹고간다
+- 국제화&현지화=> 프로젝트 시작할때 해야한다
+- 질문
+    - 서버 업데이트 시간
+    - 인기순 정렬 // 실시간이라는건 존재하지 않아요(?)
+        + 캐시로 해라. 유연하게 생각.
+    - FANCY 디지털 노마드 근무시간: 5~6시 퇴근
+    - 소통 방법
+
 ## Intro
 - 핵심 개념
     + Keep It Simple, Stupid
@@ -202,11 +214,7 @@ ___
 ```shell
 settings/
     __init__.py
-    base.py # 공용 세팅 파일
-    local.py # 로컬 환경에서 작업할 때 쓰이는 파일. django-debug-toolbar같은 도구 활성화
-    staging.py # 스테이징 서버. store-test.pinkfong.com같은거.
-    test.py # 테스트 러너, 인메모리 데이터베이스 정의, 로그 세팅을 포함
-    production.py # 운영 서버에서 실제로 운영되는 세팅 파일
+ ㅉ # 운영 서버에서 실제로 운영되는 세팅 파일
 ```
 
 이는 다음과 같이 실행시킨다.
@@ -797,3 +805,123 @@ class PurchaseForm(forms.ModelForm):
                 )
             raise forms.ValidationError(msg)
         return seller
+```
+
+### 장고의 폼 인스턴스 속성 추가하기
+```python
+class TasterUpdateView(UpdateView):
+    model = Taster
+    form_class = TasterForm
+
+    def get_form_kwargs(self):
+        # 키워드 인자로 폼 추가하기
+        kwargs = super(TasterUpdateView, self).get_form_kwargs()
+        kwargs['user'] self.request.user
+        return kwargs
+```
+
+```python
+class TasterForm(forms.ModelForm):
+    class Meta:
+        model = Taster
+
+    def __init__(self, *args, **kwargs):
+        self.user kwargs.pop('user')
+        super(TasterForm, self).__init__(*args, **kwargs)
+```
+이렇게 주입하는거 꽤 빈번하게 이루어짐.
+
+### 폼이 유효성을 검사하는 방법
+- 순서
+    + 폼이 데이터 받음 -> `form.is_valid()`가 `form.full_clean()`메서드 호출
+    + 
+
+
+---
+
+## 16. REST API 구현하기
+REST API: 다양한 환경과 용도에 맞는 데이터를 제공하는 디자인을 정의
+- django-rest-framework: 장고 기본 CBV를 바탕으로 브라우징 가능한 편리한 API 등을 제공. 가장 많이 쓰임
+- django-tastypie
+- django-braces(클래스 기반 뷰), django-jsonview(함수 기반 뷰): 단순하고 빠름
+
+(질문) GET, POST말고 써본적 있나
+- 용도
+    + 읽기전용만: GET만 구현해도 됨
+    + 읽기/쓰기: POST도 구현. PUT과 DELETE도 고려
+    + 단순화하기 위해 때떄로 GET, POST만으로도 구현
+    + GET, PUT, DELETE는 여러 번 실행해도 그 결과가 변하지 않는 멱등(item-potent)관계이며 POST와 PATCH는 그러지 않다 (<-질문)
+- HTTP 상태 코드
+    + 200 OK: [GET]리소스 반환, [PUT]상태 메시지 제공/리소스 반환
+    + 201 Created: [POST]상태 메세지/새로 생성 리소스 반환
+    + 204 No Content: [DELETE] 성공적으로 삭제된 요청의 응답
+    + 304 Unchanged: (Redirect). 이전 요청으로부터 아무런 변화 없음.
+    + 400 Bad Request: 에러 메세지 반환
+    + 401 Unauthorized: 인증 요청 했으나 사용자가 인증 요건 제공 ㄴㄴ
+    + 403 Forbidden: 사용자가 허용되지 않은 콘텐츠로 접근 시도
+    + 404 Not Found: 리소스 없음
+    + 405 Method Not Allowed: 허가되지 않은 HTTP 메서드로 시도
+    + 410 Gone: 더는 제공되지 않는 메서드로 호출. 새버전 API제공 위해 기존 API서비스 중지할 떄 이용. 모바일 앱에서 해당 결과에 대해 사용자에게 애플리케이션 업그레이드 요청하는 방법 쓰기도 한다.
+    + 429 Too many requests: 제한 시간 내에 너무 많은 요청을 보냄. 접속 제한을 이용할 때 쓰인다.
+
+### 간단한 JSON API 구현하기
+질문: Serializer가 모냐
+
+### REST API 아키텍쳐
+- 프로젝트 코드들은 간결히 정리되어있어야 한다
+    + API만 전담해서 처리하는 앱을 따로 구성하는게 적절하기도 함.
+    + 이 앱의 이름에 해당 API버전을 포함시켜야 한다. e.g. apiv4
+    + 단점: 해당 API앱이 너무 커지거나 각 api를 지원하는 개별 앱으로부터 해당 API앱이 단절될 수도 있다는 점.
+- 앱의 코드는 앱 안에 두자
+    + REST API는 단순한 뷰의 모음.
+    + 단점: 작게 나뉜 상호 연관되는 앱이 너무 많이 존재.
+- 비지니스 로직을 API뷰에서 분리
+    + 모델 메서드, 매니저 메서드 등에 분리
+- API Url을 모아두기
+    + 루트 urls.py에 `url(r"^api/", include("core.api", namespace="api")),`으로 추가.
+- API 테스트하기
+- API 버저닝하기
+    + API의 URL에 버전 정보를 나타내는 것은 매우 유용하다. e.g. /api/v1/users
+
+### 서비스 지향 아키텍처
+SOA관점에서 웹 애플리케이션은 독립적이고 분리된 컴포넌트로 구성된다.
+각 컴포넌트는 독립된 서버 혹은 클러스터에서 구동. 이러한 컴포넌트 사이 커뮤니케이션에 REST API사용.
+
+### 외부 API 중단하기
+- 사용자들에게 예고
+- 401 에러 뷰로 API 교체
+    + 새 API 엔드포인트 링크
+    + 새 API 문서의 링크
+    + 서비스 중지에 대한 세부 사항을 알려주는 문서로의 링크
+
+### REST 프레임워크들에 대한 평가
+- django-rest-framework가 현실적인 표준으로 자리 잡고 있다
+- 보일러플레이트를 얼마나 쓸 것인가? (요즘은 최소화하는 방향으로 변하고 있음)
+- RPC구현이 쉬운가? 특정 메서드를 클라이언트 측에 RESTful API로 제공. e.g. `icecream.pour_syrup(syrup)`
+
+### API에 접속 제한하기
+- 제한 없는 API 접속은 위험하다
+
+---
+
+## 17. REST API 이용하기
+- 검색 엔진이 컨텐츠를 인덱스 할 수 있게 만들기
+    + Ajax 기반 콘텐츠를 검색 가능하도록 하게
+    + 직접 sitemap.xml 제작하기
+    + 유료로 제공되는 brombone.com
+- 실시간 서비스가 왜 어려운가(지연 Latency 문제)
+    + 애니메이션을 이용해 지연 숨기기
+    + 전송 성공을 위조하기 (?)
+    + 지리적 위치에 기반을 둔 서버들
+    + 지역적으로 이용자 제한하기
+- 안티 패턴 피하기
+    + 여러 페이지로 구성된 앱이 필요한 경우인데도 단일 페이지 앱으로만 구성
+        * 기존의 전통적인 CMS사이트까지 이러한 구성을 정말 필요로 할까?
+    + 테스트를 하지 않는 경우
+    + 자바스크립트의 메모리 관리를 이해하지 않는 실수
+        * 브라우저간의 객체들이 긴 시간동안 존재하다가 느려지고 충돌될 수 있음
+    + jQuery가 아닐 때 DOM에 데이터 저장
+- AJAX와 CSRF 토큰
+    + jQuery: csrf.js를 생성해서 템플릿에 추가해줌
+    + Angular: HTTP 헤더에 토큰 넣기
+
