@@ -10,5 +10,20 @@ html,body{
 }
 ```
 
+하지만 치명적인 단점은 스크롤 이벤트를 더 이상 사용하지 못한다는 거...
+```js
+$('html, body').animate({
+            scrollTop: $($('.review-list .review')[0]).offset().top - 64
+        }, 500);
+```
+요런 것들이 모두 안 됨.
+iOS 웹앱에서 상단 시계 클릭시 최상단으로 가는 기능도 다 막힘.
+
+그래서 결국 뺌.
+
+걍 밑에 select fixed는 input말고 div로 우회하는 걸로...
+Naver 웹 브라우저같은 경우는 
+상단 fixed 검색 창 누르면 전체 페이지에 overlay를 덮으면서 후루룩이 덜 보여지도록 한다(그래도 후루룩 하긴 함)
+
 ## Refer
 http://stackoverflow.com/questions/29001977/safari-in-ios8-is-scrolling-screen-when-fixed-elements-get-focus
