@@ -16,10 +16,65 @@
 - animation-timing-function: 중간 상태들의 전환을 어떤 시간간격으로 진행할지 지정.
 - animation-fill-mode: 애니메이션이 시작되기 전이나 끝나고 난 후 어떤 값이 적용될지 지정.
 
-## 키프레임
+## Keyframe Animations
 - CSS스타일을 이용해 중간 상태에 어떻게 보일지 정의했다면
     + 이 중간 상태가 전체 애니메이션에서 언제 등장할지 `percentage`로 지정함.
     + 0%~100% = from~to = 시작~끝 
+```css
+@keyframes swing {
+  0% {transform: rotate(0deg);} <!-- from 이라고 쓸 수 있음 -->
+  25% {transform: rotate(-10deg);}
+  50% {transform: rotate(0deg);}
+  75% {transform: rotate(10deg);}
+  100% {transform: rotate(-10deg);} <!-- to 라고 쓸 수 있음 -->
+}
+
+@keyframes swing2 {
+  0%, 50%, 100% {transform: rotate(0deg);} <!-- 이렇게 한 번에 쓸 수도 있다 -->
+  25% {transform: rotate(-10deg);}
+  75% {transform: rotate(10deg);}
+}
+
+.left-arm {
+  transform-origin: top center;
+  animation: swing 2s 0s infinite linear; <!-- 애니메이션이름, 지속시간, 딜레이, 반복, 타이밍 -->
+}
+.right-arm {
+  transform-origin: top center;
+  animation: swing 2s 1s infinite linear; <!-- 1초 딜레이 넣으면 반전되어서 팔이 움직임 -->
+}
+```
+
+### Advanced Keyframe Animations
+```css
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.modal-overlay.active {
+  animation: fadeIn .25s forwards; <!-- 뒤에 forwards는 fill-mode속성. 애니메이션의 final state를 마지막으로 기술해준 step으로 하는 것. -->
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(400px);
+  }
+  to {
+    transform: translateY(-300px);
+  }
+}
+.modal.active {
+  animation: slideUp .65s .2s cubic-bezier(0.17, 0.89, 0.32, 0.28) forwards;
+}
+
+
+```
 
 ## 예제1 - 텍스트가 브라우저 가로질러 움직이기
 (오래된 브라우저들은 -webkit이나 -moz 등 접두어 필요.)
@@ -87,10 +142,10 @@ div {
     background-color: red;
 }
 ```
-- 단축형: `{transition: 속성(property) 지속시간(duration) 타이밍(timing) 지연시간(delay) }
-    + property: transition효과를 적용할 속성들 나열
-    + duration: 지속시간. 1s는 1초
-    + timing: 변화의 시작과 끝 타이밍. 
+- 단축형: `transition: 속성(property) 지속시간(duration) 타이밍(timing) 지연시간(delay) `
+    + property: transition효과를 적용할 속성들 나열(기본: all)
+    + duration: 지속시간. 1s는 1초 (기본: 0)
+    + timing: 변화의 시작과 끝 타이밍.  (기본: ease)
         + ease: 느림~빠름~느림
         + linear: 등속
         + ease-in: 느림~등속
@@ -123,6 +178,34 @@ div {
 }
 ```
 
+## transitioning 애니메이션들
+### transitioning position
+```html
+<section>
+  <a class='btn buy-button'>
+    <span class="top content">사세요!</span>
+    <span class="bottom content">3만 9천원입니다</span>
+  </a>
+</section>
+```
+```css
+.btn { position: relative; }
+.content { 
+  position: absolute;
+  transition: top 0.3s;
+  overflow: hidden;
+}
+.top { top: 0; }
+.btn:hover .top { top: -100px; }
+.bottom { top: 100px; }
+.btn:hover .bottom { top: 0px; }
+
+```
+
+### transitioning visibility
+`opacity:0`(요소를 숨긴다. 요소는 여전히 동일한 w, h를 가진다.) + `visibility: hidden`(클릭 이벤트로부터 요소를 투명하게 한다) => Transition 가능
+하지만 `display: none`(DOM에서 요소를 지운다)은 Transition 불가능
+
 ## 2D Transform
 - CSS3에서 새로 생긴 명세.
 - 발동 조건: 정의된 속성이 곧바로 화면에 적용되어 나타남. 
@@ -152,6 +235,31 @@ div {
 - transform-origin: 50% 50%
     + 객체의 기준점 정의.
 
+### Transforming Rotate
+```css
+.modal-close {
+  transition: transform 4s;
+}
+.modal-close:hover {
+  transform: rotate(360deg); # rotate(1turn)과 동일
+}
+```
+
+### Transforming Scale and translate
+- transform: scale(2) # 2배로 사이즈 키움
+- transform: scale(4, 2) # 가로로 4배, 세로로 2배로 사이즈 키움
+- transform: translateX(3px); # 오른쪽으로 3 이동
+- transform: translate(3px); # 오른쪽으로 3, 아래로 3 이동
+```css
+.modal-close {
+  transition: transform 0.3s;
+}
+.modal-close:hover {
+  transform: scale(0.8), translate(3px);
+  transform-origin: center left; # 이거 안하면 가운데 중심으로 작아짐.
+}
+```
+
 ## CSS 가상 선택자
 ```css
 a:link{color:blue}
@@ -180,3 +288,4 @@ http://beautifulcode.tistory.com/12
 [before after로 animation](https://cssanimation.rocks/pseudo-elements/)
 [creative list effects 만들기](http://sarasoueidan.com/blog/creative-list-effects/)
 [transition on DOM removal](http://stackoverflow.com/questions/7000648/css3-transition-on-dom-removal)
+[code school - adventures in web animations ]https://www.codeschool.com/courses/adventures-in-web-animations
