@@ -44,8 +44,12 @@ pyenv virtualenv 2.7.10 pinkfong-tv
 # 만든 이름으로 activate하기
 pyenv activate pinkfong-tv
 
-# install된 패키지들을 보여준다.
-pip freeze
+# install된 패키지들을 보여주거나 파일로 저장
+pip freeze 
+pip freeze > requirement.txt 
+
+# 새로운 환경에서 패키지들을 재설치
+pip install -r requirement.txt
 
 # django 설치하기
 pip install django
