@@ -1,6 +1,9 @@
 # Udemy React-Redux
 
-## 유투브 앱 만들기
+## 유투브 앱 만들기 (ch.1~ch.31)
+
+### 깨알 팁
+- package.json에 저장하며 install하려면 `npm install --save lodash`
 
 ### 깨알 ES2015
 
@@ -67,10 +70,12 @@ class App extends Component { // 리액트 Component를 상속받는 클래스 A
     });
   }
   render() {
+    const videoSearch = _.debounce((term) => {this.videoSearch(term)}, 300); // 300ms마다 호출
+
     // videos라는 props 넘기기
     return (
       <div>
-        <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
+        <SearchBar onSearchTermChange={videoSearch}/>
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList
           onVideoSelect={selectedVideo => this.setState({selectedVideo})}
@@ -231,3 +236,143 @@ export default VideoDetail;
 ---
 
 - app.js에서 props로 넘겨준 video를 받아 보여준다
+
+
+---
+
+## Redux (ch.39~42)
+Redux: function that returns peices of application state
+
+```js
+// application state - reducers가 만들어줌
+{
+  books: [{title: '책이름1'}, {title: '책이름2'}], // Books reducer와 소통
+  activeBook: {title: '책이름2'} // ActiveBook Reducer와 소통
+}
+```
+
+### reducers/index.js
+```js
+import { combineReducers } from 'redux';
+import BooksReducer from './reducer_books'
+
+const rootReducer = combineReducers({
+  books: BooksReducer
+});
+
+export default rootReducer;
+```
+- redux에서 `combineReducers`를 import
+  + 이를 이용해서 books에 BooksReducer를 넣는다
+  + 이를 `rootReducer`란 이름으로 export
+
+### reducers/reducer_books.js
+```js
+export default function() {
+  return [
+    {title: 'JS는 짱'},
+    {title: '해리포터'},
+    {title: '반지의 제왕'},
+    {title: '파이썬 배우자'},
+  ]
+}
+```
+책 데이터 오브젝트를 리턴.
+이는 index.js에서 books란 이름으로 combineReducers 된다
+
+### index.js
+---js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+
+import App from './components/app';
+import reducers from './reducers';
+
+const createStoreWithMiddleware = applyMiddleware()(createStore);
+
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <App />
+  </Provider>
+  , document.querySelector('.container'));
+---
+
+- React(react), ReactDOM(react-dom), Provider('react-redux'), createStore, applyMiddleware(redux)를 import한다
+- `createStoreWithMiddleware`란 이름으로 applymiddleware에 createStore를 넣는다
+- render
+  + `<Provider/>`
+    * store에 createStoreWithMiddleware(reducers)
+    * 안에 `<App />`을 넣는다
+   + `'.container'` 에 넣는다
+
+### components/app.js
+---js
+import React, { Component } from 'react';
+
+import BookList from '../containers/book-list'
+
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <BookList />
+      </div>
+    );
+  }
+}
+---
+- BookList를 div에 감싸서 반환
+
+### containers/book-list.js
+---js
+import React, { Component } from 'react'; // Component 대신 container쓴다. Redux에서 쓰는 react component임. React랑 redux랑 연결하려면 react-redux써야됨!
+import { connect } from 'react-redux'
+
+class BookList extends Component {
+  renderList() {
+    return this.props.books.map((book) => {
+      return (
+        <li key={book.title} className="list-group-item">{book.title}</li>
+      );
+    });
+  }
+  
+  render() {
+    return (
+      <ul className="list-group col-sm-4">
+      {this.renderList()}
+      </ul>
+    )
+  }
+}
+
+function mapStateToProps(state) {
+  // 리턴되는게 this.props가 됨
+  return {
+    books: state.books
+  };
+}
+
+export default connect(mapStateToProps)(BookList);
+---
+- redux에서 react component를 container라고 함.(?)
+- react랑 redux 연동하기 위해 `react-redux`를 import
+- BookList(컴포넌트)
+  + `render()`
+    * ul 안에 this.renderList()를 반환
+    * 이렇게 반환한 ul li들은 components/app.js에 들어감 (그 app.js는 index.js에 들어감)
+   + `renderList()` 
+     * this.props.books를 map해줌. 여기서 this.props.books는 react-redux의 connect함수(아래에 정의)에서 넣어준다.
+     * book-title을 보여주는 li
+- `mapStateToProps(state)`
+  + books에 state.books를 넣는다
+- mapStateToProps랑 BookList를 connect해서 export default한다
+
+### 나름대로 이해해보자
+- 즉, `index.js`에서 Provider store를 나의 reducer들로 쓴다고 말한다.
+- `reducer`에서는 books에 책 리스트 데이터들을 담아서 넘겨주었다
+- 메인으로 보여줄 `app.js`에서는 책 리스트를 li 리스트로 보여줄건데
+  + 여기선 `react-redux`를 사용해서 books란 변수에 reducer에서 이미 정해둔 books 데이터를 넣어주었다. 그래서 this.props.books하면 redux에서 넘겨준 books데이터가 나온다.
+
