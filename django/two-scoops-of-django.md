@@ -1046,3 +1046,32 @@ SOA관점에서 웹 애플리케이션은 독립적이고 분리된 컴포넌트
 
     + DO
     + 음 사실 뭔소린지 잘 모르겠다
+
+---
+
+## 29. 유틸리티들에 대해
+- core 앱 만들기
+    + 비추상화(non-abstract)모델 `<-차라리 abstract모델이 있어야 하는거 아닌가`
+    + 어드민 자동 발견(admin auto-discovery) 적용
+    + 템플릿 태그와 필터 위치
+- utils.py 
+    + 여러 곳에서 공통으로 쓰이는 코드 저장
+    + 모델을 좀 더 간결하게 만들기 (utils.py, helpers.py)
+- 장고 내장 utils.py
+    + django.contrib.humanize
+        * intcomma, 텍스트 프로세싱
+    + django.utils.decorators.method_decorator(decorator)
+        * 함수 데코레이터
+        * ?
+    + django.utils.decorators.decorator_from_middleware(middleware)
+    + django.utils.encoding.force_text(value)
+        * 장고의 무엇이든지 파이선3의 일반 str형태, 또는 파이썬2의 unicode형태로 변환
+
+---
+
+## 30. 배포: PaaS
+- Platform as a Service
+    + 절대 PaaS에 종속되지 않도록 하자. 호스팅 제공사에 따라 구조 변경이 생길 수 있는 아키텍쳐를 최대한 피하는데 좀 더 관심 두기
+- 종류
+    + heroku
+    + pythonanywhere
