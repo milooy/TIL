@@ -145,5 +145,13 @@ svg {
 </svg>
 ```
 
+## Illustrator export
+```
+File > 스크립트 > 문서를 svg로 저장
+```
+하면 열려 있는 모든 문서가 svg로 export된다
+
+
+
 ## Refer
 code school 강의 https://www.codeschool.com/courses/you-me-svg
