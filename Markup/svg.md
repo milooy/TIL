@@ -151,7 +151,52 @@ File > 스크립트 > 문서를 svg로 저장
 ```
 하면 열려 있는 모든 문서가 svg로 export된다
 
+## SVG 파일 용량 줄이기
+- 불필요한 코드 제거 (SVGO 사용)
+
+## SVG 삽입 방법
+1. Img
+자유롭게 조작하긴 힘듦
+```
+<img src="bblogo.svg" alt="Breaking Borders Logo" height="65" width="68">
+```
+
+2. Background-image
+사용하지 않는 편이 낫다.
+```
+.logo {
+  background-image: url(bblogo.svg);
+}
+```
+
+3. Iframe
+대부분 작업 구현 가능, 베스트는 아님.
+```
+<iframe src="bblogo.svg">Your browser does not support iframes</iframe>
+```
+
+4. Embed
+사용 권장 X
+```
+<embed type="image/svg+xml" src="bblogo.svg" />
+```
+
+5. Object
+inline SVG가 아닌 경우엔 제일 best
+```
+<object type="image/svg+xml" data="bblogo.svg">현재 브라우저는 iframe을 지원하지 않습니다.</object>
+```
+
+6. Inline
+HTTP요청은 저장되지만 이미지는 캐시 X. 조작이 제일 쉽지만 매번 넣기 불편
+```
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65">
+  <path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+  <path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+```
 
 
 ## Refer
 code school 강의 https://www.codeschool.com/courses/you-me-svg
+https://svgontheweb.com/ko/
