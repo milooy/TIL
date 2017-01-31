@@ -375,4 +375,47 @@ export default connect(mapStateToProps)(BookList);
 - `reducer`에서는 books에 책 리스트 데이터들을 담아서 넘겨주었다
 - 메인으로 보여줄 `app.js`에서는 책 리스트를 li 리스트로 보여줄건데
   + 여기선 `react-redux`를 사용해서 books란 변수에 reducer에서 이미 정해둔 books 데이터를 넣어주었다. 그래서 this.props.books하면 redux에서 넘겨준 books데이터가 나온다.
+- application의 state는 reduce function으로 만들어진다
 
+--- 
+
+## Weather 만들기
+
+![image](../img/udemy-react/1.png "image")
+
+### 나름대로 이해해보자
+- 나는 reducer들을 쓸것이다. 이는 `index.js`에 store로 저장해뒀다.
+- `containers/search_bar.js`
+  + constructor(props)
+    * state안에 들어있는 term을 초기화 해준다.
+    * onInputChange랑 onFormSubmit을 밑에서 쓰기 위해 this랑 바인딩 해준다
+  + Input 이 입력될때마다 `onInputChange`를 부른다. 여기선 term에 현재 쓰고있는 값을 저장해준다
+  + Input이 제출되면 `onFormSubmit`을 부른다. props에 있는 `fetchWeather`에 현재 term을 넘겨주고 term을 초기화해준다
+    * 여기서 props.fetchWeather을 쓸 수 있었던 건 밑에서 `bindActionCreators`로 fetchWeather, dispatch를 묶고, 이 함수랑 SearchBar 컴포넌트를 묶어줬기 때문이다.
+- `containers/weather_list.js`
+  + this.props.weather 를 보여준다. 이를 쓸 수 있던건 아래에서 state.weather를 weather란 state로 묶어줬기 때문이다. 여기서 state.weather는 맨 처음에 `reducers/index.js`의 리듀서 안에 weather란 이름으로 WeatherReducer를 받아왔기 때문이다. 이는 `FETCH_WEATHER`액션이 일어나면 불려서 업데이트된 값이다. 이 액션은 `search_bar.js`에서 form submit할때 불렀었다
+
+
+
+## 그럼 어케 해야하지
+- `RetailerShipping.js`에 들어가면 
+  + constructor에서 `FETCH_RETAILER`액션을 불러버린다. 그 액션에선 리테일러를 받아와서 `retailer`라는 state에 데이터를 저장시킨다.
+
+## 블로그 만들기
+### React Lifecycle
+- 순서
+  + 컴포넌트 생성: constructor -> componentWillMount -> render -> componentDidMount
+  + 컴포넌트 제거: componentWillUnmount
+  + 컴포넌트 Prop변경: componentWillReceiveProps -> shouldComponentUpdate -> componentWillUpdate-> render -> componentDidUpdate
+- 디테일
+  + `constructor`: 생성자. 컴포넌트가 처음 만들어질때 실행
+  + `componentWillMount`: 컴포넌트가 DOM 위에 만들어지기 전에 실행
+  + `render`: 컴포넌트 렌더링
+  + `componentDidMount`: 컴포넌트 만들어지고 첫 렌더링을 다 마친 후. 여기서 다른 js프레임웍을 연동하거나 setTimeout, setInterval 및 ajax처리한다.
+  + `componentWillReceiveProps`: 컴포넌트가 prop을 새로 받았을 때 실행. prop에 따라 state를 업뎃해야 할 때 사용하면 유용. 이 안에서 `this.setState()`해도 추가렌더링 안함
+  + `shouldComponentUpdate`: props/state가 변경되었을 때 리렌더링을 할지 말지 정하는 메서드.
+  + `componentWillUpdate`: 컴포넌트가 업뎃되기 전에 실행. 여기서 this.setState하면 무한루프
+  + `componentDidUpdate`: 컴포넌트가 리렌더링 마친 후 실행
+  + `componentWillUnmount`: 컴포넌트가 DOM에서 사라진 후 실행
+
+https://velopert.com/1130
