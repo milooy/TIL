@@ -536,7 +536,9 @@ def post_edit(request, pk): #url에서 pk를 받아서 처리
 ## migration 꼬였을 때 앱의 처음부터 다시 돌리기
 ```shell
 manage.py migrate --fake yourapp zero
+# zero 옵션 안 주고 했을 때 풀리기도 한다.
 ```
+
 refer: http://stackoverflow.com/questions/12364157/south-how-to-force-certain-migration
 
 ## Refer
