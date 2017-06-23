@@ -193,10 +193,12 @@
     <ul>
         <li v-for="(ingredient, i) in ingredients">{{ingredient}} ({{i}})</li>
     </ul>
-    <template v-for="(ingredient, i) in ingredients">
+    <!-- key를 안 적으면 그냥 돔의 순서만 기억하는데, key 적으면 element자체를 기억한다. 그래서 reorder등이 가능함 -->
+    <template v-for="(ingredient, i) in ingredients" :key="ingredient">
         <h1>{{ingredient}}</h1>
         <p>{{i}}</p>
     </template>
+    <button @click="ingredients.push('spices')">Add ingredients</button>
     <ul>
         <li v-for="person in persons">
             <div v-for="(v, k, i) in person">[{{i}}] {{k}} : {{v}}</div>
@@ -217,3 +219,6 @@
         }
     })
 </script>
+```
+
+## Vue 예제: 
