@@ -61,6 +61,15 @@ pip install --upgrade pip
 pyenv deactivate
 ```
 
+## The `django-admin' command exists in these Python versions: 란 에러가 나면?
+이렇게 하면 된다. [참고](https://stackoverflow.com/questions/36356778/how-to-let-pyenv-to-find-installed-python-versions)
+```shell
+pyenv global 2.7.10
+# pyenv’s name for the Python 2.7.10 interpreter version is just 2.7.10, not 
+# python2.7.10. You can get a list of all your installed versions with:
+pyenv versions
+```
+
 ## autoenv
 ```shell
 brew install autoenv
