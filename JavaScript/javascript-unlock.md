@@ -106,3 +106,22 @@ var arr = [].slice.call(nodes); // 배열 변환법 2
 var arr = Array.from(nodes); // 배열 변환법 3
 
 ```
+
+## ES6의 컬렉션
+구문이 클래스 기반처럼 보이지만, 사실은 기존 프로토타입의 신택틱 슈거다.
+```js
+class ConcreteClass extends AbstractClass {
+    constructor() {
+        super();
+        this.bar = 3;
+    }
+    baz() {
+        return "baz";
+    }
+}
+let instance = new ConcreteClass();
+instance.bar; // 3
+instance.baz(); // baz
+```
+
+## 매직 ㅁ
