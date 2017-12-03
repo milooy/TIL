@@ -40,7 +40,7 @@ django.db.utils.OperationalError: table "point_point" already exists
 
 ```shell
 ./manage.py dbshell #디비 쉘에 접속한다
-> .tables # 테이블을 본다 -> point테이블이 있다!
+> .tables; # 테이블을 본다 -> point테이블이 있다!
 > drop table point_point # 괴롭히던 테이블을 지운다
 ```
 
