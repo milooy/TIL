@@ -124,4 +124,27 @@ instance.bar; // 3
 instance.baz(); // baz
 ```
 
-## 매직 ㅁ
+## 돔 스크립팅과 AJAX
+
+- `document.querySelector('#bar')`로 발견된 요소는 NodeList로 표현된다. 배열처럼 보이지만 실제 배열은 아님. DOM이 리플로(reflow)될 때마다 업데이트되는 라이브 콜렉션.
+    + 라이브 콜렉션(NodeList.HTMLCollection)에서의 반복은 느리며 상당히 비싼 자원 소비한다. 따라서 콜렉션이 라이브일 필요 없을땐 `[].slice.call(NodeList)`와 같은 배열로 변환한다. ES6에선 `[...nodeList]spread`연산자를 사용해 수행 가능
+
+```javascript
+var lis = document.querySelector('.class');
+foo = [].slice.call(lis); // ES5방식 배열 변환
+foo = [...lis]; // ES6방식 배열 변환
+```
+
+- el.innerHTML을 변경하거나 요소에 자식을 추가할 때마다 DOM리플로가 발생한다. 리플로가 반복적으로 발생하면 애플리케이션이 느려진다.
+    + 브라우저는 el.innerHTML로 HTML을 처리할 때 문자열을 먼저 파싱해야 한다. 이는 자원을 많이 소모하는 작업. 그러나 명시적으로 요소 생성보단 훨 빠름.
+    + 유사한 요소를 배치(batch)로 만들면, 처리는 더 최적화 가능.
+    + 루프에서 모든 요소를 생성하는 대신 원본에서 복제(el.cloneNode)하면 더 빨라지게 할 수 있다.
+
+## DOM 스타일링
+- 스타일이 필요할 땐 가능한 한 CSS클래스 사용하는게 좋다. 이는 상속 및 구성, 분리와 같은 더 좋은 유지보수 제공.
+```js
+el.classList.add('is-hidden');
+el.classList.remove('is-hidden');
+el.classList.toggle('is-hidden', !isAvailable);
+if(el.classList.contains('is-hidden'))
+
