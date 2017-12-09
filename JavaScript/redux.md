@@ -86,5 +86,48 @@ https://velopert.com/1225
         * 순수하지 않은 API호출을 하지 말아야 함
 
 
-## Refer
+# Velopert - Redux with React
+https://velopert.com/3346
+
+## 카운터 만들기
+- react-redux: redux를 컴포넌트 상에서 더 간편하게 사용할 수 있게 해 주는 라이브러리. 이걸 사용하면 컴포넌트에서 store를 props로 받아오거나, subscribe를 직접 할 필요가 없다
+- 디렉토리
+    + actions: 액션생성자 파일 저장
+    + components: 뷰만을 담당하는 `presentational` 컴포넌트들이 저장
+        * 오직 props로만 데이터 가져올 수 있고 store엔 직접적 접근 권한 x
+        * 대부분의 경우 state를 갖고있지 않으며, 갖고있을 경우엔 데이터에 관련된 것이 아니라 UI에 관련된 것이어야 함
+        * 주로 함수형 컴포넌트로 작성, state를 갖고있어야 하거나 최적화를 위해 lifecycle이 필요해질 때 클래스형 컴포넌트로.
+    + containers: store에 접근이 닿는 `container` 컴포넌트들이 저장
+        * 주로 내부에 DOM엘리먼트가 직접적으로 사용되는 경우는 X. 감싸는 용도일때만 사용.
+        * 스타일을 가지고 있지 않아야 함.
+    + reducers: 스토어의 기본상태와 상태의 업데이트를 담당하는 리듀서 파일들이 저장
+        * 액션의 type에 따라 변화를 일으키는 함수. 최초변화를 일으키기 전 지니고 있어야 할 초기상태 정의
+    + utils: 일부 컴포넌트들에서 공용되는 파일 저장
+- `connect`
+    + 컨테이너 컴포넌트와 store 연결하기.
+    + 파라미터로 컴포넌트에 연결시킬 상태와 액션함수들을 전달해주면 컴포넌트를 리덕스 스토어에 연결시키는 또 다른 함수 반환. 이 과정에서 리턴된 함수 안에 컴포넌트를 파라미터로 전달해주면 리덕스 스토어에 연결된 컴포넌트가 새로 만들어짐.
+    + 상태를 연결시킬땐 state, 액션함수를 연결시킬 땐 dispatch를 파라미터로 전달받는 함수를 만들어서 객체를 반환하면 이를 props로 사용할 수 있다.
+- 정리
+    + div를 누르면 카운터가 올라가게 하고싶다
+    + components/counter.js
+        * div를 누르면 props.onIncrement를 부른다
+        * 그 onIncrement는 타입이 function 이라고 PropTypes.func을 정해준다
+        * 그 onIncrement의 defaultProps도 정해준다
+    + actions/ActionTypes.js
+        * export const INCREMENT = 'INCREMENT
+    + actions/index.js
+        * INCREMENT를 type으로 가지는 increment()라는 함수를 만듦
+        * setColor는 파라미터 color도 같이 받음
+    + reducers/index.js
+        * initialState를 만든다. number: 0
+        * action type을 받아서 새로운 state를 리턴하는 switch문을 만든다.
+        * types.INCREMENT면 기존 state에 number: state.number+1을 짬뽕해서 반환
+    + containers/CounterContainer.js
+        * mapStateToProps로 state.number 받음
+        * mapDispatchToProps로 actions.Increment()를 받아옴
+    + 즉
+        * 카운터 넘버는 reducer의 state에서 가져오고
+        * 카운터 올리는 액션은 action에서 가져오면 그 액션을 리듀서가 짬뽕해서 새로운 스테이트를 만들어서 결국 카운터 넘버도 올라가도록 보임
+
+ ## Refer
 
