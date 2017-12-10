@@ -415,6 +415,7 @@ export default connect(mapStateToProps)(BookList);
   + `componentWillReceiveProps`: 컴포넌트가 prop을 새로 받았을 때 실행. prop에 따라 state를 업뎃해야 할 때 사용하면 유용. 이 안에서 `this.setState()`해도 추가렌더링 안함
   + `shouldComponentUpdate`: props/state가 변경되었을 때 리렌더링을 할지 말지 정하는 메서드.
   + `componentWillUpdate`: 컴포넌트가 업뎃되기 전에 실행. 여기서 this.setState하면 무한루프
+    * 서버 랜더링 전용 함수. 여기에서 Ajax 호출하면 응답 타이밍에 따라 무한루프에 빠지기도 합니다.
   + `componentDidUpdate`: 컴포넌트가 리렌더링 마친 후 실행
   + `componentWillUnmount`: 컴포넌트가 DOM에서 사라진 후 실행
 
