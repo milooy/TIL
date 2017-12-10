@@ -222,3 +222,6 @@
 ```
 
 ## Vue 예제: 
+
+- passedData child component 거꾸로...
+
