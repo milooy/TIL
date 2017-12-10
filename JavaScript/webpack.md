@@ -15,5 +15,47 @@
 npm install --save-dev webpack
 ```
 
+## webpack 3.0.0
+```js
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = {
+  entry: './src/index.js',
+  plugins: [
+    new webpack.HotModuleReplacementPlugin() // Enable HMR
+  ],
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
+  },
+  devServer: {
+    hot: true, // Tell the dev-server we're using HMR
+    contentBase: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
+  },
+  devtool: "cheap-eval-source-map",
+  module: {
+    rules: [
+      {
+        test: /\.css$/, // CSS 파일을 js 모듈 안에서 import하기 위해서 씀. Asset관리
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
+      }
+    ]
+  }
+};
+
+```
+
 ## Refer
 Pro-react책 부록 A 웹팩
