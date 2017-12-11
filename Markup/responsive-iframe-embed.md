@@ -30,3 +30,28 @@ iframe을 video-container로 감싸주고, 그 안의 iframe을 relative/absolut
 이 클래스는 그대로 두고, 다른 특성들을 쓰고 싶다면 독립된 곳에서 쓰도록 하자. 괜히 꼬이지 않게.
 
 내 경우는 특이하게 .video-container의 padding-top을 0px로 해야 비디오가 화면에 검정 여백 없이 꽉 차게 나왔다. 
+
+## +추가
+이것도 잘 된당
+```css
+.container {
+float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 60%;
+    height: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+```
