@@ -1,3 +1,13 @@
+## 180118
+### Github Pages로 배포할 폴더 변경하기
+결론: subtree를 만들어서 `gh-pages`브랜치에 원하는 폴더만 올리면 된다.
+
+1. .gitignore에서 배포 원하는 폴더를 주석처리 (e.g. /public, /dist)
+2. 원하는 폴더를 add하고 commit한다: `git add 폴더이름 && git commit -m "Initial subtree commit"`
+3. 서브트리로 gh-pages에 푸시 해준다: `git subtree push --prefix 폴더이름 origin gh-pages`
+
+refer: https://gist.github.com/cobyism/4730490
+
 ## 171124
 ### handle 네이밍은 이벤트 받아 처리하는 handler
 보통 handle- 이라는 네이밍을 주는 이유는 사용자의 이벤트를 받아서 처리하는 핸들러기 때문에 핸들을 붙여주는거에요.
