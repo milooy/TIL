@@ -1,3 +1,37 @@
+##180220
+## ZSH에 custom alias 추가
+`.zshrc`에 원하는 alias추가하고 `source ~/.zshrc` 를 통해 재실행
+```
+alias kp="sudo lsof -t -i tcp:8000 | xargs kill -9"
+```
+refer: https://wayhome25.github.io/etc/2017/03/12/zsh-alias/
+
+## global gitignore
+```shell
+$ vi ~/.gitignore_global 
+$ git config --global core.excludesfile ~/.gitignore_global
+```
+
+## direnv 세팅
+```shell
+$ brew install direnv
+$ vi ~/.zshrc # and type: eval "$(direnv hook zsh)"
+$ cd playground
+$ echo export FOO=foo > .envrc
+direnv: error .envrc is blocked. Run `direnv allow` to approve its content.
+$ direnv allow
+direnv: loading .envrc
+direnv: export +FOO -PS2
+$ cd ..
+direnv: unloading
+$ cd playground
+direnv: loading .envrc
+direnv: export +FOO -PS2
+$ echo ${FOO}
+foo
+$ printenv
+```
+
 ## 180118
 ### Github Pages로 배포할 폴더 변경하기
 결론: subtree를 만들어서 `gh-pages`브랜치에 원하는 폴더만 올리면 된다.
