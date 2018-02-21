@@ -1,4 +1,11 @@
-##180220
+# 180221
+## 떠있는 로디아 찾아서 죽이기
+```shell
+$ ps -ef | grep rhodia
+$ kill -9 포트넘버
+```
+
+#180220
 ## ZSH에 custom alias 추가
 `.zshrc`에 원하는 alias추가하고 `source ~/.zshrc` 를 통해 재실행
 ```
