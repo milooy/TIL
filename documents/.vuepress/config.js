@@ -3,7 +3,7 @@ var CONST = require("./const");
 module.exports = {
   title: `Today Yurim Learned`,
   description: `Yurim's Personal Wiki (Today I Learned)`,
-  base: "/vuepress-playground/",
+  base: "/TIL/",
   dest: 'docs',
   head: [
     ['link', {
