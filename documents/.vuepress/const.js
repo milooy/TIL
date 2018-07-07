@@ -90,3 +90,47 @@ exports.ReactList = [
   'React/redux-saga',
   'React/redux'
 ]
+
+exports.AngularList = [
+  'Angular/angularjs-moment-filter',
+  'Angular/angularjs',
+  'Angular/api',
+  'Angular/scope'
+]
+
+exports.JsTestingList = [
+  'Javascript-Testing/casperjs-loop',
+  'Javascript-Testing/casperjs-popup',
+  'Javascript-Testing/casperjs',
+  'Javascript-Testing/passing-arguments-with-casperjs',
+  'Javascript-Testing/trouble-shooting'
+]
+
+exports.CSSList = [
+  'CSS/100-percent-height-colums-fixed-sidebar-with-pure-css',
+  'CSS/css-block-inline-block-vertical-align',
+  'CSS/css-overlay',
+  'CSS/css-property-order',
+  'CSS/emmet',
+  'CSS/flexbox',
+  'CSS/flickering-css-transition',
+  'CSS/make-border-smaller-than-div-length',
+  'CSS/markup-level-test',
+  'CSS/nth-child-vs-nth-of-type',
+  'CSS/nth-child-vs-nth-of-type',
+  'CSS/web-font'
+]
+
+exports.GoogleAnalyticsList = [
+  'Google-Analytics/GA-tag-manager',
+  'Google-Analytics/data-analytics',
+  'Google-Analytics/ecommerce-in-google-analytics-and-tagmanager',
+  'Google-Analytics/ecommerce-in-google-analytics',
+  'Google-Analytics/enhanced-ecommerce-in-google-analytics',
+  'Google-Analytics/enhanced-ecommerce-in-tagmanager',
+  'Google-Analytics/google-analytics-data-layer',
+  'Google-Analytics/google-analytics-terminology',
+  'Google-Analytics/google-analytics',
+  'Google-Analytics/make-multiple-categories-in-ga',
+  'Google-Analytics/tutorial-to-enhanced-ecommerce-in-ga'
+]

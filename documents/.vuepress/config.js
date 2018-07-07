@@ -22,7 +22,19 @@ module.exports = {
       },{
         title: 'JavaScript',
         children: CONST.JavaScriptList
-      }, 
+      },{
+        title: 'Angular',
+        children: CONST.AngularList
+      }, {
+        title: 'Javascript Testing',
+        children: CONST.JsTestingList
+      }, {
+        title: 'CSS',
+        children: CONST.CSSList
+      }, {
+        title: 'Google Analytics',
+        children: CONST.GoogleAnalyticsList
+      }
     ],
     nav: [{
         text: 'GitHub',
