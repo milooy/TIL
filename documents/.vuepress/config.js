@@ -38,7 +38,7 @@ module.exports = {
         title: 'Data structure and Algorithm',
         children: CONST.DataStructureAndAlgorithmList
       }, {
-        title: 'DjangoList',
+        title: 'Django',
         children: CONST.DjangoList
       }, {
         title: 'ETC',
@@ -52,6 +52,18 @@ module.exports = {
       }, {
         title: 'iOS',
         children: CONST.iOSList
+      }, {
+        title: 'jQuery',
+        children: CONST.jQueryList
+      }, {
+        title: 'MarkUp',
+        children: CONST.MarkUpList
+      }, {
+        title: 'Network',
+        children: CONST.NetworkList
+      }, {
+        title: 'Python',
+        children: CONST.PythonList
       }
     ],
     nav: [{

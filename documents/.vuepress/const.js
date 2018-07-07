@@ -47,7 +47,8 @@ exports.JavaScriptList = [
   'JavaScript/udemy-react',
   'JavaScript/udemy-vue',
   'JavaScript/vuejs',
-  'JavaScript/way-to-get-javascript-in-html'
+  'JavaScript/way-to-get-javascript-in-html',
+  'JavaScript/bugs-in-ios8'
 ]
 
 exports.DailyCodingList = [
@@ -131,7 +132,8 @@ exports.GoogleAnalyticsList = [
   'Google-Analytics/google-analytics-terminology',
   'Google-Analytics/google-analytics',
   'Google-Analytics/make-multiple-categories-in-ga',
-  'Google-Analytics/tutorial-to-enhanced-ecommerce-in-ga'
+  'Google-Analytics/tutorial-to-enhanced-ecommerce-in-ga',
+  'Google-Analytics/Gaekoboard_guide'
 ]
 
 exports.DataStructureAndAlgorithmList = [
@@ -201,7 +203,8 @@ exports.ETCList = [
   'ETC/pycharm-shortcut',
   'ETC/pycon-2015',
   'ETC/terms',
-  'ETC/zendesk'
+  'ETC/zendesk',
+  'ETC/chrome-extension'
 ]
 exports.GitList = [
   'Git/git-guide',
@@ -220,3 +223,51 @@ exports.iOSList = [
   'iOS/swift-basic',
   'iOS/swift_doc'
 ]
+
+exports.jQueryList = [
+'jQuery/attr-vs-prop',
+'jQuery/closest',
+'jQuery/jQuery(Advanced)-codeschool',
+'jQuery/jQuery(Basic)-codeschool',
+'jQuery/jpub-jquery',
+'jQuery/jquery-api',
+'jQuery/jquery-proxy',
+'jQuery/make-jquery-modal-plugin'
+]
+exports.MarkUpList = [
+  'Markup/HTML5-2015-next',
+  'Markup/HTML5',
+  'Markup/RWD',
+  'Markup/css-animation',
+  'Markup/css',
+  'Markup/delete-inline-block-unexpected-gap',
+  'Markup/html-label-mdn-translation',
+  'Markup/html5-boilerplate',
+  'Markup/interactive-web-design',
+  'Markup/responsive-iframe-embed',
+  'Markup/scrolling-error-in-ios-when-fixed-element-focus',
+  'Markup/svg',
+  'Markup/wsconf-2016',
+  'Markup/youtube-thumbnail-crop'
+]
+exports.NetworkList = [
+  'Network/ssh-tunneling'
+]
+exports.PythonList = [
+  'Python/codeschool-python',
+  'Python/make-hobbycoding',
+  'Python/make-jaystagram',
+  'Python/pycon2016',
+  'Python/python-set-environments',
+  'Python/python-startkit',
+  'Python/python',
+  'Python/web-font-error-in-android-browser',
+]
+// exports.iOSList = [
+// ]
+// exports.iOSList = [
+// ]
+// exports.iOSList = [
+// ]
+// exports.iOSList = [
+// ]
