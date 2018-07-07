@@ -47,8 +47,7 @@ exports.JavaScriptList = [
   'JavaScript/udemy-react',
   'JavaScript/udemy-vue',
   'JavaScript/vuejs',
-  'JavaScript/way-to-get-javascript-in-html',
-  'JavaScript/webpack'
+  'JavaScript/way-to-get-javascript-in-html'
 ]
 
 exports.DailyCodingList = [
@@ -133,4 +132,91 @@ exports.GoogleAnalyticsList = [
   'Google-Analytics/google-analytics',
   'Google-Analytics/make-multiple-categories-in-ga',
   'Google-Analytics/tutorial-to-enhanced-ecommerce-in-ga'
+]
+
+exports.DataStructureAndAlgorithmList = [
+  'Data-structure-and-Algorithm/algorithm-questions.md',
+  'Data-structure-and-Algorithm/khan-algorithm.md'
+]
+exports.DjangoList = [
+  'Django/digging-into-django',
+  'Django/django-aggregation',
+  'Django/django-bower-grunt',
+  'Django/django-cache',
+  'Django/django-migration-conflict',
+  'Django/django-models',
+  'Django/django-pinkfong-tv',
+  'Django/django-queries',
+  'Django/django-querysets',
+  'Django/django-resize-image',
+  'Django/django-seperate-settings-and-secret-file',
+  'Django/django-social-auth-add-profile-page',
+  'Django/django-social-auth',
+  'Django/django-url',
+  'Django/django',
+  'Django/djnago-admin',
+  'Django/extend-django-user-model',
+  'Django/how-to-response-template-in-django',
+  'Django/pass-data-through-redirect-in-django',
+  'Django/react-with-django-rest-framework',
+  'Django/two-scoops-of-django'
+]
+exports.ETCList = [
+  'ETC/2015-NEXT-BALBUM',
+  'ETC/2015-evernote-conference',
+  'ETC/2015-sanfrancisco-tour',
+  'ETC/2017_NDC',
+  'ETC/3-tips-to-entreprenure',
+  'ETC/Gaekoboard_guide',
+  'ETC/HCI_2015',
+  'ETC/Markdown-Cheatsheet',
+  'ETC/SEO',
+  'ETC/arduino',
+  'ETC/atom',
+  'ETC/computer-graphics',
+  'ETC/cool-stuff',
+  'ETC/cross-browsing-with-pow',
+  'ETC/daily-commit',
+  'ETC/dash-vs-underscore',
+  'ETC/database',
+  'ETC/eclipse-shortcut',
+  'ETC/english-in-programming',
+  'ETC/frontend-development',
+  'ETC/fundamentals-of-design-codeschool',
+  'ETC/google-apps-201',
+  'ETC/grid-layout',
+  'ETC/heroku',
+  'ETC/intellij-shortcut',
+  'ETC/java-web-basic',
+  'ETC/linux',
+  'ETC/naver-deview-2015',
+  'ETC/network',
+  'ETC/node-easymock',
+  'ETC/nodejs',
+  'ETC/operation-system',
+  'ETC/passing-arguments-with-nodejs',
+  'ETC/playnode-2015',
+  'ETC/prj-stock',
+  'ETC/productivity',
+  'ETC/pycharm-shortcut',
+  'ETC/pycon-2015',
+  'ETC/terms',
+  'ETC/zendesk'
+]
+exports.GitList = [
+  'Git/git-guide',
+  'Git/git-ignore',
+  'Git/git-reverse-commit',
+  'Git/pro-git',
+  'Git/rebase-with-sourcetree',
+  'Git/trouble-shooting-on-console'
+]
+exports.BundlerList = [
+  'Bundler/grunt',
+  'Bundler/makingCustomTask',
+  'Bundler/webpack'
+]
+exports.iOSList = [
+  'iOS/swift-basic',
+  'iOS/swift_doc'
 ]

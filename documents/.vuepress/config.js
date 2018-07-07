@@ -34,6 +34,24 @@ module.exports = {
       }, {
         title: 'Google Analytics',
         children: CONST.GoogleAnalyticsList
+      }, {
+        title: 'Data structure and Algorithm',
+        children: CONST.DataStructureAndAlgorithmList
+      }, {
+        title: 'DjangoList',
+        children: CONST.DjangoList
+      }, {
+        title: 'ETC',
+        children: CONST.ETCList
+      }, {
+        title: 'Git',
+        children: CONST.GitList
+      }, {
+        title: 'Module Bundler',
+        children: CONST.BundlerList
+      }, {
+        title: 'iOS',
+        children: CONST.iOSList
       }
     ],
     nav: [{
