@@ -5,7 +5,7 @@
 //정규표현식 리터럴
 var pattern = /a/;
 //정규표현식 객체 생성자
-var pattern2 = new regExp('a');
+var pattern2q = new regExp('a');
 
 //보통 리터럴 쓰는데 패턴 넣거나 할때는 객체생성자로 쓴다. 그니까 둘다 쓴다는겨.
 ```

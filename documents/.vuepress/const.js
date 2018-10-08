@@ -204,7 +204,9 @@ exports.ETCList = [
   'ETC/pycon-2015',
   'ETC/terms',
   'ETC/zendesk',
-  'ETC/chrome-extension'
+  'ETC/chrome-extension',
+  'ETC/TIL',
+  'ETC/vs-code'
 ]
 exports.GitList = [
   'Git/git-guide',
