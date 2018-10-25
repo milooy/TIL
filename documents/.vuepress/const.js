@@ -118,7 +118,8 @@ exports.CSSList = [
   'CSS/markup-level-test',
   'CSS/nth-child-vs-nth-of-type',
   'CSS/nth-child-vs-nth-of-type',
-  'CSS/web-font'
+  'CSS/web-font',
+  'CSS/styled-components'
 ]
 
 exports.GoogleAnalyticsList = [
@@ -214,7 +215,8 @@ exports.GitList = [
   'Git/git-reverse-commit',
   'Git/pro-git',
   'Git/rebase-with-sourcetree',
-  'Git/trouble-shooting-on-console'
+  'Git/trouble-shooting-on-console',
+  'Git/rebase-vs-merge-commit',
 ]
 exports.BundlerList = [
   'Bundler/grunt',
