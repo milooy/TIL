@@ -1,9 +1,23 @@
 # TIL
 
-## 180710
-### ZEPL Dropdown 이해하기
+## 181024
+### Comment 'deprecated' tag in javascript file
+The eslint plugin will work with 2 styles only: JSDoc style or TomDoc style. We have to follow one of these 2 style or the linter will not be able to generate warnings.
 
+JSDoc style (1)
+```/**
+ * this is what you get when you trust a mouse talk show
+ * @deprecated need to restart the experiment
+ * @returns {Number} nonsense
+ */
+```
 
+TomDoc (2)
+```// Deprecated: This is what you get when you trust a mouse talk show, need to
+// restart the experiment.
+//
+// Returns a Number nonsense
+```
 
 ## 180709
 ### cURL 날리기
