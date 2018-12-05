@@ -1,3 +1,92 @@
+## Pass actions with props
+Do you know how to move actions to connect ?
+
+If they are pre-lifted ( 🙅let's try to avoid that in the future )
+
+like this
+```
+connect(
+  mapStateToProps,
+  () => ({ // mapActionsToProps function
+    onEnterRoute: preLiftedActions.enterRoute,
+  })
+)
+```
+if they are not pre-lifted, meaning they need dispatch function injected (🙆 we should try that as much as possible, it makes our components pure)
+```
+connect(
+  mapStateToProps,
+  { // mapActionsToProps object
+    onEnterRoute: pureActions.enterRoute,
+  }
+)
+```
+
+## Do not pass implicit proptypes
+Actually can we avoid these implicit props? Or if you need something like this
+```
+const Dropdown = ({
+  options, defaultValueIndex, onChange, minWidth, optionalReactSelectOptions
+}) => (
+  <Select
+    // ...
+    {...optionalReactSelectOptions}
+  />
+);
+```
+This way you can use prop-types for that :)
+
+Yeah it seems implicit that we would like to wanna avoid by using proptypes/defaultprops.
+
+In the example, shall we pass the optional props with
+```
+// Parent component
+<Dropdown
+  optionalSelectOptions={{
+    isMulti: true,
+    selectOption: "foo",
+  }}
+/>
+
+// Dropdown/v2/index.jsx
+Dropdown.propTypes = {
+  // ...
+  optionalSelectOptions: PropTypes.shape({
+    isMulti: PropTypes.string.isRequired,
+    selectOption: PropTypes.string,
+  }),
+};
+```
+
+Then shall we gonna make proptypes with the some options that we put in the future?
+(e.g. if someone want to pass isMulti prop and it's kinda optional thing -> put it in optionalSelectOptions and write the propTypes)
+
+## PropTypes와 Immutable
+1. Get the value from deep Immutable object in 'connect()' and return scalar/base types.
+```
+Yes, but instead of something like `userSelector(state).get("displayName")` you should create a `userDisplayNameSelector(state)` selector that returns a base type `String` (the user displayName)
+```
+
+2. So avoid using Immutable types in react components except for optimisation purpose -> `Yes`
+3. Then what about I want to return json in 'connect()'? Choose 'Immutable' or '.toJS()' case by case would be enough?
+```
+For this, use `react-redux-immutable`, never use `toJS()` in the connect function, this is by far the worst for optimization.
+```
+4. 이름 짓기 방법
+if we start using selectors everywhere you might want to change how you call/name/import them, I think the following is easier to read. But this is up to you:
+```js
+import * as userSelectors from "selectors/user";
+userDisplayName: userSelectors.getDisplayName(state);
+```
+5. PropTypes를 Immutable로 하려면?
+```
+React.PropTypes.instanceOf(Immutable.List)
+```
+
+
+## Dealing with unused parameters
+Also if you want to not use a parameter you can still write seomthing like `(_unusedParameterA, b) =>` and eslint will be ok :+1:
+
 
 ## actionCreator and lift
 ### question
