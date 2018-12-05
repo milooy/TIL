@@ -48,7 +48,8 @@ exports.JavaScriptList = [
   'JavaScript/udemy-vue',
   'JavaScript/vuejs',
   'JavaScript/way-to-get-javascript-in-html',
-  'JavaScript/bugs-in-ios8'
+  'JavaScript/bugs-in-ios8',
+  'JavaScript/functional-programming'
 ]
 
 exports.DailyCodingList = [
@@ -138,8 +139,8 @@ exports.GoogleAnalyticsList = [
 ]
 
 exports.DataStructureAndAlgorithmList = [
-  'Data-structure-and-Algorithm/algorithm-questions.md',
-  'Data-structure-and-Algorithm/khan-algorithm.md'
+  'Data-structure-and-Algorithm/algorithm-questions',
+  'Data-structure-and-Algorithm/khan-algorithm'
 ]
 exports.DjangoList = [
   'Django/digging-into-django',
