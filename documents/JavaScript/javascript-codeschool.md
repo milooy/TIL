@@ -1,4 +1,4 @@
-# javascript roadtrip part3
+# Javascript roadtrip part.3
 
 ### 메모리
 function을 그냥 쓰는것보다 변수에 할당해주면 그 변수가 불릴 때만 메모리에 할당됨(그냥 function쓰면 프로그램 로드될때 바로 메모리 할당)

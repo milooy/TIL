@@ -1,4 +1,4 @@
-#OKKY Javascript Conference
+# OKKY Javascript Conference
 
 ## 김태곤
 - 서버와 클라이언트에서 동시에 사용하는 ReactJS

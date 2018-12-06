@@ -1,4 +1,5 @@
-# 하루 10분씩 핵심만 골라 마스터하는 Ajax
+# Ajax
+
 ## HTTP
 - Hypertext transfer protocol
 - 월드 와이드 웹의 주요 프로토콜

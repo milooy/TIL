@@ -1,3 +1,5 @@
+# Javascript: Archiving good suggestions
+
 ## Pass actions with props
 Do you know how to move actions to connect ?
 

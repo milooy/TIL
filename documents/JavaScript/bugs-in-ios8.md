@@ -1,4 +1,4 @@
-# nth-child 버그
+# iOS8의 nth-child 버그
 
 ## 문제
 

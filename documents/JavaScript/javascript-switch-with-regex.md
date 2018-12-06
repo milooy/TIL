@@ -1,3 +1,5 @@
+# Javascript - Switch with Regex
+
 ## Problem
 `Google Tag Manager`에서 `event`를 만드는데 카테고리를 현재 있는 페이지 이름으로 넣고 싶다.
 하지만 그냥 page path를 가져오면 가독성이 좋지 않아 한글화를 하고 싶다.

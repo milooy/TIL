@@ -1,4 +1,5 @@
 ## target vs curruntTarget
+
 ```javascript
 <div class="yellow" id="yellow" style="background: #ff0; width: 300px; height: 150px">
     <div class="green" style="background: #0f0; width: 200px; height: 100px"></div>

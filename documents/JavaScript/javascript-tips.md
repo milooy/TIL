@@ -1,4 +1,4 @@
-#Javascript Tips
+# Javascript Tips
 
 ##Dom List에서 text만 뽑아내기
 html()같은 건 jquery object이기에 그냥 하면 안된다.

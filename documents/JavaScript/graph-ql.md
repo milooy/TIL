@@ -1,4 +1,6 @@
-## 페이스북 엔지니어 정효현 세션 @Innovation Lab Korea from Facebook
+# GraphQL
+
+## 페이스북 엔지니어 세션 @Innovation Lab Korea from Facebook
 - Web notification 만드는 팀
 - 처음 페이스북 앱
     + 웹도 모바일앱도 만들어야 하니까 그냥 웹뷰를 올렸다.

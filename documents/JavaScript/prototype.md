@@ -1,4 +1,4 @@
-#Javascript Prototype
+# Javascript Prototype
 
 ##Prototype기반 프로그래밍?
 - 객체의 원형인 프로토타입을 이용하여 새로운 객체를 만들어내는 프로그래밍 기법.

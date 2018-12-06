@@ -1,4 +1,5 @@
 ## Event Delegation
+
 - child element각각에 이벤트 핸들러를 달지 않고
 - parent element에 단 뒤 이벤트가 발생한 노드를 필터링해 처리.
 ```javascript

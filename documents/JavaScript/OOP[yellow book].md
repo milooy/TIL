@@ -1,4 +1,5 @@
-# 객체 지향 프로그래밍
+# OOP - 객체 지향 프로그래밍
+
 #### javascript for web developers ch.6
 
 ## 객체에 대한 이해

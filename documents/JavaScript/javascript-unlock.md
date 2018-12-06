@@ -1,4 +1,5 @@
 ## Short-circuit evaluation 활용하기
+
  활용.
 ```js
 /* 함수 인수 디폴트 값 */

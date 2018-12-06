@@ -1,4 +1,4 @@
-# Reference Type
+# Javascript Reference Type
 
 ## 텍스트 결합시 구분자 사용을 위한 join() 활용 예
 ```javascript

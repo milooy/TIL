@@ -1,4 +1,4 @@
-[일일코딩 #32] Two Sum
+# [일일코딩 #32] Two Sum
 
 ## Question
 [링크](https://leetcode.com/problems/two-sum/)

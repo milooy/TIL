@@ -1,3 +1,5 @@
+# Haming numbers
+
 /*
 http://www.codewars.com/kata/526d84b98f428f14a60008da/train/javascript
 235

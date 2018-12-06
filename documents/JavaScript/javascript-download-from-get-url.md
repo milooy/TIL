@@ -1,4 +1,5 @@
 # GET으로 파일 다운로드 하기
+
 ```javascript
 window.location.assign('your_url');
 ```

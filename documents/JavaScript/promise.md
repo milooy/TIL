@@ -1,3 +1,5 @@
+# Javascript Promise
+
 http://www.html5rocks.com/ko/tutorials/es6/promises/
 - 뭐지?
     - JS는 싱글 스레드

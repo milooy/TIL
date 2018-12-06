@@ -1,4 +1,4 @@
-# Classes
+# ES2015 Class
 
 ## Class 정의
 Class는 사실 함수. 함수가 함수 표현식/함수 선언 으로 정의할 수 있듯이 class도 class표현식/선언식 두 가지 방법으로 만들 수 있음.

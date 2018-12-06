@@ -1,7 +1,5 @@
 # ES6 제너레이터(Generators)
 
-헉 2015년에 나온 글이네... 내가 이렇게 느립니다
-
 ```js
 function* quips(name) {
   yield "hello " + name + "!";

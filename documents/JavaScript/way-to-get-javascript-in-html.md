@@ -1,4 +1,5 @@
 # 자바스크립트 선언 방법
+
 ```
 //1
 <script type="text/javascript"> 
