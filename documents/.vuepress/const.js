@@ -49,7 +49,8 @@ exports.JavaScriptList = [
   'JavaScript/vuejs',
   'JavaScript/way-to-get-javascript-in-html',
   'JavaScript/bugs-in-ios8',
-  'JavaScript/functional-programming'
+  'JavaScript/functional-programming',
+  'JavaScript/functional-programming-with-lodash-fp'
 ]
 
 exports.DailyCodingList = [
