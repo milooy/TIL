@@ -1,4 +1,4 @@
-# grunt
+# Grunt
 
 ## Task Runner
 - 자동화를 위해 필요.
@@ -34,6 +34,30 @@ http://gruntjs.com/plugins
 ### 새로운 grunt project
 - 플젝 새로 시작할땐 보통 밑의 두개가 있어야함
 - package.json: 해당 플젝을 npm모듈로 npm에 퍼블리싱할때 사용하는 메타데이터 저장파일
+
+## Making Custom Task
+
+```js
+// Gruntfile.js
+grunt.loadTasks('path/of/customTasks');
+
+// path/of/customTasks/doSomething.js
+module.exports = function(grunt) {
+  grunt.registerTask('doSomething', function() {
+    // ...
+  });
+}
+```
+
+## 파일 제어 apis
+
+```js
+  grunt.file.read();      // return string
+  grunt.file.readYAML();  // return object of yaml properties
+  grunt.file.readJSON();  // return object of json properties
+
+  // yaml write에는 yamljs module를 사용한다.
+```
 
 
 

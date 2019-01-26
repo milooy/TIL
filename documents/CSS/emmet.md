@@ -1,4 +1,4 @@
-# Emmet 단축키
+# Emmet
 
 단축키 실행: cmd + E
 

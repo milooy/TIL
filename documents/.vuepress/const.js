@@ -96,8 +96,7 @@ exports.ReactList = [
 exports.AngularList = [
   'Angular/angularjs-moment-filter',
   'Angular/angularjs',
-  'Angular/api',
-  'Angular/scope'
+  'Angular/api'
 ]
 
 exports.JsTestingList = [
@@ -140,7 +139,6 @@ exports.GoogleAnalyticsList = [
 ]
 
 exports.DataStructureAndAlgorithmList = [
-  'Data-structure-and-Algorithm/algorithm-questions',
   'Data-structure-and-Algorithm/khan-algorithm'
 ]
 exports.DjangoList = [
@@ -152,7 +150,6 @@ exports.DjangoList = [
   'Django/django-models',
   'Django/django-pinkfong-tv',
   'Django/django-queries',
-  'Django/django-querysets',
   'Django/django-resize-image',
   'Django/django-seperate-settings-and-secret-file',
   'Django/django-social-auth-add-profile-page',
@@ -167,45 +164,31 @@ exports.DjangoList = [
   'Django/two-scoops-of-django'
 ]
 exports.ETCList = [
-  'ETC/2015-NEXT-BALBUM',
-  'ETC/2015-evernote-conference',
   'ETC/2015-sanfrancisco-tour',
   'ETC/2017_NDC',
-  'ETC/3-tips-to-entreprenure',
   'ETC/Gaekoboard_guide',
-  'ETC/HCI_2015',
   'ETC/Markdown-Cheatsheet',
-  'ETC/SEO',
-  'ETC/arduino',
   'ETC/atom',
   'ETC/computer-graphics',
   'ETC/cool-stuff',
   'ETC/cross-browsing-with-pow',
   'ETC/daily-commit',
   'ETC/dash-vs-underscore',
-  'ETC/database',
   'ETC/eclipse-shortcut',
   'ETC/english-in-programming',
-  'ETC/frontend-development',
   'ETC/fundamentals-of-design-codeschool',
   'ETC/google-apps-201',
   'ETC/grid-layout',
   'ETC/heroku',
   'ETC/intellij-shortcut',
-  'ETC/java-web-basic',
-  'ETC/linux',
   'ETC/naver-deview-2015',
   'ETC/network',
   'ETC/node-easymock',
   'ETC/nodejs',
   'ETC/operation-system',
-  'ETC/passing-arguments-with-nodejs',
-  'ETC/playnode-2015',
-  'ETC/prj-stock',
   'ETC/productivity',
   'ETC/pycharm-shortcut',
   'ETC/pycon-2015',
-  'ETC/terms',
   'ETC/zendesk',
   'ETC/chrome-extension',
   'ETC/TIL',
@@ -222,7 +205,6 @@ exports.GitList = [
 ]
 exports.BundlerList = [
   'Bundler/grunt',
-  'Bundler/makingCustomTask',
   'Bundler/webpack'
 ]
 exports.iOSList = [
@@ -269,11 +251,7 @@ exports.PythonList = [
   'Python/python',
   'Python/web-font-error-in-android-browser',
 ]
-// exports.iOSList = [
-// ]
-// exports.iOSList = [
-// ]
-// exports.iOSList = [
-// ]
-// exports.iOSList = [
-// ]
+
+exports.DevOpsList = [
+  'DevOps/docker.md'
+]

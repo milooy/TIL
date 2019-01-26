@@ -1,4 +1,4 @@
-# pure CSS로 100%높이 fixed sidebar 만들기
+# CSS로 100%높이 fixed sidebar 만들기
 
 ## 서론
 - IE8에서 돌아가는 CSS로만 해결한 fixed sidebar 만들기

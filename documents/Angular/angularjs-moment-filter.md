@@ -1,4 +1,4 @@
-# AngularJS에서 시간 원하는 형식로 보여주기(feat. momentJS)
+# AngularJS에서 시간 원하는 형식으로 보여주기(feat. momentJS)
 
 ## AngularJS Filter
 ```javascript

@@ -1,4 +1,5 @@
 # div보다 작은 border만들기
+
 ```css
 div {
   width   : 200px;

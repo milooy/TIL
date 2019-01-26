@@ -1,4 +1,4 @@
-## Django Aggregation
+# Django Aggregation
 
 > ag·gre·ga·tion [æ̀ɡriɡéiʃən]
 > 명사

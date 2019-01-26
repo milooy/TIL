@@ -1,17 +1,5 @@
-## 의문
-redirect
-reverse
-redirect(reverse('password-set'))
-return HttpResponseRedirect(reverse('news-year-archive', args=(year,)))
-render
-render_to_response
-차이가 뭐지
 
-redirect(‘welcome’)
-reverse(‘welcome’)
-redirect(reverse(‘welcome’)) 차이?
-
-HttpResponseRedirect랑 HttpResponse 차이는 뭐지
+# Django URL redirections
 
 ## Django shortcut functions
 ### render()

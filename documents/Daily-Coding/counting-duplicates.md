@@ -1,4 +1,5 @@
 # Daily Codewars #17
+
 ## Question
 http://www.codewars.com/kata/54bf1c2cd5b56cc47f0007a1/train/javascript
 Count the number of Duplicates

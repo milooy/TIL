@@ -1,3 +1,5 @@
+# Intellij shortcuts
+
 ## Editing
 cmd shift 방향키 : 줄 잡고 이동
 Ctrl + Space Basic code completion (the name of any class,method or variable)

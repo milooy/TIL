@@ -1,4 +1,4 @@
-# django social auth 프로필 추가 페이지 제작
+# Django social auth 프로필 추가 페이지 제작
 
 ## Problem
 `django-social-auth`를 사용하여 핑크퐁 북스토어에 페이스북 로그인을 달았다. 

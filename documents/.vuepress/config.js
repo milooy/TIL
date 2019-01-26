@@ -14,56 +14,59 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
-        title: 'React',
-        children: CONST.ReactList
-      },{
-        title: 'Daily Coding',
-        children: CONST.DailyCodingList
-      },{
-        title: 'JavaScript',
+        title: '1. JavaScript',
         children: CONST.JavaScriptList
       },{
-        title: 'Angular',
+        title: '2. React',
+        children: CONST.ReactList
+      },{
+        title: '3. Daily Coding',
+        children: CONST.DailyCodingList
+      },{
+        title: '4. Angular',
         children: CONST.AngularList
       }, {
-        title: 'Javascript Testing',
+        title: '5. Javascript Testing',
         children: CONST.JsTestingList
       }, {
-        title: 'CSS',
+        title: '6. CSS',
         children: CONST.CSSList
       }, {
-        title: 'Google Analytics',
+        title: '7. Google Analytics',
         children: CONST.GoogleAnalyticsList
       }, {
-        title: 'Data structure and Algorithm',
+        title: '8. Data structure and Algorithm',
         children: CONST.DataStructureAndAlgorithmList
       }, {
-        title: 'Django',
+        title: '9. Django',
         children: CONST.DjangoList
       }, {
-        title: 'ETC',
-        children: CONST.ETCList
+        title: '10. Python',
+        children: CONST.PythonList
       }, {
-        title: 'Git',
+        title: '11. Git',
         children: CONST.GitList
       }, {
-        title: 'Module Bundler',
+        title: '12. Module Bundler',
         children: CONST.BundlerList
       }, {
-        title: 'iOS',
+        title: '13. iOS',
         children: CONST.iOSList
       }, {
-        title: 'jQuery',
+        title: '14. jQuery',
         children: CONST.jQueryList
       }, {
-        title: 'MarkUp',
+        title: '15. MarkUp',
         children: CONST.MarkUpList
       }, {
-        title: 'Network',
+        title: '16. Network',
         children: CONST.NetworkList
       }, {
-        title: 'Python',
-        children: CONST.PythonList
+        title: '17. DevOps',
+        children: CONST.DevOpsList
+      }, {
+        title: '18. ETC',
+        children: CONST.ETCList
       }
     ],
     nav: [{

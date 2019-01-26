@@ -1,4 +1,4 @@
-# [장고] Migration Conflict
+# Django Migration Conflict
 
 ## 상황
 근 한 달 이상 `Review`브랜치에서 리뷰 개발을 하고 있다.

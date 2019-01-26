@@ -1,4 +1,5 @@
-# 파이참 단축키
+# Pycharm shortcuts
+
 - cmd+O : find class or file by name
 - cmd g: 동일 단어 하나씩 선택
 - 원하는 선택-> cmd g: 동일 단어 하나씩 더 선택 (되돌리는건 shift)

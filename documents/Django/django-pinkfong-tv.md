@@ -1,4 +1,5 @@
-## 장고로 웹 만들기 with 핑크퐁 TV
+# 장고로 웹 만들기 with 핑크퐁 TV
+
 ### `settings.py`
 ```python
 INSTALLED_APPS = (

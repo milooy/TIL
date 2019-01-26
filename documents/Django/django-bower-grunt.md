@@ -1,3 +1,5 @@
+# Django + Bower + Grunt
+
 ## 상황
 재고/창고관리 웹페이지를 만들려고 한다. 
 전체적으로 `django`와 `docker`로 돌아가고, 화면은 6개 정도 되는 크지 않은 admin페이지다.

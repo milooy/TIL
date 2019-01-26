@@ -1,3 +1,5 @@
+# 개발분야의 영어 표현
+
 - 새로운 브랜치를 따다. = cut a new branch
 - 서버가 엎어지다 = a server tips over
 - 배포하다 = deploy / roll out

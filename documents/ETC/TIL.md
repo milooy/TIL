@@ -1,5 +1,11 @@
 # TIL
 
+## 190102
+### ESLint ignore next line
+```
+// eslint-disable-line no-use-before-define
+```
+
 ## 181024
 ### Comment 'deprecated' tag in javascript file
 The eslint plugin will work with 2 styles only: JSDoc style or TomDoc style. We have to follow one of these 2 style or the linter will not be able to generate warnings.

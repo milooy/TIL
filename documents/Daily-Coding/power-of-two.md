@@ -1,3 +1,5 @@
+# 일일코딩: Power of two
+
 ## Question
 http://www.codewars.com/kata/534d0a229345375d520006a0/train/javascript
 Write a function that determines if given number is a power of two. A power of two means a number of the form 2^n where n is an integer, i.e. the result of exponentiation with number two as the base and integer n as the exponent. I.e. 1024 is a power of two: it 2^10.

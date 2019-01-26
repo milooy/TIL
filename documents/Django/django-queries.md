@@ -1,4 +1,5 @@
-# Making Queries
+# Django Queries
+
 앞으로 예시들에 사용할 모델. 
 글 하나에 블로그 여러 개 중 하나가 연결되어있고, author는 m2m.
 ```python

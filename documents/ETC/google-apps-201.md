@@ -1,4 +1,5 @@
-## 너굴님의 google apps 201
+## Google apps 201
+
 - 단축키
     - 링크 cmd k
     - 포맷복사 cmd opt c

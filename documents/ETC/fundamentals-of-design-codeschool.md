@@ -1,4 +1,5 @@
 # Fundamentals of design
+
 ## Typography
 - 글자 크기
     + HeadLine Text: Body Copy의 300%

@@ -1,4 +1,5 @@
 # Daily Codewars #18
+
 ## Question
 http://www.codewars.com/kata/52755006cc238fcae70000ed/train/javascript
 Create a function `christmasTree(height)` that returns a christmas tree of the correct height

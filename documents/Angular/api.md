@@ -1,4 +1,4 @@
-# angularjs api
+# AngularJS API
 
 ## $location
 https://code.angularjs.org/1.3.14/docs/api/ng/service/$location

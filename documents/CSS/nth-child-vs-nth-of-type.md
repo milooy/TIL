@@ -1,4 +1,5 @@
-## :nth-child(A) vs :nth-of-type(A)
+# :nth-child(A) vs :nth-of-type(A)
+
 ```html
 <div class="table">
     <plate></plate>

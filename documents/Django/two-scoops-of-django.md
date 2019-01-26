@@ -1,4 +1,4 @@
-# Two scoops of django
+# Two scoops of Django
 
 ## 김승진님 역자 만남
 - FANCY 개발자는 15명

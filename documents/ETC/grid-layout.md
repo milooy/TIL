@@ -1,4 +1,5 @@
 # 그리드 & 레이아웃 워크샵
+
 [강의 링크](http://ejungle.co.kr/main/workshop/wks_overview.asp?p_no=3563&pm_no=3496)
 ## 타이포그래피
 - '활자를 잘 다루는 것' <<시각디자인에서 가장 중요

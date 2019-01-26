@@ -1,4 +1,5 @@
-## 네트워크
+# Network
+
 - repeater
     - physical layer에서 함
 
