@@ -1,4 +1,5 @@
-## Data Layer in tagmanager
+# Data Layer in tagmanager
+
 서버 데이터를 GA에서 쓰고 해석하기 쉽게 객체 형식으로 들고 있는 것.
 크롬 자바스크립트 콘솔에서 `dataLayer`라고 쳐보면 객체들이 나온다.
 1. gtm.js: 구글 태그매니저가 로드되었을 때 불림

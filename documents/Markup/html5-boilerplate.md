@@ -1,4 +1,5 @@
-#HTML5 Boilerplate로 web frontend 뼈대짜기
+# HTML5 Boilerplate로 web frontend 뼈대짜기
+
 > HTML5 boilerplate는 빠르고, 튼튼하며, 유연한 웹사이트 제작을 도와주는 템플릿이다.
 > html5웹을 만드는 첫 단계 뼈대를 제공해준다.
 

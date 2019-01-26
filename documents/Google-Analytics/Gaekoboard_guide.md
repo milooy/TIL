@@ -1,4 +1,4 @@
-#Geckoboard Guide
+# Geckoboard Guide
 
 ##개코보드가 무엇인가
 https://www.geckoboard.com/

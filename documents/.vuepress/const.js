@@ -100,8 +100,6 @@ exports.AngularList = [
 ]
 
 exports.JsTestingList = [
-  'Javascript-Testing/casperjs-loop',
-  'Javascript-Testing/casperjs-popup',
   'Javascript-Testing/casperjs',
   'Javascript-Testing/passing-arguments-with-casperjs',
   'Javascript-Testing/trouble-shooting'
@@ -118,7 +116,6 @@ exports.CSSList = [
   'CSS/make-border-smaller-than-div-length',
   'CSS/markup-level-test',
   'CSS/nth-child-vs-nth-of-type',
-  'CSS/nth-child-vs-nth-of-type',
   'CSS/web-font',
   'CSS/styled-components'
 ]
@@ -134,7 +131,6 @@ exports.GoogleAnalyticsList = [
   'Google-Analytics/google-analytics-terminology',
   'Google-Analytics/google-analytics',
   'Google-Analytics/make-multiple-categories-in-ga',
-  'Google-Analytics/tutorial-to-enhanced-ecommerce-in-ga',
   'Google-Analytics/Gaekoboard_guide'
 ]
 
@@ -242,14 +238,11 @@ exports.NetworkList = [
   'Network/ssh-tunneling'
 ]
 exports.PythonList = [
-  'Python/codeschool-python',
   'Python/make-hobbycoding',
   'Python/make-jaystagram',
-  'Python/pycon2016',
   'Python/python-set-environments',
   'Python/python-startkit',
   'Python/python',
-  'Python/web-font-error-in-android-browser',
 ]
 
 exports.DevOpsList = [

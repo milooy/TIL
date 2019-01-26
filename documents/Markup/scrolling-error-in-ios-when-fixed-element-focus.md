@@ -1,3 +1,5 @@
+# iOS의 fixed element 스크롤 버그 
+
 iOS에서 fixed element를 누르면 스크롤이 최상단이나 최하단으로 후루룩 가는 이상한 버그가 있다.
 
 아래 CSS로 간단하게 해결할 수 있다.

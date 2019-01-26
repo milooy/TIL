@@ -1,7 +1,7 @@
 # Introduction to Docker
 
 ## Hello world
-```shell
+```bash
 # 'hello-world'란 컨테이너 돌리기. 로컬에 있으면 그거 돌리고 없으면 Docker hub에서 찾아서 pull받음
 $ docker run hello-world
 Unable to find image 'hello-world:latest' locally
@@ -32,14 +32,14 @@ CONTAINER ID      IMAGE           COMMAND      ...     NAMES
 
 간단한 노드를 베이스로 하는 도커 이미지를 만들어보자!
 
-```shell
+```bash
 $ mkdir test && cd test
 
 cat > Dockerfile <<EOF
 ```
 
 Dockerfile 작성하기
-```shell
+```bash
 # 노드 버전6을 가리키는 오피셜 도커 이미지를 부모 이미지로 함
 FROM node:6
 
@@ -80,7 +80,7 @@ process.on('SIGINT', function() {
 });
 ```
 
-```shell
+```bash
 # 도커 이미지 빌드하기. -t는 태그달기, node-app이란 이름의 이미지고 tag는 0.1이라는것. 태그는 도커 이미지 빌드할때 꼭 적는게 좋다. 안적으면 latest란 이름으로 만들어지는데 최신껄 구별하기 어려움.
 $ docker build -t node-app:0.1 .
 Sending build context to Docker daemon  3.072kB
@@ -122,19 +122,19 @@ hello-world         latest              fce289e99eb9        3 weeks ago         
 ```
 
 ## 돌리기 (Run)
-```shell
+```bash
 # --name 플래그를 붙여 my-app이라고 이름을 지어줄 수 있다. -p 플래그로는 호스트 포트 4000을 컨테이너 포트 80으로 맵해줄 수 있다(아까 node-app을 80으로 띄웠으니까). 이젠 내 로컬에서 localhost:4000 으로 접근 가능. 포트 매핑 안하면 localhost에서 못 본다. -d플래그 붙이면 터미널 세션을 꺼도 백그라운드에서 돌아감
 $ docker run -p 4000:80 --name my-app node-app:0.1
 Server running at http://0.0.0.0:80/
 ```
 
 터미널 하나 더 띄워서 다음 명령어 적는다
-```shell
+```bash
 $ curl http://localhost:4000
 Hello World
 ```
 
-```shell
+```bash
 # 원래 터미널로 돌아가 컨테이너를 멈추고 remove 해준다.
 $ docker stop my-app && docker rm my-app
 

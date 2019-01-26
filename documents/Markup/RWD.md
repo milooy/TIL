@@ -1,4 +1,5 @@
 # Udacity RWD
+
 [link](https://www.udacity.com/course/progress#!/c-ud893)
 - The viewport and the device pixel ratio are both likely causes for the differences between devices.
 -  a device pixel ratio(DPR) of 2 means that there are two hardware pixels for every one CSS pixels.

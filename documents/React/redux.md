@@ -1,4 +1,5 @@
 # Redux 카툰 안내서
+
 http://bestalign.github.io/2015/10/26/cartoon-intro-to-redux/index.html
 ## 왜 flux말고 redux?
 스토어 객체 하나에 1. 상태 변환 위한 로직 2. 현재 애플리케이션 상태 두 가지 모두 가지고 있으면 핫 리로딩 시 스토어의 기존 상태도 잃어버리고 event subscription 까지 망가져 버림.

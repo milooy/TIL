@@ -1,4 +1,5 @@
 # Learn Python the hard way
+
 ## 객체지향 용어
 - Class: 파이썬이 새로운 자료형을 만들도록 한다.
 - Object: 가장 기초적인 자료형. 혹은 어떤 자료형의 인스턴스

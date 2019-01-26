@@ -6,7 +6,7 @@
       </h1>
 
       <div class="infoContainer">
-        <div class="name">진유림</div>
+        <div class="name">Jay Jin's TIL</div>
         <ul>
           <li>
             <a href="https://milooy.wordpress.com/">Blog</a>
@@ -37,7 +37,7 @@ h1 {
   font-weight: 500;
   border-bottom: 17px solid #ffd816;
   word-break: keep-all;
-  font-size: 6rem;
+  font-size: 5rem;
 }
 .name {
   font-weight: 900;

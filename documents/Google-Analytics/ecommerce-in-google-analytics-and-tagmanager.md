@@ -1,3 +1,5 @@
+# Google Tag Manager
+
 ## 무엇이냐?
 [mind the log 자료](http://mindthelog.com/2014/05/%EA%B5%AC%EA%B8%80-%EC%A0%84%EC%9E%90%EC%83%81%EA%B1%B0%EB%9E%98-%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D-%EA%B3%BC%EC%A0%95-%EA%B0%9C%EB%85%90/)
 주문완료 되면 사이트 서버에서 해당 정보 처리 후 GA서버에 2종류 데이터 전달

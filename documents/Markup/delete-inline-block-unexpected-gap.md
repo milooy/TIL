@@ -1,3 +1,5 @@
+# Div 사이에 원치 않는 틈 제거하기
+
 ## Problem
 `btn-container`라는 div에 `btn-group` 3개 div를 넣었더니 그 3개 div 사이에 틈이 생겼다.
 

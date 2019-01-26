@@ -1,4 +1,5 @@
 # CSS animation
+
 ## JS animation과의 비교
 - 간단히 만들 수 있다.
 - 최대한 부드럽게 렌더링됨.

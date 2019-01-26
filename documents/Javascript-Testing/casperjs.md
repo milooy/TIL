@@ -1,4 +1,4 @@
-## Casperjs
+# Casper.js
 
 ### Quick Start
 

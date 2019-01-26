@@ -1,4 +1,4 @@
-#api.jquery.com
+# api.jquery.com
 
 ##Attributes
 ```javascript

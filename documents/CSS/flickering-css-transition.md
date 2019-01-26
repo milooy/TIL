@@ -1,4 +1,4 @@
-# flickering CSS Transition in safari(webkit browser)
+# Flickering CSS Transition in safari(webkit browser)
 
 ## Problem
 앱 다운로드 드롭다운같은 메뉴를 만들려고 ul li요소에 CSS transition을 먹인 애니메이션 요소를 만들었는데

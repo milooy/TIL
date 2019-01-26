@@ -1,3 +1,5 @@
+# Casper.js에 arguments 넘기기
+
 ```javascript
 var casper = require('casper').create();
 

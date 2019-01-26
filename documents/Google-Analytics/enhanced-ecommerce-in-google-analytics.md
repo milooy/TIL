@@ -1,4 +1,5 @@
-## Google Analytics Enhanced Ecommerce (향상된 전자상거래)
+# Google Analytics Enhanced Ecommerce (향상된 전자상거래)
+
 [공식 문서](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)
 
 ## 기존에 ecommerce plugin을 쓰고있다면?

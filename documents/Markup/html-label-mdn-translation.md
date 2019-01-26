@@ -1,4 +1,5 @@
-## 두 번째 MDN 번역 -  HTML Label
+# HTML Label
+
 https://developer.mozilla.org/ko/docs/Web/HTML/Element/label
 
 ## 개요
