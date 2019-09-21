@@ -1,6 +1,8 @@
 {
     "scripts": {
       "dev": "vuepress dev documents",
-      "build": "vuepress build documents"
+      "build": "vuepress build documents",
+      "commit": "vuepress build documents && git add build -f && git commit -m 'Subtree commit'",
+      "deploy": "git push origin `git subtree split --prefix build master`:gh-pages --force"
     }
   }
