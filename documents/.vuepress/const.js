@@ -50,7 +50,8 @@ exports.JavaScriptList = [
   'JavaScript/way-to-get-javascript-in-html',
   'JavaScript/bugs-in-ios8',
   'JavaScript/functional-programming',
-  'JavaScript/functional-programming-with-lodash-fp'
+  'JavaScript/functional-programming-with-lodash-fp',
+  'JavaScript/typescript'
 ]
 
 exports.DailyCodingList = [
@@ -82,7 +83,6 @@ exports.DailyCodingList = [
   'Daily-Coding/sum-by-factors',
   'Daily-Coding/the-shell-game',
   'Daily-Coding/unique-in-order',
-  'Daily-Coding/word-char-and-line-count'
 ]
 
 exports.ReactList = [
@@ -90,7 +90,11 @@ exports.ReactList = [
   'React/react-testing',
   'React/react',
   'React/redux-saga',
-  'React/redux'
+  'React/redux',
+  'React/hook',
+  'React/render-props',
+  'React/high-order-component',
+  'React/react-component',
 ]
 
 exports.AngularList = [
@@ -160,6 +164,8 @@ exports.DjangoList = [
   'Django/two-scoops-of-django'
 ]
 exports.ETCList = [
+  'ETC/beer',
+  'ETC/readable-code',
   'ETC/2015-sanfrancisco-tour',
   'ETC/2017_NDC',
   'ETC/Gaekoboard_guide',
@@ -188,7 +194,7 @@ exports.ETCList = [
   'ETC/zendesk',
   'ETC/chrome-extension',
   'ETC/TIL',
-  'ETC/vs-code'
+  'ETC/vs-code',
 ]
 exports.GitList = [
   'Git/git-guide',
@@ -198,6 +204,8 @@ exports.GitList = [
   'Git/rebase-with-sourcetree',
   'Git/trouble-shooting-on-console',
   'Git/rebase-vs-merge-commit',
+  'Git/revert-certain-file'
+
 ]
 exports.BundlerList = [
   'Bundler/grunt',
