@@ -1,4 +1,47 @@
-# React testing
+# React: Testing
+
+# (Velopert님 강의)
+
+## 테스트란?
+- 버튼을 누르는 것도 테스트
+    - 일일히 하기 힘드니까 자동화
+- 주요 이점
+    + 원활한 협업 (동료뿐만이 아니라 미래의 나와도 협업)
+    + 자신감 있게 리팩토링 할 수 있다
+    + TC 작성한다고 버그가 발생하지 않는건 아님
+        * 다만 원인 분석이 빨라짐
+        * 버그에 대해 TC를 만들면 실수를 두번 다시 반복 ㄴㄴ
+- jest
+    + "test": "jest --watchAll --verbose"
+        * --verbose: 자세히 보여주기
+    + test라고 써도 되고 it이라고 써도 되는데 it이 조금 더 문장이 된다
+    + it을 하나의 그룹으로 묶어줄 땐 describe를 씀
+- TDD
+    + 코드를 먼저 작성하고 테스트를 짜야하는 경우에는 일부터 테스트를 틀리게라도 짠다
+
+## 리액트 테스트
+- Enzyme 점유율이 높지만 새로 하는데선 react-testing-library 써라
+- Enzyme
+    + 컴포넌트 인스턴스에 접근
+    + state/props 확인
+    + 메서드 직접 호출
+- react-testing-library
+    - 렌더링 결과에 집중
+    - DOM 기반 테스트
+    - UI 위한 테스트 하기에 최적화
+    - 엔자임보다 돔기반 테스트가 편함. 컴포넌트 인스턴스에 접근 안해서 편하기도 함
+- shallow vs mount
+    + shallow는 겉에껏만 렌더함 안에도 있으면 렌더 안함
+- Hook을 만약에 사용한다면 shallow 쓰면 버그날 수 있어서 mount 해야한다
+    + enzyme은 돔기반 테스트 할때 좀 불편한 감이 있다
+
+## react-testing-library
+- DOM위주 테스트. props나 state 조회하는 일은 없다
+    + 리팩토링할때 주로 내부 구조나 네이밍은 바뀌어도 작동 방식은 크게 안 바뀐다는것을 중요시여김. 
+- 필요한 기능만 지원해줘서 가볍고, 개발자들이 일관적이게 테스트코드 작성하도록 도움
+- 유저 입장에서 테스트하는거기 때문에 class 등으로 querySelector 하기보단 `getByLabelText`등으로 실제 보이는걸 누르도록 한다
+- 우왕 벨로퍼트님은 습관적으로 매치스냅샷을 쓰시네
+---
 
 ## 테스트
 - 애플리케이션이 어느 정도 확실한 수준까지 동작하는지 자동으로 확인하는 도구
@@ -25,4 +68,5 @@
 ## Enzyme으로 테스트: 단위, 통합 테스트
 
 ## Refer
-https://adhrinae.github.io/posts/react-testing-tutorial-kr
+- https://adhrinae.github.io/posts/react-testing-tutorial-kr
+- Velopert와 함께하는 리액트 테스팅: http://learn-react-test.vlpt.us/?fbclid=IwAR1ZPsmPULnyxqyhmp76rvwrZP9BhjM6rl3Ao2mXA6KpjGPqW-_1zMX8weI#/05-react-testing-library
