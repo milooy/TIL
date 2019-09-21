@@ -1,5 +1,11 @@
 # TIL
 
+## 190226
+### Find text in certain extension in VS Code
+```
+**/*.spec.*
+```
+
 ## 190102
 ### ESLint ignore next line
 ```
@@ -174,6 +180,13 @@ $ printenv
 1. .gitignore에서 배포 원하는 폴더를 주석처리 (e.g. /public, /dist)
 2. 원하는 폴더를 add하고 commit한다: `git add 폴더이름 && git commit -m "Initial subtree commit"`
 3. 서브트리로 gh-pages에 푸시 해준다: `git subtree push --prefix 폴더이름 origin gh-pages`
+
+git add docs && git commit -m "Subtree commit"
+git subtree push --prefix docs origin 
+git push origin `git subtree split --prefix docs master`:gh-pages --force
+
+git push heroku `git subtree split --prefix pythonapp master`:master --force
+
 
 refer: https://gist.github.com/cobyism/4730490
 
