@@ -1,5 +1,16 @@
 # TIL
 
+## 200130
+### 크롬 네트워크/프로파일 탭 export/load 하기
+```
+TIL(Today I Learned)
+---
+1. You can export the Network log(from chrome dev tools) and read it in https://toolbox.googleapps.com/apps/har_analyzer/
+2. You can also export the Performance(from chrome dev tools) and load it in Performance tab(right click and load the file)
+
+This can be useful to stack trace the network and performance log
+```
+
 ## 190226
 ### Find text in certain extension in VS Code
 ```

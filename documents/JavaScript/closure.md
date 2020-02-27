@@ -8,6 +8,8 @@
 + 외부 함수 변수에 대한 접근
 + 전역변수 대한 접근
 
+- 카일 심슨의 정의: 클로저는 함수가 속한 렉시컬 스코프를 기억하여 함수가 렉시컬 스코프 밖에서 실행될 때에도 이 스코프에 접근할 수 있게 하는 기능
+
 ## 기본 예제
 ```js
 function showName(firstName, lastName) {
@@ -91,6 +93,32 @@ function userID(userList) {
     return userList;
 }
 ```
+
+## 클로저 + React hooks
+```js
+// 예제 0
+function useState(initialValue) {
+  var _val = initialValue // _val은 useState에 의해 만들어진 지역 변수입니다.
+  function state() {
+    // state는 내부 함수이자 클로저입니다.
+    return _val // state()는 부모 함수에 정의된 _val을 참조합니다.
+  }
+  function setState(newVal) {
+    // 마찬가지
+    _val = newVal // _val를 노출하지 않고 _val를 변경합니다.
+  }
+  return [state, setState] // 외부에서 사용하기 위해 함수들을 노출
+}
+
+var [foo, setFoo] = useState(0) // 배열 구조분해 사용
+console.log(foo()) // 0 출력 - 위에서 넘긴 initialValue
+setFoo(1) // useState의 스코프 내부에 있는 _val를 변경합니다.
+console.log(foo()) // 1 출력 - 동일한 호출하지만 새로운 initialValue
+```
+- `state()`가 클로저인 이유:
+    - state가 밖에서 `foo()`이렇게 실행되었는데도 내부의 `_val`을 잘 리턴하고 있다. 그 내부스코프에 있던 `_val`이 계속 수정되더라도 상관 없이 잘 return하고 있다. 
+    + 사실 state함수 내부를 안 보고 밖에만 본다면 밖에서 내부변수 _val이 노출되지 않았는데 계속 수정할 수 있다는게 신기하지.
+
 
 ## Refer
 http://chanlee.github.io/2013/12/10/understand-javascript-closure/

@@ -1,3 +1,193 @@
+# Redux
+
+## Redux
+- Redux가 요구하는 것
+    + 1. 앱의 상태를 평범한 객체와 배열로 만드삼
+    + 2. 변경사항을 평범한 객체로 만드삼
+    + 3. 변경을 다루는 로직을 순수함수로 만드삼
+- 이 요구하는 것 덕의 장점
+    + initialData를 서버에서 받아 앱을 시작할때 채우는게 편함
+    + 사용자의 액션을 직렬화해서 자동으로 버그리포트에 첨부 -> 유림 덧: 액션이 모여있으니까 redux-beacon 등에서 원하는 곳에 액션 쏘기 편하긴 하더라
+    + 개발할 때 상태 내역 사이를 오고가고 액션 내역에서 현재 상태를 다시 계산하는 일을 TDD로 할 수 있음
++ 리듀서란?
+    * `Re`act state pro`ducer`. 리액트의 상태를 만들어주는 생성자. [아이디어 참고](https://devlog.jwgo.kr/2018/08/23/redux-which-is-weird-term/)
+    * 어플리케이션의 state를 반환하는 함수
+        - 여러 reducer를 만들어서 combineReducers라는 함수로 묶어서 rootReducer라고 쓴다.
+- 리덕스의 장점
+    + 손에 익숙한 사람은 편하기도 하고, 미들웨어같은 강력한 기능은 Context API로 대체할 수 없다.
++ 상태관리 라이브러리를 사용해야 하는 이유?
+    * 1. 복잡한 상태 업데이트 로직들을 컴포넌트에서 뜯어내기. 이를 모듈화 하여 높은 유지보수성.
+    * 2. 더 쉬운 상태관리 (드릴링 피하기)
+
+```jsx
+import React, { Component } from 'react';
+
+// 카운터 리듀서. state와 action을 받는다. INCREMENT액션이 오면 state.value를 +1조작해서 넘기고 vise versa. 요약하자면 넘긴 action이름에 따라 미리 정해둔 규칙대로 넘겨준 state를 조작해서 반환.
+const counter = (state = { value: 0 }, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { value: state.value + 1 };
+    case 'DECREMENT':
+      return { value: state.value - 1 };
+    default:
+      return state;
+  }
+}
+
+class Counter extends Component {
+  // 지역 state 초기화. state = {value: 0}
+  state = counter(undefined, {});
+  
+  // 액션 이름을 받고 지역 state를 조작하는 reducer를 콜함
+  dispatch(action) {
+    this.setState(prevState => counter(prevState, action));
+  }
+
+  // increment액션. INCREMENT란 타입의 액션을 dispatch한다.
+  increment = () => {
+    this.dispatch({ type: 'INCREMENT' });
+  };
+
+  decrement = () => {
+    this.dispatch({ type: 'DECREMENT' });
+  };
+  
+  render() {
+    return (
+      <div>
+        {this.state.value}
+        <button onClick={this.increment}>+</button>
+        <button onClick={this.decrement}>-</button>
+      </div>
+    )
+  }
+}
+```
+
+### 개념 정의
+- 액션: 상태 변화가 필요할때 호출. 객체로 표현. type이 필수로 들어가고 외에는 맘대로
+```json
+{
+  type: "ADD_TODO",
+  data: {
+    id: 0,
+    text: "리덕스 배우기"
+  }
+}
+```
+- 액션 생성함수(Action creator)
+    + 액션 객체을 만드는 함수. ADD_TODO를 바로 부르는게 아님. addTodo(data)를 부르지.
+```js
+const addTodo = (data) => ({
+    type: "ADD_TODO",
+    data,
+})
+```
+- 리듀서
+    + 변화를 일으키는 함수. state 반환.
+```js
+const reducer = (state, action) => {
+    // 상태 업데이트 로직
+    return alteredState;
+}
+```
+- 스토어 (store)
+    + 리덕스에서는 한 앱당 하나의 스토어 만듦. 스토어 안에는 state와 reducer가 있고, 추가적으로 몇개의 내장함수가 있다.
+- 디스패치(dispatch)
+    + 스토어의 내장함수. 액션을 '발생시키는' 것. 
+    + `dispatch(action)`로 호출하면 스토어는 리듀서를 실행시켜 해당 액션을 처리하는 로직이 있다면 새 상태 만들어줌
++ 구독 (subscribe)
+    * 역시 스토어의 내장함수. 함수 형태의 값을 파라미터로 받음
+    * 여기 함수를 전달하면 액션이 디스패치 될때마다 전달해준 함수가 호출됨
+
+## Redux middleware
+- 미들웨어란?
+    + 액션이 dispatch되었다----> 리듀서에서 state를 조작한다
+        * 이 사이에 사전에 지정된 작업 하는거임 (액션과 리듀서의 중간자)
+* 미들웨어가 할 수 있는 작업 예시
+    - 단순하게 액션을 콘솔에 찍기
+    - 전달받은 액션에 기반해서 이걸 아예 취소시키거나 다른 종류의 액션을 추가적으로 dispatch
+- Redux thunk
+```js
+import * as api from 'api';
+import {loginRequest, loginSuccess, loginFailure} from './loginActions';
+
+export const loginThunk = (name, password) => (dispatch, getState)=> {
+    dispatch(loginRequest());
+    try{
+      api.login(name, password);
+    }
+    catch(err){
+      dispatch(loginFailure(err));
+      return;
+    }
+    dispatch(loginSuccess())
+};
+```
+    -  첫번째 함수의 parameters들은 thunk 호출시 추가적인 정보 넘기기 위함
+    -  두번째 함수의 dispatch, getState는 thunk가 제공.
+    -  액션 콜하고 thunk라는 함수에서 필요한 작업을 하고 원하는 다른 액션을 dispatch할 수 있다.
+    -  thunk란, 특정 작업을 나중에 하도록 미루기 위해서 함수형태로 감싼것을 말함
+    -  redux thunk는 함수를 생성하는 액션 생성함수를 작성하게 해줌 => 보통 액션생성자는 그냥 하나의 액션객체를 생성할 뿐이지만 redux thunk를 통해 만든 액션생성자는 그 내부에서 여러가지 작업 할 수 있음. 여기서 네트워크 요청 해도 무방! 안에서 여러번 액션 디스패치 해도 된다.
+```js
+// 리덕스가 기본으로 쓰는 액션크리에이터 - 특정 액션이 몇초뒤에 실행되거나, 상태에 따라 액션이 무시되게 하려면 이걸로는 부족함.
+const actionCreator = (payload) => ({action: 'ACTION', payload});
+
+// Thunk 예제
+function incrementIfOdd() {
+  return (dispatch, getState) => {
+    const { counter } = getState();
+
+    if (counter % 2 === 0) {
+      return;
+    }
+
+    dispatch(increment());
+  };
+}
+```
+- Redux saga
+    + saga라고 불리는 순수함수로 복잡한 어플리케이션 로직을 표현할 수 있도록 해줌.
+    + sagas는 generator로 구성됨. 
+    + 한글 문서: https://mskims.github.io/redux-saga-in-korean/
+```js
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import Api from '...'
+
+// worker Saga: USER_FETCH_REQUESTED 액션에 대해 호출될 것입니다
+function* fetchUser(action) {
+   try {
+      const user = yield call(Api.fetchUser, action.payload.userId);
+      yield put({type: "USER_FETCH_SUCCEEDED", user: user});
+   } catch (e) {
+      yield put({type: "USER_FETCH_FAILED", message: e.message});
+   }
+}
+
+/*
+  각각의 dispatch 된 `USER_FETCH_REQUESTED` 액션에 대해 fetchUser를 실행합니다.
+  동시에 user를 fetch하는 것을 허용합니다. (takeLatest 쓰면 대기상태껀 취소되고 최근것만 실행)
+*/
+function* mySaga() {
+  yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
+}
+```
+- thunk vs saga
+    + Saga장점:
+        * thunk와는 달리 콜백 지옥에 빠지지 않으면서 비동기 흐름을 쉽게 테스트할 수 있고 액션을 순수하게 유지한다.
+        * thunk는 액션에 응답을 줄 수 없는 반면 Saga는 store를 구독하고 특정 작업이 디스패치될때 saga가 실행되도록 유발 가능
+
+### Refer
+- [thunk vs saga](https://velog.io/@dongwon2/Redux-Thunk-vs-Redux-Saga%EB%A5%BC-%EB%B9%84%EA%B5%90%ED%95%B4-%EB%B4%85%EC%8B%9C%EB%8B%A4-)
+- [Redux middleware](https://velopert.com/3401#comment-2056)
+- [Velopert series](https://velopert.com/3358)
+- [You might not need redux](https://medium.com/lunit-engineering/%EB%8B%B9%EC%8B%A0%EC%97%90%EA%B2%8C-redux%EB%8A%94-%ED%95%84%EC%9A%94-%EC%97%86%EC%9D%84%EC%A7%80%EB%8F%84-%EB%AA%A8%EB%A6%85%EB%8B%88%EB%8B%A4-b88dcd175754?)
+
+
+
+
+---
+
 # Redux 카툰 안내서
 
 http://bestalign.github.io/2015/10/26/cartoon-intro-to-redux/index.html
@@ -129,6 +319,4 @@ https://velopert.com/3346
     + 즉
         * 카운터 넘버는 reducer의 state에서 가져오고
         * 카운터 올리는 액션은 action에서 가져오면 그 액션을 리듀서가 짬뽕해서 새로운 스테이트를 만들어서 결국 카운터 넘버도 올라가도록 보임
-
- ## Refer
 

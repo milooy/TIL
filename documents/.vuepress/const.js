@@ -51,10 +51,13 @@ exports.JavaScriptList = [
   'JavaScript/bugs-in-ios8',
   'JavaScript/functional-programming',
   'JavaScript/functional-programming-with-lodash-fp',
-  'JavaScript/typescript'
+  'JavaScript/typescript',
+  'JavaScript/plz-answer'
 ]
 
 exports.DailyCodingList = [
+  'Daily-Coding/191120-two-sum',
+  'Daily-Coding/191119-remove-duplicates-from-sorted-array',
   'Daily-Coding/180110-recursion-davis-staircase',
   'Daily-Coding/180110-stacks',
   'Daily-Coding/array-helpers',
@@ -86,6 +89,7 @@ exports.DailyCodingList = [
 ]
 
 exports.ReactList = [
+  'React/react-ts-storybook.md',
   'React/flux',
   'React/react-testing',
   'React/react',
@@ -227,6 +231,7 @@ exports.jQueryList = [
 'jQuery/make-jquery-modal-plugin'
 ]
 exports.MarkUpList = [
+  'Markup/icon-font',
   'Markup/HTML5-2015-next',
   'Markup/HTML5',
   'Markup/RWD',
