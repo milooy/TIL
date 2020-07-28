@@ -76,3 +76,4 @@ detail view를 보면
 [The Data Layer](http://www.simoahava.com/analytics/data-layer/)
 [Google Tag Manager’s Data Model](http://www.simoahava.com/analytics/google-tag-manager-data-model/)
 [Google Tag Manager for Web Tracking](https://developers.google.com/tag-manager/devguide)
+[Data Layer explained with Tutorial [2020]](https://bluerivermountains.com/en/data-layer)
