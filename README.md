@@ -2,7 +2,7 @@
 
 http://milooy.github.io/TIL/
 
-![gif](https://milooy.files.wordpress.com/2019/12/dec-22-2019-19-38-23-1.gif?w=640)
+![til](https://user-images.githubusercontent.com/3839771/88662649-37dd7480-d115-11ea-8e26-a56669cbfe83.gif)
 
 @milooy 가 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. [thoughtbot til 참고](https://github.com/thoughtbot/til)
 
