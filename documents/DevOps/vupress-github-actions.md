@@ -49,27 +49,11 @@ https://github.com/marketplace/actions/vuepress-deploy
 
 Dockerfile, Docker Hub 이라고 생각함 될듯. 선언적 문법 매력적이다. 일해라 절해라 적어두기.
 
-```yaml
-name: Build and Deploy
-on: [push]
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@main
-
-    - name: Vuepress deploy
-      uses: jenkey2011/vuepress-deploy@1.0.1
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BUILD_SCRIPT: yarn && yarn build
-        BUILD_DIR: build/
-```
+[main.yaml](https://github.com/milooy/TIL/blob/master/.github/workflows/main.yml) 참고
 
 ## Step 4: GitHub 저장소에 환경변수 세팅
 
-위 yaml 파일 보면 `ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}`를 쓰는데, GitHub 저장소에 ACCESS_TOKEN 환경변수를 세팅해줘야 한다. 
+위 yaml 파일 보면 `ACCESS_TOKEN`를 쓰는데, GitHub 저장소에 ACCESS_TOKEN 환경변수를 세팅해줘야 한다. 
 
 먼저 내가 나라는걸 증명하는 프라이빗 토큰을 발급받자.
 `Settings > Developer settings > Personal access tokens`에 들어가
