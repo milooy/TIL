@@ -99,6 +99,7 @@ exports.ReactList = [
   'React/render-props',
   'React/high-order-component',
   'React/react-component',
+  'React/context',
 ]
 
 exports.AngularList = [
@@ -260,4 +261,9 @@ exports.PythonList = [
 
 exports.DevOpsList = [
   'DevOps/docker.md'
+]
+
+exports.MILList = [
+  'MIL/mil-2008.md',
+  'MIL/mil-1911.md'
 ]
