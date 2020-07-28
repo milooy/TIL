@@ -7,11 +7,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Build and Deploy
-      uses: grasilife/github-pages-deploy-action@v1.2
+    - name: Vuepress deploy
+      uses: jenkey2011/vuepress-deploy@1.0.1
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BASE_BRANCH: master # The branch the action should deploy from.
-        BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: build # The folder the action should deploy.
-        BUILD_SCRIPT: npm install && npm run-script build # The build script the action should run prior to deploying.
+        TARGET_BRANCH: master
+        BUILD_SCRIPT: yarn && yarn build
+        BUILD_DIR: blog/.vuepress/dist/
+
