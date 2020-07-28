@@ -200,6 +200,8 @@ exports.ETCList = [
   'ETC/chrome-extension',
   'ETC/TIL',
   'ETC/vs-code',
+  'ETC/swift-basic',
+  'ETC/swift_doc'
 ]
 exports.GitList = [
   'Git/git-guide',
@@ -216,21 +218,7 @@ exports.BundlerList = [
   'Bundler/grunt',
   'Bundler/webpack'
 ]
-exports.iOSList = [
-  'iOS/swift-basic',
-  'iOS/swift_doc'
-]
 
-exports.jQueryList = [
-'jQuery/attr-vs-prop',
-'jQuery/closest',
-'jQuery/jQuery(Advanced)-codeschool',
-'jQuery/jQuery(Basic)-codeschool',
-'jQuery/jpub-jquery',
-'jQuery/jquery-api',
-'jQuery/jquery-proxy',
-'jQuery/make-jquery-modal-plugin'
-]
 exports.MarkUpList = [
   'Markup/icon-font',
   'Markup/HTML5-2015-next',

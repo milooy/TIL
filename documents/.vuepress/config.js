@@ -14,58 +14,56 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
-        title: '1. JavaScript',
+        title: 'Monthly I Learned',
+        children: CONST.MILList
+      },
+      {
+        title: 'JavaScript',
         children: CONST.JavaScriptList
       },{
-        title: '2. React',
+        title: 'React',
         children: CONST.ReactList
       },{
-        title: '3. Daily Coding',
+        title: 'Daily Coding',
         children: CONST.DailyCodingList
       },{
-        title: '4. Angular',
+        title: 'Angular',
         children: CONST.AngularList
       }, {
-        title: '5. Javascript Testing',
+        title: 'Javascript Testing',
         children: CONST.JsTestingList
       }, {
-        title: '6. CSS',
+        title: 'CSS',
         children: CONST.CSSList
       }, {
-        title: '7. Google Analytics',
+        title: 'Google Analytics',
         children: CONST.GoogleAnalyticsList
       }, {
-        title: '8. Data structure and Algorithm',
+        title: 'Data structure and Algorithm',
         children: CONST.DataStructureAndAlgorithmList
       }, {
-        title: '9. Django',
+        title: 'Django',
         children: CONST.DjangoList
       }, {
-        title: '10. Python',
+        title: 'Python',
         children: CONST.PythonList
       }, {
-        title: '11. Git',
+        title: 'Git',
         children: CONST.GitList
       }, {
-        title: '12. Module Bundler',
+        title: 'Module Bundler',
         children: CONST.BundlerList
       }, {
-        title: '13. iOS',
-        children: CONST.iOSList
-      }, {
-        title: '14. jQuery',
-        children: CONST.jQueryList
-      }, {
-        title: '15. MarkUp',
+        title: 'MarkUp',
         children: CONST.MarkUpList
       }, {
-        title: '16. Network',
+        title: 'Network',
         children: CONST.NetworkList
       }, {
-        title: '17. DevOps',
+        title: 'DevOps',
         children: CONST.DevOpsList
       }, {
-        title: '18. ETC',
+        title: 'ETC',
         children: CONST.ETCList
       }
     ],
