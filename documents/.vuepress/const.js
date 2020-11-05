@@ -253,6 +253,9 @@ exports.DevOpsList = [
 ]
 
 exports.MILList = [
+  'MIL/mil-2011.md',
+  'MIL/mil-2010.md',
+  'MIL/mil-2009.md',
   'MIL/mil-2008.md',
   'MIL/mil-1911.md'
 ]

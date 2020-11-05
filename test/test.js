@@ -1,52 +1,91 @@
-function lru(sequence=[], cache_size=0) {
-  let delay_time = 0; // sum of delay time by each sequence item
-  // cache is a data from LRUCache as list (first is least recently used item)
-  let cache = [];
+// 통과 (75.62ms, 34MB)
+function solution1(info, query) {
+  var answer = [];
 
-  while(sequence.length !== 0) {
-  	const item = sequence.shift();
-  	if (cache.includes(item)) { // 캐시 있는상태
-  		delay_time += 1;
-  		cache = cache.filter(a => a != item) // 기존캐시 지우고
-  		cache.push(item); // 마지막에 캐시넣음
-  	} else {
-  		delay_time += 5; // 캐시 없는 상태
-  		if (cache.length >= cache_size) { // 공간 없음
-  			cache.shift();
-  		}
-  		cache.push(item)
-  	}
-  }
-  // TODO
-  return [delay_time, cache];
+  query.forEach(q => {
+    let queries = q.split(' ');
+    const score = Number(queries.pop());
+    queries = queries.filter(q => q !== 'and' && q !== '-');
+
+    let filteredInfo = info;
+
+    queries.forEach(smallQuery => {
+      filteredInfo = filteredInfo.filter(inf => inf.includes(smallQuery));
+    })
+    answer.push(filteredInfo.filter(i => Number(i.split(' ').pop()) >= score).length);
+  })
+
+  return answer;
 }
 
-console.log(lru(["donut", "juice", "apple", "donut"], 3))
-// [16, ["juice", "apple", "donut"]]
 
-console.log(lru(["donut", "juice", "apple", "banana"], 3))
-// [20, ["juice", "apple", "banana"]]
+// 통과 (60.27ms, 35.6MB)
+function solution4(info, query) {
+  return query.map(q => {
+    const cleanedQuery = q.split(' ').filter(a => a !== '-' && a !== 'and');
+    const score = cleanedQuery.pop();
+    i.split(' ')[-1]
+    return info.filter(i => cleanedQuery.every(el => i.includes(el)) && Number(i.replace(/\D/g, '')) >= score).length;
+  })
+}
+
+//통과 (57.75ms, 35.3MB)
+function solution(info, query) {
+  return query.map(q => {
+    return info.filter(i => q.split(' ').every(el => {
+      if (el == '-' || el == 'and') {
+        return true
+      } else if (!isNaN(el)) {
+        return Number(i.replace(/\D/g, '')) >= el
+      }
+     return i.includes(el) 
+    })).length;
+  })
+}
+
+// 통과 (197.66ms, 34.4MB)
+function solution5(info, query) {
+  return query.map(q => {
+    const cleanedQuery = q.split(' ').filter(a => a !== '-' && a !== 'and');
+    const score = cleanedQuery.pop();
+    const regexs = cleanedQuery.map(cq => `(?=.*?\\b${cq}\\b)`).join('');
+    return info.filter(i => RegExp(regexs).test(i) && Number(i.replace(/\D/g, '')) >= score).length
+  })
+}
+
+// 답: [ 1, 1, 1, 1, 2, 4 ]
+console.log(solution(["java backend junior pizza 150", "python frontend senior chicken 210", "python frontend senior chicken 150", "cpp backend senior pizza 260", "java backend junior chicken 80", "python backend senior chicken 50"], ["java and backend and junior and pizza 100", "python and frontend and senior and chicken 200", "cpp and - and senior and pizza 250", "- and backend and senior and - 150", "- and - and - and chicken 100", "- and - and - and - 150"]))
 
 
 
-console.log(lru(["donut", "juice", "apple"], 0))
-// [15, []]
+function regexGenerator(query) {
+  let regexArr = query.split(' ').map(f => {
+    if (f === '-') {
+      return '\\w+'
+    }
+    if (f === 'and') {
+      return ' '
+    }
+    if (typeof f === Number) {
+      return ''
+    }
+    return f;
 
-console.log(lru(["donut", "donut", "apple", "donut", "apple", "apple", "donut"], 1))
-// [27, ["donut"]]
+  })
+  const score = regexArr.pop();
+  return [regexArr.join(''), score];
+}
 
-console.log(lru(["donut", "juice", "apple", "apple", "donut", "juice", "coffee"], 5))
-// [23, ["apple", "donut", "juice", "coffee"]]
+//6: 통과 (105.45ms, 34.4MB)
 
+function solution3(info, query) {
+  return query.map(q => {
+    const [regex, score] = regexGenerator(q);
+    return info.filter(i => {
+      return Number(i.replace(/\D/g, '')) >= score && RegExp(regex).test(i)
+    }).length
+  })
+}
 
+//["java backend junior pizza 150"에 [backend, junior] 가 있는가?
 
-
-
-// 고려해야할점
-// - single el array
-// - 짱큰 max value
-// - 양수만
-// - 음수만
-// - 만자리 array
-// - 4만자리 
-// - 10만자리
