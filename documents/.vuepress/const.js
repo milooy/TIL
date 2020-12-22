@@ -89,6 +89,7 @@ exports.DailyCodingList = [
 ]
 
 exports.ReactList = [
+  'React/suspense.md',
   'React/react-ts-storybook.md',
   'React/flux',
   'React/react-testing',
@@ -253,7 +254,7 @@ exports.DevOpsList = [
 ]
 
 exports.MILList = [
-  'MIL/mil-2011.md',
+  'MIL/mil-2011-2012.md',
   'MIL/mil-2010.md',
   'MIL/mil-2009.md',
   'MIL/mil-2008.md',
