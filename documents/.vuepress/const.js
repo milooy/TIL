@@ -89,7 +89,6 @@ exports.DailyCodingList = [
 ]
 
 exports.ReactList = [
-  'React/suspense.md',
   'React/react-ts-storybook.md',
   'React/flux',
   'React/react-testing',
