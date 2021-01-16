@@ -18,6 +18,10 @@ module.exports = {
         children: CONST.MILList
       },
       {
+        title: 'Books',
+        children: CONST.BooksList
+      },
+      {
         title: 'JavaScript',
         children: CONST.JavaScriptList
       },{

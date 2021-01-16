@@ -169,7 +169,6 @@ exports.DjangoList = [
   "Django/two-scoops-of-django",
 ];
 exports.ETCList = [
-  "ETC/clean-code",
   "ETC/beer",
   "ETC/readable-code",
   "ETC/2015-sanfrancisco-tour",
@@ -252,3 +251,7 @@ exports.MILList = [
   "MIL/mil-2008.md",
   "MIL/mil-1911.md",
 ];
+
+exports.BooksList = [
+  "Books/clean-code",
+]
