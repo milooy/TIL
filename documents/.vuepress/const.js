@@ -253,5 +253,6 @@ exports.MILList = [
 ];
 
 exports.BooksList = [
-  "Books/clean-code",
+  "Books/210120-radical-candor",
+  "Books/210101-clean-code",
 ]
