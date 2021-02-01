@@ -89,6 +89,7 @@ exports.DailyCodingList = [
 ];
 
 exports.ReactList = [
+  "React/next-js.md",
   "React/react-ts-storybook.md",
   "React/flux",
   "React/react-testing",
@@ -244,6 +245,7 @@ exports.PythonList = [
 exports.DevOpsList = ["DevOps/docker.md", "DevOps/vupress-github-actions.md"];
 
 exports.MILList = [
+  "MIL/mil-2102.md",
   "MIL/mil-2101.md",
   "MIL/mil-2011-2012.md",
   "MIL/mil-2010.md",
