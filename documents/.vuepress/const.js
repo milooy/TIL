@@ -256,6 +256,8 @@ exports.MILList = [
 ];
 
 exports.BooksList = [
+  "Books/책조각들",
+  "Books/210220-가짜감정",
   "Books/210210-feedforward",
   "Books/210120-radical-candor",
   "Books/210101-clean-code",
