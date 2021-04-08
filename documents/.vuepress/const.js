@@ -245,6 +245,7 @@ exports.PythonList = [
 exports.DevOpsList = ["DevOps/docker.md", "DevOps/vupress-github-actions.md"];
 
 exports.MILList = [
+  "MIL/mil-2104.md",
   "MIL/mil-2103.md",
   "MIL/mil-2102.md",
   "MIL/mil-2101.md",
@@ -257,6 +258,7 @@ exports.MILList = [
 
 exports.BooksList = [
   "Books/책조각들",
+  "Books/210312-적게자도괜찮습니다",
   "Books/210220-가짜감정",
   "Books/210210-feedforward",
   "Books/210120-radical-candor",
