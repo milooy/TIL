@@ -170,6 +170,7 @@ exports.DjangoList = [
   "Django/two-scoops-of-django",
 ];
 exports.ETCList = [
+  "ETC/amplitude",
   "ETC/beer",
   "ETC/readable-code",
   "ETC/2015-sanfrancisco-tour",
@@ -258,6 +259,9 @@ exports.MILList = [
 
 exports.BooksList = [
   "Books/책조각들",
+  "Books/210516-자기만의방",
+  "Books/210515-아무튼달리기",
+  "Books/210514-아무튼술",
   "Books/210312-적게자도괜찮습니다",
   "Books/210220-가짜감정",
   "Books/210210-feedforward",
