@@ -259,6 +259,7 @@ exports.MILList = [
 
 exports.BooksList = [
   "Books/책조각들",
+  "Books/210727-일주일은-금요일부터-시작하라",
   "Books/210516-자기만의방",
   "Books/210515-아무튼달리기",
   "Books/210514-아무튼술",
