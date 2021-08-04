@@ -246,6 +246,10 @@ exports.PythonList = [
 exports.DevOpsList = ["DevOps/docker.md", "DevOps/vupress-github-actions.md"];
 
 exports.MILList = [
+  "MIL/mil-2108.md",
+  "MIL/mil-2107.md",
+  "MIL/mil-2106.md",
+  "MIL/mil-2106.md",
   "MIL/mil-2104.md",
   "MIL/mil-2103.md",
   "MIL/mil-2102.md",
