@@ -204,6 +204,7 @@ exports.ETCList = [
   "ETC/vs-code",
   "ETC/swift-basic",
   "ETC/swift_doc",
+  "ETC/career-ladders",
   "ETC/becoming-senior",
 ];
 exports.GitList = [
