@@ -21,3 +21,20 @@ http://www.engineeringladders.com/
 
 쭈니어들은 가장 작은 오각형도 못만든다
 클라이언트 플랫폼이 서포팅을 해줘서 문제가 되지 않지만 오너십을 구할정도의
+
+## 나의 사례
+
+1. Technology: 2
+   1. Next level: 쓰던 기술 말고 새로운 기술을 도입
+2. System: 2
+   1. Next level: 혼자 한 사일로 인프라 운영까지
+3. People: 3
+   1. Next level: 토스에서도 3단계가 되려면 팀원들에게도 의미있는 피드백과 협업+커리어+인간적 관심을 가져서 실질적인 도움.
+4. Process?(팀이 일하는 방식): 1
+   1. Next level: 팀이 일하는 방식에 대해 적극적으로 개선 재안.
+5. Influence?(팀에 대한 테크 영향력?): 1~2.
+   1. Next level:
+
+플랫폼 tech, system, influence가 강하다
+
+Engineering manager 쪽도 봐보자!

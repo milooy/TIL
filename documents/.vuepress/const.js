@@ -204,6 +204,7 @@ exports.ETCList = [
   "ETC/vs-code",
   "ETC/swift-basic",
   "ETC/swift_doc",
+  "ETC/becoming-senior",
 ];
 exports.GitList = [
   "Git/git-guide",
@@ -263,6 +264,7 @@ exports.MILList = [
 
 exports.BooksList = [
   "Books/책조각들",
+  "Books/210926-lean-anlytics",
   "Books/210727-일주일은-금요일부터-시작하라",
   "Books/210516-자기만의방",
   "Books/210515-아무튼달리기",
