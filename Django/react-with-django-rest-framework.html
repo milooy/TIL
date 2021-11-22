@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>[서버부터 프론트까지] React와 Django로 웹 서비스 뚝딱 세팅하기 (feat. Webpack, Redux, django rest framework, PWA) | Today Yurim Learned</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/TIL/logo.png">
+    <meta name="description" content="Yurim's Personal Wiki (Today I Learned)">
+    
+    <link rel="preload" href="/TIL/assets/css/0.styles.8364c3bd.css" as="style"><link rel="preload" href="/TIL/assets/js/app.2b48478b.js" as="script"><link rel="preload" href="/TIL/assets/js/2.cfc8eb86.js" as="script"><link rel="preload" href="/TIL/assets/js/3.3e18c391.js" as="script"><link rel="prefetch" href="/TIL/assets/js/10.910d8a61.js"><link rel="prefetch" href="/TIL/assets/js/100.5074d9c8.js"><link rel="prefetch" href="/TIL/assets/js/101.5bca3974.js"><link rel="prefetch" href="/TIL/assets/js/102.fa7c2b9b.js"><link rel="prefetch" href="/TIL/assets/js/103.84842e1d.js"><link rel="prefetch" href="/TIL/assets/js/104.5f917576.js"><link rel="prefetch" href="/TIL/assets/js/105.83a7bb13.js"><link rel="prefetch" href="/TIL/assets/js/106.7e14d11d.js"><link rel="prefetch" href="/TIL/assets/js/107.decdbb29.js"><link rel="prefetch" href="/TIL/assets/js/108.777d5cc1.js"><link rel="prefetch" href="/TIL/assets/js/109.2066555a.js"><link rel="prefetch" href="/TIL/assets/js/11.78ce139b.js"><link rel="prefetch" href="/TIL/assets/js/110.0a18da66.js"><link rel="prefetch" href="/TIL/assets/js/111.d1fc3c79.js"><link rel="prefetch" href="/TIL/assets/js/112.7f61711f.js"><link rel="prefetch" href="/TIL/assets/js/113.e3bdc1bb.js"><link rel="prefetch" href="/TIL/assets/js/114.0061ce10.js"><link rel="prefetch" href="/TIL/assets/js/115.e9f2a76a.js"><link rel="prefetch" href="/TIL/assets/js/116.2385616f.js"><link rel="prefetch" href="/TIL/assets/js/117.631783ec.js"><link rel="prefetch" href="/TIL/assets/js/118.c7a1ab43.js"><link rel="prefetch" href="/TIL/assets/js/119.75f7e37e.js"><link rel="prefetch" href="/TIL/assets/js/12.843d7427.js"><link rel="prefetch" href="/TIL/assets/js/120.445357f0.js"><link rel="prefetch" href="/TIL/assets/js/121.a4ad8554.js"><link rel="prefetch" href="/TIL/assets/js/122.9b6dbd9d.js"><link rel="prefetch" href="/TIL/assets/js/123.9c593401.js"><link rel="prefetch" href="/TIL/assets/js/124.3f533b3c.js"><link rel="prefetch" href="/TIL/assets/js/125.f82e72ba.js"><link rel="prefetch" href="/TIL/assets/js/126.f011309d.js"><link rel="prefetch" href="/TIL/assets/js/127.493ea741.js"><link rel="prefetch" href="/TIL/assets/js/128.a09700bc.js"><link rel="prefetch" href="/TIL/assets/js/129.10809aa0.js"><link rel="prefetch" href="/TIL/assets/js/13.f189f371.js"><link rel="prefetch" href="/TIL/assets/js/130.278d80cd.js"><link rel="prefetch" href="/TIL/assets/js/131.110e286a.js"><link rel="prefetch" href="/TIL/assets/js/132.7e10bee5.js"><link rel="prefetch" href="/TIL/assets/js/133.0b3953dd.js"><link rel="prefetch" href="/TIL/assets/js/134.c90c6693.js"><link rel="prefetch" href="/TIL/assets/js/135.776c3ccc.js"><link rel="prefetch" href="/TIL/assets/js/136.c2445e90.js"><link rel="prefetch" href="/TIL/assets/js/137.850fc16e.js"><link rel="prefetch" href="/TIL/assets/js/138.8c9cc205.js"><link rel="prefetch" href="/TIL/assets/js/139.4aa8a2f5.js"><link rel="prefetch" href="/TIL/assets/js/14.d957cae3.js"><link rel="prefetch" href="/TIL/assets/js/140.e5ff7965.js"><link rel="prefetch" href="/TIL/assets/js/141.2c75339f.js"><link rel="prefetch" href="/TIL/assets/js/142.ac819bca.js"><link rel="prefetch" href="/TIL/assets/js/143.aff6d54e.js"><link rel="prefetch" href="/TIL/assets/js/144.42f620b5.js"><link rel="prefetch" href="/TIL/assets/js/145.89c50853.js"><link rel="prefetch" href="/TIL/assets/js/146.f5cc76d0.js"><link rel="prefetch" href="/TIL/assets/js/147.b148363d.js"><link rel="prefetch" href="/TIL/assets/js/148.97554eb0.js"><link rel="prefetch" href="/TIL/assets/js/149.5202f9dd.js"><link rel="prefetch" href="/TIL/assets/js/15.c3cde8b1.js"><link rel="prefetch" href="/TIL/assets/js/150.47e9fea6.js"><link rel="prefetch" href="/TIL/assets/js/151.86a291de.js"><link rel="prefetch" href="/TIL/assets/js/152.96beeb62.js"><link rel="prefetch" href="/TIL/assets/js/153.56e66b55.js"><link rel="prefetch" href="/TIL/assets/js/154.9ed40486.js"><link rel="prefetch" href="/TIL/assets/js/155.c821eb86.js"><link rel="prefetch" href="/TIL/assets/js/156.03a05527.js"><link rel="prefetch" href="/TIL/assets/js/157.f1db31c0.js"><link rel="prefetch" href="/TIL/assets/js/158.e9d51710.js"><link rel="prefetch" href="/TIL/assets/js/159.8af80cb6.js"><link rel="prefetch" href="/TIL/assets/js/16.bb99a925.js"><link rel="prefetch" href="/TIL/assets/js/160.ebcdd34f.js"><link rel="prefetch" href="/TIL/assets/js/161.d47ead3e.js"><link rel="prefetch" href="/TIL/assets/js/162.6c6820d1.js"><link rel="prefetch" href="/TIL/assets/js/163.ed952bb4.js"><link rel="prefetch" href="/TIL/assets/js/164.61efbc3e.js"><link rel="prefetch" href="/TIL/assets/js/165.704dd03c.js"><link rel="prefetch" href="/TIL/assets/js/166.3424053d.js"><link rel="prefetch" href="/TIL/assets/js/167.fcbfaf0d.js"><link rel="prefetch" href="/TIL/assets/js/168.1411c67b.js"><link rel="prefetch" href="/TIL/assets/js/169.e7515da9.js"><link rel="prefetch" href="/TIL/assets/js/17.bd0955f4.js"><link rel="prefetch" href="/TIL/assets/js/170.03e2571a.js"><link rel="prefetch" href="/TIL/assets/js/171.9f318a4d.js"><link rel="prefetch" href="/TIL/assets/js/172.b37f83dd.js"><link rel="prefetch" href="/TIL/assets/js/173.343ff166.js"><link rel="prefetch" href="/TIL/assets/js/174.407d9bf0.js"><link rel="prefetch" href="/TIL/assets/js/175.a79a9665.js"><link rel="prefetch" href="/TIL/assets/js/176.287513bd.js"><link rel="prefetch" href="/TIL/assets/js/177.709379b2.js"><link rel="prefetch" href="/TIL/assets/js/178.c755f948.js"><link rel="prefetch" href="/TIL/assets/js/179.213d9ee1.js"><link rel="prefetch" href="/TIL/assets/js/18.6f831bba.js"><link rel="prefetch" href="/TIL/assets/js/180.decb0104.js"><link rel="prefetch" href="/TIL/assets/js/181.c6ddb9c7.js"><link rel="prefetch" href="/TIL/assets/js/182.e32d6c93.js"><link rel="prefetch" href="/TIL/assets/js/183.84a6ee9a.js"><link rel="prefetch" href="/TIL/assets/js/184.97601183.js"><link rel="prefetch" href="/TIL/assets/js/185.41bcd95c.js"><link rel="prefetch" href="/TIL/assets/js/186.18697b90.js"><link rel="prefetch" href="/TIL/assets/js/187.31640dde.js"><link rel="prefetch" href="/TIL/assets/js/188.0515d9b8.js"><link rel="prefetch" href="/TIL/assets/js/189.500b7d09.js"><link rel="prefetch" href="/TIL/assets/js/19.118f3778.js"><link rel="prefetch" href="/TIL/assets/js/190.8aad3ef9.js"><link rel="prefetch" href="/TIL/assets/js/191.e7a51355.js"><link rel="prefetch" href="/TIL/assets/js/192.b5ce4059.js"><link rel="prefetch" href="/TIL/assets/js/193.d368d644.js"><link rel="prefetch" href="/TIL/assets/js/194.378ecbfd.js"><link rel="prefetch" href="/TIL/assets/js/195.07bb927d.js"><link rel="prefetch" href="/TIL/assets/js/196.03410386.js"><link rel="prefetch" href="/TIL/assets/js/197.07eb1fa5.js"><link rel="prefetch" href="/TIL/assets/js/198.292f57f5.js"><link rel="prefetch" href="/TIL/assets/js/199.3a919f4c.js"><link rel="prefetch" href="/TIL/assets/js/20.74bb3c29.js"><link rel="prefetch" href="/TIL/assets/js/200.24c835c2.js"><link rel="prefetch" href="/TIL/assets/js/201.252b5cc5.js"><link rel="prefetch" href="/TIL/assets/js/202.0456b5e3.js"><link rel="prefetch" href="/TIL/assets/js/203.4a480a40.js"><link rel="prefetch" href="/TIL/assets/js/204.920bb9a2.js"><link rel="prefetch" href="/TIL/assets/js/205.c3ea9351.js"><link rel="prefetch" href="/TIL/assets/js/206.cf78fa5c.js"><link rel="prefetch" href="/TIL/assets/js/207.62f915cb.js"><link rel="prefetch" href="/TIL/assets/js/208.c8774c8c.js"><link rel="prefetch" href="/TIL/assets/js/209.36e7b13c.js"><link rel="prefetch" href="/TIL/assets/js/21.7a8f5a23.js"><link rel="prefetch" href="/TIL/assets/js/210.69187a93.js"><link rel="prefetch" href="/TIL/assets/js/211.2cbe193c.js"><link rel="prefetch" href="/TIL/assets/js/212.feaf25b9.js"><link rel="prefetch" href="/TIL/assets/js/213.52fd65a9.js"><link rel="prefetch" href="/TIL/assets/js/214.b9acf47e.js"><link rel="prefetch" href="/TIL/assets/js/215.ead9b668.js"><link rel="prefetch" href="/TIL/assets/js/216.4d012c7a.js"><link rel="prefetch" href="/TIL/assets/js/217.e624f560.js"><link rel="prefetch" href="/TIL/assets/js/218.3684a8f4.js"><link rel="prefetch" href="/TIL/assets/js/219.c1ab07cf.js"><link rel="prefetch" href="/TIL/assets/js/22.1f74b223.js"><link rel="prefetch" href="/TIL/assets/js/220.f8457161.js"><link rel="prefetch" href="/TIL/assets/js/221.e82b5b14.js"><link rel="prefetch" href="/TIL/assets/js/222.399906a3.js"><link rel="prefetch" href="/TIL/assets/js/223.034b4e88.js"><link rel="prefetch" href="/TIL/assets/js/224.c1c18d31.js"><link rel="prefetch" href="/TIL/assets/js/225.6b9c76da.js"><link rel="prefetch" href="/TIL/assets/js/226.68ee80fc.js"><link rel="prefetch" href="/TIL/assets/js/227.f7458fe8.js"><link rel="prefetch" href="/TIL/assets/js/228.8f5946af.js"><link rel="prefetch" href="/TIL/assets/js/229.dc783db7.js"><link rel="prefetch" href="/TIL/assets/js/23.b9c40bcf.js"><link rel="prefetch" href="/TIL/assets/js/230.7053c9ed.js"><link rel="prefetch" href="/TIL/assets/js/231.19843620.js"><link rel="prefetch" href="/TIL/assets/js/232.877ae7b5.js"><link rel="prefetch" href="/TIL/assets/js/233.115f1448.js"><link rel="prefetch" href="/TIL/assets/js/234.3c9c2691.js"><link rel="prefetch" href="/TIL/assets/js/235.acdd8f4d.js"><link rel="prefetch" href="/TIL/assets/js/236.ad62dca2.js"><link rel="prefetch" href="/TIL/assets/js/237.3a472dfd.js"><link rel="prefetch" href="/TIL/assets/js/238.fd2a6123.js"><link rel="prefetch" href="/TIL/assets/js/239.7d2512ed.js"><link rel="prefetch" href="/TIL/assets/js/24.993352b9.js"><link rel="prefetch" href="/TIL/assets/js/240.e6de9afa.js"><link rel="prefetch" href="/TIL/assets/js/241.4fd8dea8.js"><link rel="prefetch" href="/TIL/assets/js/242.e118d042.js"><link rel="prefetch" href="/TIL/assets/js/243.6c515da3.js"><link rel="prefetch" href="/TIL/assets/js/244.69f27f5b.js"><link rel="prefetch" href="/TIL/assets/js/245.98797fbf.js"><link rel="prefetch" href="/TIL/assets/js/246.dbc7d735.js"><link rel="prefetch" href="/TIL/assets/js/247.21e492fd.js"><link rel="prefetch" href="/TIL/assets/js/248.27a48bf0.js"><link rel="prefetch" href="/TIL/assets/js/249.2552f772.js"><link rel="prefetch" href="/TIL/assets/js/25.e527cfcb.js"><link rel="prefetch" href="/TIL/assets/js/250.1a90039b.js"><link rel="prefetch" href="/TIL/assets/js/251.be3b6d4f.js"><link rel="prefetch" href="/TIL/assets/js/252.3318224e.js"><link rel="prefetch" href="/TIL/assets/js/253.c310a8a5.js"><link rel="prefetch" href="/TIL/assets/js/254.cd269168.js"><link rel="prefetch" href="/TIL/assets/js/255.cdba9214.js"><link rel="prefetch" href="/TIL/assets/js/26.08c52b21.js"><link rel="prefetch" href="/TIL/assets/js/27.f93d6be9.js"><link rel="prefetch" href="/TIL/assets/js/28.e8fc9168.js"><link rel="prefetch" href="/TIL/assets/js/29.f41b444d.js"><link rel="prefetch" href="/TIL/assets/js/30.8c02eca9.js"><link rel="prefetch" href="/TIL/assets/js/31.ed448512.js"><link rel="prefetch" href="/TIL/assets/js/32.4919d3b4.js"><link rel="prefetch" href="/TIL/assets/js/33.3cfb75aa.js"><link rel="prefetch" href="/TIL/assets/js/34.51bcad8c.js"><link rel="prefetch" href="/TIL/assets/js/35.04fe5f16.js"><link rel="prefetch" href="/TIL/assets/js/36.d8ea21d7.js"><link rel="prefetch" href="/TIL/assets/js/37.b0e20a4b.js"><link rel="prefetch" href="/TIL/assets/js/38.edb80265.js"><link rel="prefetch" href="/TIL/assets/js/39.3137d45d.js"><link rel="prefetch" href="/TIL/assets/js/4.17e37047.js"><link rel="prefetch" href="/TIL/assets/js/40.0459b83c.js"><link rel="prefetch" href="/TIL/assets/js/41.e9e6b87c.js"><link rel="prefetch" href="/TIL/assets/js/42.a687b5be.js"><link rel="prefetch" href="/TIL/assets/js/43.fbcd481b.js"><link rel="prefetch" href="/TIL/assets/js/44.e165941e.js"><link rel="prefetch" href="/TIL/assets/js/45.b5ee0a7c.js"><link rel="prefetch" href="/TIL/assets/js/46.54d77e29.js"><link rel="prefetch" href="/TIL/assets/js/47.a52e9a32.js"><link rel="prefetch" href="/TIL/assets/js/48.dbfecaf1.js"><link rel="prefetch" href="/TIL/assets/js/49.212366e7.js"><link rel="prefetch" href="/TIL/assets/js/5.5c1e0f6b.js"><link rel="prefetch" href="/TIL/assets/js/50.6eec3454.js"><link rel="prefetch" href="/TIL/assets/js/51.e3b1d3c0.js"><link rel="prefetch" href="/TIL/assets/js/52.caf25fea.js"><link rel="prefetch" href="/TIL/assets/js/53.20ffc175.js"><link rel="prefetch" href="/TIL/assets/js/54.a2b2fbb5.js"><link rel="prefetch" href="/TIL/assets/js/55.f7981f44.js"><link rel="prefetch" href="/TIL/assets/js/56.e988a71f.js"><link rel="prefetch" href="/TIL/assets/js/57.58117faf.js"><link rel="prefetch" href="/TIL/assets/js/58.69f5b22b.js"><link rel="prefetch" href="/TIL/assets/js/59.64e5911f.js"><link rel="prefetch" href="/TIL/assets/js/6.fcede214.js"><link rel="prefetch" href="/TIL/assets/js/60.33272b3c.js"><link rel="prefetch" href="/TIL/assets/js/61.a9846425.js"><link rel="prefetch" href="/TIL/assets/js/62.dca35adf.js"><link rel="prefetch" href="/TIL/assets/js/63.2642195a.js"><link rel="prefetch" href="/TIL/assets/js/64.7fe43c47.js"><link rel="prefetch" href="/TIL/assets/js/65.f6b248e6.js"><link rel="prefetch" href="/TIL/assets/js/66.fcb6cb9d.js"><link rel="prefetch" href="/TIL/assets/js/67.e072d0af.js"><link rel="prefetch" href="/TIL/assets/js/68.d544eb73.js"><link rel="prefetch" href="/TIL/assets/js/69.2fd31ef8.js"><link rel="prefetch" href="/TIL/assets/js/7.8593af50.js"><link rel="prefetch" href="/TIL/assets/js/70.2ef01435.js"><link rel="prefetch" href="/TIL/assets/js/71.bc0b198f.js"><link rel="prefetch" href="/TIL/assets/js/72.39c0aff0.js"><link rel="prefetch" href="/TIL/assets/js/73.9bb084df.js"><link rel="prefetch" href="/TIL/assets/js/74.840b0e13.js"><link rel="prefetch" href="/TIL/assets/js/75.fff90b80.js"><link rel="prefetch" href="/TIL/assets/js/76.9a9e294b.js"><link rel="prefetch" href="/TIL/assets/js/77.9c3526f1.js"><link rel="prefetch" href="/TIL/assets/js/78.1b86e439.js"><link rel="prefetch" href="/TIL/assets/js/79.98b21394.js"><link rel="prefetch" href="/TIL/assets/js/8.88f3fda8.js"><link rel="prefetch" href="/TIL/assets/js/80.10a65b6f.js"><link rel="prefetch" href="/TIL/assets/js/81.5b40c39e.js"><link rel="prefetch" href="/TIL/assets/js/82.ac146124.js"><link rel="prefetch" href="/TIL/assets/js/83.5a998bc9.js"><link rel="prefetch" href="/TIL/assets/js/84.7073fdfe.js"><link rel="prefetch" href="/TIL/assets/js/85.d30cbd15.js"><link rel="prefetch" href="/TIL/assets/js/86.9c26ba2a.js"><link rel="prefetch" href="/TIL/assets/js/87.d8342fe5.js"><link rel="prefetch" href="/TIL/assets/js/88.8aec8bfb.js"><link rel="prefetch" href="/TIL/assets/js/89.473d770c.js"><link rel="prefetch" href="/TIL/assets/js/9.06209a69.js"><link rel="prefetch" href="/TIL/assets/js/90.0c1c4121.js"><link rel="prefetch" href="/TIL/assets/js/91.6975151c.js"><link rel="prefetch" href="/TIL/assets/js/92.44c42b55.js"><link rel="prefetch" href="/TIL/assets/js/93.1096e7a7.js"><link rel="prefetch" href="/TIL/assets/js/94.df48c2fb.js"><link rel="prefetch" href="/TIL/assets/js/95.db6880ac.js"><link rel="prefetch" href="/TIL/assets/js/96.695c6240.js"><link rel="prefetch" href="/TIL/assets/js/97.0ce11462.js"><link rel="prefetch" href="/TIL/assets/js/98.542517ee.js"><link rel="prefetch" href="/TIL/assets/js/99.4d8b10b1.js">
+    <link rel="stylesheet" href="/TIL/assets/css/0.styles.8364c3bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/TIL/" class="home-link router-link-active"><!----> <span class="site-name">Today Yurim Learned</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/milooy/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://milooy.wordpress.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Blog
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/milooy/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://milooy.wordpress.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Blog
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Monthly I Learned</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Books</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>React</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Daily Coding</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Angular</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Javascript Testing</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CSS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Google Analytics</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Data structure and Algorithm</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Django</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/TIL/Django/digging-into-django.html" class="sidebar-link">Code School: Digging into Django</a></li><li><a href="/TIL/Django/django-aggregation.html" class="sidebar-link">Django Aggregation</a></li><li><a href="/TIL/Django/django-bower-grunt.html" class="sidebar-link">Django + Bower + Grunt</a></li><li><a href="/TIL/Django/django-cache.html" class="sidebar-link">Django Cache</a></li><li><a href="/TIL/Django/django-migration-conflict.html" class="sidebar-link">Django Migration Conflict</a></li><li><a href="/TIL/Django/django-models.html" class="sidebar-link">Django Models</a></li><li><a href="/TIL/Django/django-pinkfong-tv.html" class="sidebar-link">장고로 웹 만들기 with 핑크퐁 TV</a></li><li><a href="/TIL/Django/django-queries.html" class="sidebar-link">Django Queries</a></li><li><a href="/TIL/Django/django-resize-image.html" class="sidebar-link">[Django] 서버사이드 이미지 크롭/리사이징 하기</a></li><li><a href="/TIL/Django/django-seperate-settings-and-secret-file.html" class="sidebar-link">장고 settings 파일 &amp; 설정 변수 분리</a></li><li><a href="/TIL/Django/django-social-auth-add-profile-page.html" class="sidebar-link">Django social auth 프로필 추가 페이지 제작</a></li><li><a href="/TIL/Django/django-social-auth.html" class="sidebar-link">장고 페이스북 가입 달기</a></li><li><a href="/TIL/Django/django-url.html" class="sidebar-link">Django URL</a></li><li><a href="/TIL/Django/django.html" class="sidebar-link">Django Girls</a></li><li><a href="/TIL/Django/djnago-admin.html" class="sidebar-link">Django admin</a></li><li><a href="/TIL/Django/extend-django-user-model.html" class="sidebar-link">장고 유저 모델 확장하기</a></li><li><a href="/TIL/Django/how-to-response-template-in-django.html" class="sidebar-link">Django URL redirections</a></li><li><a href="/TIL/Django/pass-data-through-redirect-in-django.html" class="sidebar-link">Pass data through redirection in Django</a></li><li><a href="/TIL/Django/react-with-django-rest-framework.html" aria-current="page" class="active sidebar-link">[서버부터 프론트까지] React와 Django로 웹 서비스 뚝딱 세팅하기 (feat. Webpack, Redux, django rest framework, PWA)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/TIL/Django/react-with-django-rest-framework.html#목표" class="sidebar-link">목표</a></li><li class="sidebar-sub-header"><a href="/TIL/Django/react-with-django-rest-framework.html#사용-버전" class="sidebar-link">사용 버전</a></li><li class="sidebar-sub-header"><a href="/TIL/Django/react-with-django-rest-framework.html#django-rest-framework-세팅" class="sidebar-link">Django Rest Framework 세팅</a></li><li class="sidebar-sub-header"><a href="/TIL/Django/react-with-django-rest-framework.html#react-세팅" class="sidebar-link">React 세팅</a></li><li class="sidebar-sub-header"><a href="/TIL/Django/react-with-django-rest-framework.html#react-redux-react-router" class="sidebar-link">React + Redux + React Router</a></li><li class="sidebar-sub-header"><a href="/TIL/Django/react-with-django-rest-framework.html#webpack-build" class="sidebar-link">Webpack build</a></li><li class="sidebar-sub-header"><a href="/TIL/Django/react-with-django-rest-framework.html#progressive-web-app" class="sidebar-link">Progressive Web App</a></li></ul></li><li><a href="/TIL/Django/two-scoops-of-django.html" class="sidebar-link">Two scoops of Django</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Python</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Git</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Module Bundler</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>MarkUp</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Network</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>DevOps</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ETC</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="서버부터-프론트까지-react와-django로-웹-서비스-뚝딱-세팅하기-feat-webpack-redux-django-rest-framework-pwa"><a href="#서버부터-프론트까지-react와-django로-웹-서비스-뚝딱-세팅하기-feat-webpack-redux-django-rest-framework-pwa" class="header-anchor">#</a> [서버부터 프론트까지] React와 Django로 웹 서비스 뚝딱 세팅하기 (feat. Webpack, Redux, django rest framework, PWA)</h1> <h2 id="목표"><a href="#목표" class="header-anchor">#</a> 목표</h2> <p>모임 개설 사이트, 'MOGAE' 제작.
+<code>Django</code>에 <code>Django Rest Framework</code>를 얹어 API 서버를, <code>react</code>로 프론트엔드를 개발합니다.
+상태관리는 <code>redux</code>로 하며 <code>Progressive Web App</code>기술을 적용해 앱처럼 사용할 수 있습니다.</p> <p>이를 연동하여 온전한 웹 어플리케이션을 만드는 것에 초점을 맞춘 튜토리얼입니다.
+(기술에 대한 설명은 하지 않습니다.)</p> <h2 id="사용-버전"><a href="#사용-버전" class="header-anchor">#</a> 사용 버전</h2> <ul><li>Python: 3.4.3</li> <li>Django: 1.11.3</li> <li>Django Rest Framework: 3.6.3</li></ul> <h2 id="django-rest-framework-세팅"><a href="#django-rest-framework-세팅" class="header-anchor">#</a> Django Rest Framework 세팅</h2> <p>API 서버로 사용할 DRF를 설치.</p> <h4 id="가상환경-장고-세팅"><a href="#가상환경-장고-세팅" class="header-anchor">#</a> 가상환경, 장고 세팅</h4> <p>프로젝트 폴더에 가상환경을 세팅하고 장고를 설치한다 <a href="https://tutorial.djangogirls.org/ko/django_installation/" target="_blank" rel="noopener noreferrer">참고: 장고걸스 튜토리얼<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ python3 -m venv venv <span class="token comment"># venv라는 이름의 가상환경 생성</span>
+$ <span class="token builtin class-name">source</span> venv/bin/activate <span class="token comment"># 가상환경 실행</span>
+$ pip <span class="token function">install</span> django <span class="token comment"># 장고 설치</span>
+$ pip <span class="token function">install</span> djangorestframework <span class="token comment"># DRF 설치</span>
+$ django-admin startproject mogae <span class="token builtin class-name">.</span> <span class="token comment"># 현재 폴더에 mogae라는 장고 프로젝트 만들기</span>
+</code></pre></div><p><code>pip install -r requirements.txt</code></p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># requirements.txt</span>
+Django<span class="token operator">==</span><span class="token number">1.11</span><span class="token number">.3</span>
+djangorestframework<span class="token operator">==</span><span class="token number">3.6</span><span class="token number">.3</span>
+</code></pre></div><p><a href="https://tutorial.djangogirls.org/ko/django_start_project/" target="_blank" rel="noopener noreferrer">장고걸스 튜토리얼<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 참고해서 장고 앱을 만든다.
+메인 장고 앱인 <code>mogae</code>와 API 서버로 쓸 <code>api</code>를 만들었다.</p> <h4 id="mogae-settings-py"><a href="#mogae-settings-py" class="header-anchor">#</a> mogae/settings.py</h4> <div class="language- extra-class"><pre class="language-text"><code>INSTALLED_APPS = (
+    ...
+    'rest_framework',
+    'mogae',
+    'api',
+)
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+</code></pre></div><h4 id="mogae-models-moim-py"><a href="#mogae-models-moim-py" class="header-anchor">#</a> mogae/models/moim.py</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> __future__ <span class="token keyword">import</span> unicode_literals
+
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>utils <span class="token keyword">import</span> timezone
+
+
+<span class="token comment"># 간단한 모임 모델 구성</span>
+<span class="token keyword">class</span> <span class="token class-name">Moim</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    author <span class="token operator">=</span> models<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span><span class="token string">'auth.User'</span><span class="token punctuation">)</span>
+    title <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">)</span>
+    text <span class="token operator">=</span> models<span class="token punctuation">.</span>TextField<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    date <span class="token operator">=</span> models<span class="token punctuation">.</span>DateTimeField<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    thumbnail <span class="token operator">=</span> models<span class="token punctuation">.</span>ImageField<span class="token punctuation">(</span><span class="token string">u'썸네일'</span><span class="token punctuation">,</span> 
+                        upload_to<span class="token operator">=</span><span class="token string">'%Y/%m/%d'</span><span class="token punctuation">,</span> blank<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> null<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    join_users <span class="token operator">=</span> models<span class="token punctuation">.</span>ManyToManyField<span class="token punctuation">(</span><span class="token string">'auth.User'</span><span class="token punctuation">,</span> 
+                        verbose_name<span class="token operator">=</span><span class="token string">u'참석'</span><span class="token punctuation">,</span> blank<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> 
+                        related_name<span class="token operator">=</span><span class="token string">'join_moim'</span><span class="token punctuation">)</span>
+    created_date <span class="token operator">=</span> models<span class="token punctuation">.</span>DateTimeField<span class="token punctuation">(</span>default<span class="token operator">=</span>timezone<span class="token punctuation">.</span>now<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        Moim<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>date__lte<span class="token operator">=</span>timezone<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>\
+                    <span class="token punctuation">.</span>order_by<span class="token punctuation">(</span><span class="token string">'created_date'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>title
+
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+<span class="token keyword">from</span> mogae<span class="token punctuation">.</span>models<span class="token punctuation">.</span>moim <span class="token keyword">import</span> Moim
+
+admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Moim<span class="token punctuation">)</span> <span class="token comment"># Moim모델을 Admin에 등록</span>
+
+</code></pre></div><h3 id="mogae-models-init-py"><a href="#mogae-models-init-py" class="header-anchor">#</a> mogae/models/<strong>init</strong>.py</h3> <p>init파일에 모델을 명시해두면 다른 파일에서 <code>from mogae.models import (Moim, Others)</code>로 심플하게 import 할 수 있다.</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> mogae<span class="token punctuation">.</span>models<span class="token punctuation">.</span>moim <span class="token keyword">import</span> Moim
+</code></pre></div><h3 id="mogae-migratons-init-py"><a href="#mogae-migratons-init-py" class="header-anchor">#</a> mogae/migratons/<strong>init</strong>.py</h3> <p>이 파일을 만들어주고
+terminal에서 <code>./manage.py makemigrations</code>를 해 주면 migrations파일이 만들어진다.</p> <h3 id="mogae-admin-py"><a href="#mogae-admin-py" class="header-anchor">#</a> mogae/admin.py</h3> <p>Admin에 Moim 모델 등록</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+
+<span class="token keyword">from</span> mogae<span class="token punctuation">.</span>models<span class="token punctuation">.</span>moim <span class="token keyword">import</span> Moim
+
+admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Moim<span class="token punctuation">)</span>
+</code></pre></div><h3 id="api-urls-py"><a href="#api-urls-py" class="header-anchor">#</a> api/urls.py</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> django<span class="token punctuation">.</span>conf<span class="token punctuation">.</span>urls <span class="token keyword">import</span> url
+
+<span class="token keyword">from</span> <span class="token punctuation">.</span>views <span class="token keyword">import</span> MoimListView
+
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^moim/$'</span><span class="token punctuation">,</span> MoimListView<span class="token punctuation">.</span>as_view<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'moim'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h3 id="api-views-moim-py"><a href="#api-views-moim-py" class="header-anchor">#</a> api/views/moim.py</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> rest_framework <span class="token keyword">import</span> generics<span class="token punctuation">,</span> serializers
+<span class="token keyword">from</span> rest_framework<span class="token punctuation">.</span>response <span class="token keyword">import</span> Response
+
+<span class="token keyword">from</span> mogae<span class="token punctuation">.</span>models <span class="token keyword">import</span> Moim
+
+
+<span class="token comment"># 모임 리스트 시리얼라이저. api에서 보여줄 필드 명시</span>
+<span class="token keyword">class</span> <span class="token class-name">MoimListSerializer</span><span class="token punctuation">(</span>serializers<span class="token punctuation">.</span>ModelSerializer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
+        model <span class="token operator">=</span> Moim
+        fields <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token string">'author'</span><span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'text'</span><span class="token punctuation">,</span> <span class="token string">'created_date'</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># api/moim 으로 get하면 이 listview로 연결</span>
+<span class="token keyword">class</span> <span class="token class-name">MoimListView</span><span class="token punctuation">(</span>generics<span class="token punctuation">.</span>ListAPIView<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    queryset <span class="token operator">=</span> Moim<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    serializer_class <span class="token operator">=</span> MoimListSerializer
+
+    <span class="token keyword">def</span> <span class="token function">list</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        queryset <span class="token operator">=</span> self<span class="token punctuation">.</span>get_queryset<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        serializer_class <span class="token operator">=</span> self<span class="token punctuation">.</span>get_serializer_class<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        serializer <span class="token operator">=</span> serializer_class<span class="token punctuation">(</span>queryset<span class="token punctuation">,</span> many<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+        page <span class="token operator">=</span> self<span class="token punctuation">.</span>paginate_queryset<span class="token punctuation">(</span>queryset<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> page <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            serializer <span class="token operator">=</span> self<span class="token punctuation">.</span>get_serializer<span class="token punctuation">(</span>page<span class="token punctuation">,</span> many<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> self<span class="token punctuation">.</span>get_paginated_response<span class="token punctuation">(</span>serializer<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> Response<span class="token punctuation">(</span>serializer<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+</code></pre></div><h3 id="api-views-init-py"><a href="#api-views-init-py" class="header-anchor">#</a> api/views/<strong>init</strong>.py</h3> <p>이 init도 역시 다른 파일에서 <code>from mogae.models import (Moim, Others)</code>로 심플하게 import하기 위함</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> api<span class="token punctuation">.</span>views<span class="token punctuation">.</span>moim <span class="token keyword">import</span> <span class="token operator">*</span>
+</code></pre></div><h3 id="api-잘-불러지는지-확인"><a href="#api-잘-불러지는지-확인" class="header-anchor">#</a> api 잘 불러지는지 확인</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>$ ./manage.py createsuperuser <span class="token comment"># superuser 만들기. admin 로그인 가능.</span>
+$ ./manage.py makemigrations <span class="token comment"># 마이그레이션 파일 생성</span>
+$ ./manage.py migrate <span class="token comment"># DB에 마이그레이션 파일 적용</span>
+$ ./manage.py runserver <span class="token comment"># 서버 열기</span>
+</code></pre></div><p><code>http://localhost:8000/admin/mogae/moim/</code>에서 모임 몇 개를 만들고,
+<code>http://localhost:8000/api/moim/</code>로 접속하면 모임 리스트 API가 GET되는 것을 볼 수 있다.</p> <p><img src="/TIL/assets/img/1.8e94e0ec.png" alt="img"></p> <hr> <h2 id="react-세팅"><a href="#react-세팅" class="header-anchor">#</a> React 세팅</h2> <p>create react app은 명령어로 간단히 react app을 세팅할 수 있는 facebook 공식 프로젝트다.
+Webpack 이나 babel 등이 리액트 프로젝트에 맞게 미리 세팅되어있다(node_modules 폴더 안에 숨겨져 있다. 이를 꺼내려면 eject)</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token function">npm</span> <span class="token function">install</span> -g create-react-app <span class="token comment"># 글로벌로 cra 설치</span>
+$ create-react-app app <span class="token comment"># cra로 app이라는 리액트 앱 만들기</span>
+$ <span class="token builtin class-name">cd</span> app
+$ <span class="token function">npm</span> start
+</code></pre></div><p><code>http://localhost:3000/</code>에 들어가면 react 앱을 볼 수 있다.
+<img src="/TIL/assets/img/2.64006298.png" alt="img"></p> <h3 id="_8000번-포트의-django-rest-api-3000번-포트의-리액트에서-접근하기"><a href="#_8000번-포트의-django-rest-api-3000번-포트의-리액트에서-접근하기" class="header-anchor">#</a> 8000번 포트의 django rest api 3000번 포트의 리액트에서 접근하기</h3> <p><code>app/package.json</code> 하단에 proxy를 사용해 <code>localhost:8000</code>의 <code>/api</code>에 접속할 수 있도록 해준다.</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  ...
+  <span class="token property">&quot;proxy&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;/api&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;target&quot;</span><span class="token operator">:</span> <span class="token string">&quot;http://localhost:8000&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><img src="/TIL/assets/img/3.e089becf.png" alt="img"></p> <blockquote><p>CSS가 깨지는데 무방. Bootstrap과 jQuery를 넣으면 깨지지 않는다.</p></blockquote> <hr> <h2 id="react-redux-react-router"><a href="#react-redux-react-router" class="header-anchor">#</a> React + Redux + React Router</h2> <p>모임 리스트를 보여주는 간단한 Single Page Application 을 만든다.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>app
+├── README.md
+├── package.json
+├── node_modules
+├── public
+│   ├── favicon.ico
+│   └── index.html
+├── src
+│   ├── App.test.js
+│   ├── actions
+│   │   └── index.js
+│   ├── components
+│   │   ├── App.js
+│   │   ├── Home.js
+│   │   └── Moim.js
+│   ├── containers
+│   │   └── MoimList.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   ├── reducers
+│   │   ├── index.js
+│   │   └── reducer_lists.js
+│   ├── registerServiceWorker.js
+│   ├── static
+│   │   └── styles
+│   │       └── App.less
+│   └── store
+│       ├── configureStore.dev.js
+│       ├── configureStore.js
+│       └── configureStore.prod.js
+└── yarn.lock
+</code></pre></div><h3 id="index-js"><a href="#index-js" class="header-anchor">#</a> index.js</h3> <p><code>provider</code>로 전체 앱에 <code>store</code>를 주입해주고, <code>history</code>를 설정해서 라우터로 들어간 페이지에서 새로고침 해도 원하는 곳을 갈 수 있도록 한다.</p> <div class="language-html extra-class"><pre class="language-html"><code>import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
+import App from './components/App';
+import configureStore from './store/configureStore'
+import createHistory from 'history/createBrowserHistory';
+import { Router, Route } from 'react-router-dom';
+
+
+const store = configureStore();
+
+ReactDOM.render(
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Provider</span> <span class="token attr-name">store</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{store}</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Router</span> <span class="token attr-name">history</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{createHistory()}</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span> <span class="token attr-name">component</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{App}/</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Router</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Provider</span><span class="token punctuation">&gt;</span></span>,
+  document.getElementById('root')
+);
+</code></pre></div><h3 id="components-app-js"><a href="#components-app-js" class="header-anchor">#</a> components/App.js</h3> <p>라우팅을 해주는 컴포넌트. NavLink를 넣어주고 원하는 url별로 보여줄 component를 Switch로 감싼다.</p> <div class="language-html extra-class"><pre class="language-html"><code>import React, { Component } from 'react';
+import { NavLink, Route, Switch } from 'react-router-dom'
+import Home from './Home'
+import MoimList from '../containers/MoimList'
+
+class App extends Component {
+  render() {
+    return (
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>App<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>App-header<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>MOGAE, 모임 개설<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>content-wrapper<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>NavLink</span> <span class="token attr-name">exact</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>홈으로<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>NavLink</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>NavLink</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/moim<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>모임 리스트<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>NavLink</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Switch</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">exact</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/moim<span class="token punctuation">&quot;</span></span> <span class="token attr-name">component</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{MoimList}/</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">exact</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span> <span class="token attr-name">component</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{Home}/</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Switch</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    );
+  }
+}
+
+export default App;
+</code></pre></div><h3 id="actions-index-js"><a href="#actions-index-js" class="header-anchor">#</a> actions/index.js</h3> <p>우리가 만든 <code>/api/moim</code>을 get해오는 액션을 만든다.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">FETCH_MOIM</span> <span class="token operator">=</span> <span class="token string">'FETCH_MOIM'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">fetchMoim</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> request <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/api/moim/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    type<span class="token operator">:</span> <span class="token constant">FETCH_MOIM</span><span class="token punctuation">,</span>
+    payload<span class="token operator">:</span> request
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="reducers-index-js"><a href="#reducers-index-js" class="header-anchor">#</a> reducers/index.js</h3> <p><code>combineReducers</code>로 우리가 사용할 리듀서들을 묶어 <code>rootReducer</code>로 export한다.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> combineReducers <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> ListsReducer <span class="token keyword">from</span> <span class="token string">'./reducer_lists'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> reducer <span class="token keyword">as</span> formReducer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-form'</span>
+
+<span class="token keyword">const</span> rootReducer <span class="token operator">=</span> <span class="token function">combineReducers</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  lists<span class="token operator">:</span> ListsReducer<span class="token punctuation">,</span>
+  form<span class="token operator">:</span> formReducer
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> rootReducer<span class="token punctuation">;</span>
+</code></pre></div><h3 id="reducers-reducer-lists-js"><a href="#reducers-reducer-lists-js" class="header-anchor">#</a> reducers/reducer_lists.js</h3> <p><code>FETCH_MOIM</code>액션이 불렸을 때 데이터를 <code>moimList</code>에 저장해 새로운 state를 반환해준다.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token constant">FETCH_MOIM</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../actions/index'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> initialState <span class="token operator">=</span> <span class="token punctuation">{</span>
+    moimList<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">state <span class="token operator">=</span> initialState<span class="token punctuation">,</span> action</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">switch</span><span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token constant">FETCH_MOIM</span><span class="token operator">:</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token operator">...</span>state<span class="token punctuation">,</span> moimList<span class="token operator">:</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>data <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token operator">:</span>
+            <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="components-home-js-moim-js"><a href="#components-home-js-moim-js" class="header-anchor">#</a> components/Home.js, Moim.js</h3> <p>홈 화면, 모임 데이터를 보여주는 <code>presentational Component</code>를 만든다.</p> <div class="language-html extra-class"><pre class="language-html"><code>// Home.js
+import React from 'react'
+
+export default function() {
+  return (
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+      홈 화면
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  )
+}
+
+// Moim.js
+import React from 'react';
+
+
+export default ({ moimData }) =&gt; {
+  return (
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+      {moimData.title}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  );
+}
+</code></pre></div><h3 id="containers-moimlist-js"><a href="#containers-moimlist-js" class="header-anchor">#</a> containers/MoimList.js</h3> <p>컴포넌트가 만들어지고 javascript 렌더링을 마치면 <code>this.props.fetchMoim()</code> 액션으로 api로부터 데이터를 가져와 <code>state.list.moimList</code>에 저장한다.
+이를 전에 만든 <code>Moim.js</code> 컴포넌트를 map으로 돌려 리스트의 모든 모임 데이터를 뿌려준다.</p> <div class="language-html extra-class"><pre class="language-html"><code>import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Moim from '../components/Moim';
+import { fetchMoim } from '../actions/index';
+
+class MoimList extends Component {
+  componentDidMount() {
+    this.props.fetchMoim();
+  }
+
+  renderMoim () {
+    return this.props.moimList.map((moim) =&gt; {
+      return <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{moim.id}</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Moim</span> <span class="token attr-name">moimData</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{moim}/</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>;
+    });
+  }
+
+  render () {
+    return (
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>모임 리스트<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+          {this.renderMoim()}
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    );
+  }
+}
+
+export default connect((state) =&gt; {
+  return {
+    moimList: state.lists.moimList
+  };
+}, { fetchMoim })(MoimList);
+</code></pre></div><p>'홈으로', '모임 리스트' 네비게이션 링크를 누르면 url과 컨텐츠가 바뀌는 것을 볼 수 있다.
+<img src="/TIL/assets/img/4.1c43bf0c.png" alt="img"> <img src="/TIL/assets/img/5.2fb23520.png" alt="img"></p> <h3 id="스타일-적용-less-loader"><a href="#스타일-적용-less-loader" class="header-anchor">#</a> 스타일 적용(less-loader)</h3> <p><code>LESS</code>(CSS pre-processor)를 사용해서 스타일을 적용할 것이다.
+<code>create-react-app</code>이 기껏 webpack setting 파일을 숨겨주었지만(node_modules 내부에 있음)
+우리는 여기서 커스텀 세팅을 더 하기 위해 (app 폴더)<code>$ npm run eject</code>명령어로 세팅 파일을 빼낸다.</p> <p>명령어를 치면 app 폴더 하위에 <code>config</code>, <code>scripts</code>폴더가 생기고 <code>package.json</code>파일도 더 복잡해진다.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token function">npm</span> <span class="token function">install</span> --save <span class="token function">less</span> less-loader
+</code></pre></div><p><code>webpack.config.dev.js</code>의 exclude에 <code>less</code>를 추가하고, 그 아래 <code>STOP</code> 하단에 <code>less-loader</code>를 추가해준다. (<code>webpack.config.prod.js</code>에도 동일하게 해 준다.)</p> <div class="language-json extra-class"><pre class="language-json"><code>    <span class="token comment">// ** ADDING/UPDATING LOADERS **</span>
+  <span class="token comment">// The &quot;file&quot; loader handles all assets unless explicitly excluded.</span>
+  <span class="token comment">// The `exclude` list *must* be updated with every change to loader extensions.</span>
+  <span class="token comment">// When adding a new loader, you must add its `test`</span>
+  <span class="token comment">// as a new entry in the `exclude` list for &quot;file&quot; loader.</span>
+
+  <span class="token comment">// &quot;file&quot; loader makes sure those assets get served by WebpackDevServer.</span>
+  <span class="token comment">// When you `import` an asset, you get its (virtual) filename.</span>
+  <span class="token comment">// In production, they would get copied to the `build` folder.</span>
+  <span class="token punctuation">{</span>
+    exclude<span class="token operator">:</span> <span class="token punctuation">[</span>
+    /\.html$/<span class="token punctuation">,</span>
+    /\.(js|jsx)$/<span class="token punctuation">,</span>
+    /\.(css|less)$/<span class="token punctuation">,</span>
+    /\.json$/<span class="token punctuation">,</span>
+    /\.bmp$/<span class="token punctuation">,</span>
+    /\.gif$/<span class="token punctuation">,</span>
+    /\.jpe?g$/<span class="token punctuation">,</span>
+    /\.png$/<span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    loader<span class="token operator">:</span> require.resolve('file-loader')<span class="token punctuation">,</span>
+    options<span class="token operator">:</span> <span class="token punctuation">{</span>
+      name<span class="token operator">:</span> 'static/media/<span class="token punctuation">[</span>name<span class="token punctuation">]</span>.<span class="token punctuation">[</span>hash<span class="token operator">:</span><span class="token number">8</span><span class="token punctuation">]</span>.<span class="token punctuation">[</span>ext<span class="token punctuation">]</span>'<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+...
+
+  <span class="token comment">// ** STOP ** Are you adding a new loader?</span>
+  <span class="token comment">// Remember to add the new extension(s) to the &quot;file&quot; loader exclusion list.</span>
+  <span class="token punctuation">{</span>
+   test<span class="token operator">:</span> /\.less$/<span class="token punctuation">,</span>
+   use<span class="token operator">:</span> <span class="token punctuation">[</span>
+     'style-loader'<span class="token punctuation">,</span>
+     'css-loader'<span class="token punctuation">,</span>
+     'less-loader'<span class="token punctuation">,</span>
+   <span class="token punctuation">]</span>
+ <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div><p><code>static/styles/App.less</code> 파일을 만들어 <code>active</code>클래스를 가진 li의 배경색을 바꾸는 내용을 추가한다.</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">li</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span>
+  <span class="token selector">a.active</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #ffd29b<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>이제 <code>App.js</code>에서 less를 직접 import할 수 있다.</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- 상단에 추가 --&gt;</span>
+import '../static/styles/App.less';
+</code></pre></div><p><img src="/TIL/assets/img/6.f4d65588.png" alt="img"></p> <p>제작 완료! 이제 배포를 위해 빌드를 해 보자.</p> <hr> <h2 id="webpack-build"><a href="#webpack-build" class="header-anchor">#</a> Webpack build</h2> <p>실 서버에서는 웹팩 빌드의 결과물인 <code>build/index.html</code>를 장고 urls.py에서 template폴더로 접근해 사용할 것이다.</p> <p>app폴더에서 <code>npm run build</code> 명령어로 빌드를 돌리면 <code>app/build</code>폴더에 아래와 같은 파일이 생긴다.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>/build
+├── asset-manifest.json
+├── favicon.ico
+├── index.html
+├── manifest.json
+├── service-worker.js
+└── static
+    ├── css
+    │   ├── main.d41d8cd9.css
+    │   └── main.d41d8cd9.css.map
+    └── js
+        ├── main.8a4490cb.js
+        └── main.8a4490cb.js.map
+</code></pre></div><p><code>app/public</code>에 있는 파일들이 <code>build</code>폴더의 루트에 복사되고,
+지금까지 webpack-dev-server로 빌드해서 사용하고 있었던 javascript와 css파일들이 하나로 묶여 해쉬값 붙은 이름으로 <code>static</code>폴더 내에 생긴다.
+이 파일들은 웹팩이 <code>index.html</code>에 알아서 추가해줘 우리는 <code>index.html</code>만 바로 사용하면 된다.
+(<code>service-worker.js</code>는 <code>SWPrecacheWebpackPlugin</code> 웹팩 플러그인이 만들어준 파일이다. 추후에 설명)</p> <h4 id="settings-py"><a href="#settings-py" class="header-anchor">#</a> settings.py</h4> <div class="language- extra-class"><pre class="language-text"><code>TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            'app/build',
+        ],
+
+...
+STATICFILES_DIRS = [
+    str(root.path(&quot;app/build/static&quot;)),
+]
+</code></pre></div><p><code>TEMPLATES</code>에 <code>app/build</code>폴더를 추가하면 장고에서 이 폴더 내부에 있는 것들을 template파일로 접근할 수 있다.
+<code>STATICFILES_DIRS</code>에 <code>app/build/static</code>폴더를 추가하면 <code>127.0.0.1:8000/static/img_url.png</code>와 같이 자원에 바로 접근할 수 있다.</p> <h4 id="mogae-urls-py"><a href="#mogae-urls-py" class="header-anchor">#</a> mogae/urls.py</h4> <p>기본 <code>/</code> url을 <code>index.html</code>에 연결해준다.
+<code>/moim/</code>이나 <code>/home/</code> url로 바로 접근하더라도 장고가 index.html 로 보내줄 수 있게 추가한 url도 적어준다.</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> django<span class="token punctuation">.</span>conf<span class="token punctuation">.</span>urls <span class="token keyword">import</span> url<span class="token punctuation">,</span> include
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>views<span class="token punctuation">.</span>generic <span class="token keyword">import</span> TemplateView
+
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^$'</span><span class="token punctuation">,</span> TemplateView<span class="token punctuation">.</span>as_view<span class="token punctuation">(</span>template_name<span class="token operator">=</span><span class="token string">'index.html'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        name<span class="token operator">=</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^api/'</span><span class="token punctuation">,</span> include<span class="token punctuation">(</span><span class="token string">'api.urls'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^api-auth/'</span><span class="token punctuation">,</span> include<span class="token punctuation">(</span><span class="token string">'rest_framework.urls'</span><span class="token punctuation">,</span> namespace<span class="token operator">=</span><span class="token string">'rest_framework'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># login, logout 등 사용,</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^(home)|(moim)/'</span><span class="token punctuation">,</span> TemplateView<span class="token punctuation">.</span>as_view<span class="token punctuation">(</span>template_name<span class="token operator">=</span><span class="token string">'index.html'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'route'</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span>
+</code></pre></div><p><code>webpack-dev-server</code>로 띄운 웹에선 <code>bundle.js</code>를 사용하는 반면
+<code>python server</code>로 띄운 웹에선 <code>main.f1fd535b.js</code>를 사용하는 것을 볼 수 있습니다.
+<img src="/TIL/assets/img/7.a6feb564.png" alt="img"> <img src="/TIL/assets/img/8.f52eeb70.png" alt="img"></p> <p>이렇게...
+Django + React 앱 제작 완료!</p> <hr> <h2 id="progressive-web-app"><a href="#progressive-web-app" class="header-anchor">#</a> Progressive Web App</h2> <p>마지막으로 네이티브 앱과 같은 사용자 경험을 주는 웹앱을 목표로 하는 <code>Progressive Web App(PWA)</code>를 설정해 봅니다.
+<code>create-react-app</code>에서 이미 다 세팅해주었기 때문에 몇 가지만 더 하면 됩니다.</p> <h4 id="index-html"><a href="#index-html" class="header-anchor">#</a> index.html</h4> <p>route를 해 주는 index.html에 'registerServiceWorker'를 import한 뒤
+하단에서 실행해줍니다.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">...</span>
+<span class="token keyword">import</span> registerServiceWorker <span class="token keyword">from</span> <span class="token string">'./registerServiceWorker'</span><span class="token punctuation">;</span>
+<span class="token operator">...</span>
+
+<span class="token function">registerServiceWorker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p><code>registerServiceWorker</code>가 하는 역할은 배포 상황일 때만 <code>navigator.serviceWorker.register()</code>로 브라우저에 서비스워커를 등록해 주는 것입니다.
+우리는 서비스워커를 통해 브라우저 자원들을 캐시해서 오프라인에서도 볼 수 있게 하거나 홈스크린에 아이콘을 추가할 수 있습니다.
+서비스워커에 대한 자세한 설명은 <a href="https://developers.google.com/web/fundamentals/getting-started/primers/service-workers?hl=ko" target="_blank" rel="noopener noreferrer">여기<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>를 참고해 주세요.</p> <h4 id="static-assets"><a href="#static-assets" class="header-anchor">#</a> static/assets/</h4> <div class="language- extra-class"><pre class="language-text"><code>assets
+├── favicon.ico
+├── icon-144x144.png
+├── icon-192x192.png
+├── icon-512x512.png
+└── manifest.json
+</code></pre></div><p><code>static</code> 폴더 안에 <code>assets</code>폴더를 만들고, <code>favicon.ico</code>과 <code>144x144</code>, <code>192x192</code>, <code>512x512</code>크기의 아이콘을 만들어줍니다.
+이는 webpack build시에 <code>build/static/</code>폴더로 복사해 줄 것입니다.
+<code>public</code> 폴더에 넣으면 <code>build</code>폴더에 바로 옮겨 주는데 이렇게 하지 않은 이유는</p> <p><code>index.html</code>에서 <code>manifest.json</code>을 url로 접근해야 하며, manifest파일에서 icon url이 필요하기 때문입니다.
+<code>settings.py</code>에서 <code>build/static/</code>폴더를 스태틱으로 지정해두었기 때문에 이 폴더 내부에 있는 파일만 url dispatch 없이 바로 접근할 수 있습니다.</p> <h4 id="manifest-json"><a href="#manifest-json" class="header-anchor">#</a> manifest.json</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;short_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;MOGAE&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;모개: 모임 개설 서비스&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;icons&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;src&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./icon-144x144.png&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;sizes&quot;</span><span class="token operator">:</span> <span class="token string">&quot;144x144&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/png&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;src&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./icon-192x192.png&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;sizes&quot;</span><span class="token operator">:</span> <span class="token string">&quot;192x192&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/png&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;src&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./icon-512x512.png&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;sizes&quot;</span><span class="token operator">:</span> <span class="token string">&quot;512x512&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/png&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;start_url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;display&quot;</span><span class="token operator">:</span> <span class="token string">&quot;standalone&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;theme_color&quot;</span><span class="token operator">:</span> <span class="token string">&quot;#e3b42c&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;background_color&quot;</span><span class="token operator">:</span> <span class="token string">&quot;#ffffff&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>웹 앱에 대한 설명인 manifest파일을 작성해줍니다.
+아까 추가한 icon을 넣어주고,
+홈스크린에 추가된 아이콘으로 들어왔을 때 가장 먼저 보여줄 화면(<code>start_url</code>)을 지정합니다.
+다른 설정을 통해 위에 주소창을 숨길 것인지, 시작 화면을 가로로 할 지 등을 지정할 수 있습니다.</p> <p>매니페스트에 대한 자세한 설명은 <a href="https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/?hl=ko" target="_blank" rel="noopener noreferrer">여기<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>를 참고해 주세요.</p> <h4 id="webpack-config-prod-js"><a href="#webpack-config-prod-js" class="header-anchor">#</a> webpack.config.prod.js</h4> <p><code>$ npm install --save copy-webpack-plugin</code>명령어로 <code>copy-webpack-plugin</code>을 설치합니다. 빌드시 특정 파일/폴더를 빌드 폴더로 복사해주는 기능을 합니다.</p> <p><code>webpack.config.prod.js</code>의 <code>plugins</code>를 보면 <code>SWPrecacheWebpackPlugin</code>가 이미 세팅되어 있을것입니다. <code>create-react-app</code>의 친절이죠.</p> <p>오프라인 웹앱을 위해 우리는 필요한 파일을 캐싱해야하는데, 웹팩은 빌드 결과물에 해쉬값이 달려 나와 우리가 static하게 이 이름을 참조할 수 없죠.
+이 플러그인을 사용하면 필요한 자원 이름을 알아서 찾아 <code>service-worker.js</code>파일을 만들어줍니다.</p> <p>이 아래에 <code>CopyWebpackPlugin</code>을 세팅해봅시다.
+<code>./src/static/assets/</code>폴더를 <code>static/</code>에 복사할 거라고 적어줍니다.</p> <div class="language-json extra-class"><pre class="language-json"><code>const CopyWebpackPlugin = require('copy-webpack-plugin');
+...
+
+<span class="token comment">/* 서비스워커에서 사용할 manifest파일에서 캐싱할 파일들 웹팩 해시값 달아서 service-worker.js를 만든다 */</span>
+    new SWPrecacheWebpackPlugin(<span class="token punctuation">{</span>
+      dontCacheBustUrlsMatching<span class="token operator">:</span> /\.\w<span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">}</span>\./<span class="token punctuation">,</span>
+      filename<span class="token operator">:</span> 'service-worker.js'<span class="token punctuation">,</span> <span class="token comment">// 서비스 워커로 사용할(to be)이름</span>
+      logger(message) <span class="token punctuation">{</span>
+        if (message.indexOf('Total precache size is') === <span class="token number">0</span>) <span class="token punctuation">{</span>
+          return;
+        <span class="token punctuation">}</span>
+        if (message.indexOf('Skipping static resource') === <span class="token number">0</span>) <span class="token punctuation">{</span>
+          return;
+        <span class="token punctuation">}</span>
+        console.log(message);
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      minify<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      navigateFallback<span class="token operator">:</span> publicUrl + '/index.html'<span class="token punctuation">,</span>
+      navigateFallbackWhitelist<span class="token operator">:</span> <span class="token punctuation">[</span>/^(?!\/__).*/<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      staticFileGlobsIgnorePatterns<span class="token operator">:</span> <span class="token punctuation">[</span>/\.map$/<span class="token punctuation">,</span> /asset-manifest\.json$/<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>)<span class="token punctuation">,</span>
+    <span class="token comment">/* /src/static/assets에 있는 파일들을 build/static으로 옮겨서 manifest에서 사용한다 */</span>
+    new CopyWebpackPlugin(<span class="token punctuation">[</span>
+      <span class="token punctuation">{</span> from<span class="token operator">:</span> './src/static/assets/'<span class="token punctuation">,</span> to<span class="token operator">:</span> 'static/' <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      copyUnmodified<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>)<span class="token punctuation">,</span>
+</code></pre></div><h4 id="public-index-html"><a href="#public-index-html" class="header-anchor">#</a> public/index.html</h4> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>manifest<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/static/manifest.json<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>shortcut icon<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/static/favicon.ico<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    ...
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+  ...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p><code>index.html</code>에 manifest와 favicon을 넣어줍니다.</p> <h4 id="urls-py"><a href="#urls-py" class="header-anchor">#</a> urls.py</h4> <p>service worker파일은 index.html과 동일한 폴더(혹은 상위 폴더)에 있어야 제대로 작동합니다.
+그래서 <code>build/static</code>폴더 안에 넣어서 바로 접근할 수가 없죠.
+이를 위해 장고의 <code>urls.py</code>에 <code>service-worker.js</code>파일을 동일한 이름의 url로 연결해줍니다.
+같은 방식으로 <code>index.html</code>도 해주는데, 이는 서비스 워커가 오프라인 웹앱을 위해 캐싱할 때 <code>./index.html</code>라는 상대 경로(url)로 접근하기 때문에 이도 열어주어야 합니다.</p> <div class="language- extra-class"><pre class="language-text"><code>...
+url(r'^index.html/$',
+        TemplateView.as_view(template_name='index.html'), name='index_html'),
+url(r'^service-worker.js$',
+        TemplateView.as_view(template_name='service-worker.js',
+                             content_type='application/javascript'), name='service-worker_js'),
+...
+</code></pre></div><p><code>npm run build</code> 명령어로 빌드 후 파이썬 서버로 웹을 띄웁니다.</p> <p><img src="/TIL/assets/img/9.e4ad9da3.png" alt="img">
+네트워크 탭에서 <code>service-worker.js</code>파일이 잘 불려지고, <code>index.html</code>을 캐싱하는 걸 볼 수 있습니다.</p> <p><img src="/TIL/assets/img/10.39f782ec.png" alt="img">
+어플리케이션 탭에선 manifest파일이 읽혀서 앱의 정보와 icon이 나옵니다.</p> <p><img src="/TIL/assets/img/11.589f9fb8.png" alt="img"> <code>service worker</code>도 열심히 일하고 있네요.</p> <p><img src="/TIL/assets/img/12.b5a7ec4e.png" alt="img">
+'offline'체크박스를 클릭하고 리프레시 해 보면 오프라인 상태인데도 앱이 잘 보이는 걸 확인할 수 있습니다.</p> <p><img src="/TIL/assets/img/13.6afabf21.png" alt="img">
+이는 <code>Cache Storage</code>에 sw-precache란 이름으로 필요한 자원들을 모두 캐싱해두었기 때문이죠.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/TIL/Django/pass-data-through-redirect-in-django.html" class="prev">
+        Pass data through redirection in Django
+      </a></span> <span class="next"><a href="/TIL/Django/two-scoops-of-django.html">
+        Two scoops of Django
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/TIL/assets/js/app.2b48478b.js" defer></script><script src="/TIL/assets/js/2.cfc8eb86.js" defer></script><script src="/TIL/assets/js/3.3e18c391.js" defer></script>
+  </body>
+</html>
